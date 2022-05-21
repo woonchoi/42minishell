@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:28:50 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/21 00:01:56 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/21 09:20:48 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 static void	terminate_arg(int argc, char **argv)
 {
-	free(argv[argc - 1]);
+	if (!argv)
+		argc += 1;
 }
 
 //int	main(int argc, char **argv, char **envp)

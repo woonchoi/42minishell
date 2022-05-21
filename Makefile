@@ -6,14 +6,14 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/05/21 00:12:52 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/05/21 09:19:51 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-CFLAG = -Wall -Wextra -Werror
+CFLAG = -Wall -Wextra -Werror -g -fsanitize=address
 LIBFT_DIR = ./lib/libft/
 LIBFT = $(LIBFT_DIR)libft.a
 INC_DIR = ./includes/
@@ -23,7 +23,7 @@ INCLUDES = -I$(LIBFT_DIR) -I$(INC_DIR)
 
 SRC_DIR = ./srcs/
 
-MAIN_SRCS = minishell.c prompt.c signal_handler.c
+MAIN_SRCS = signal_handler.c prompt.c minishell.c
 MAIN_SRCDIR = $(addprefix $(SRC_DIR), $(MAIN_SRCS))
 
 SRCS = $(MAIN_SRCDIR)
@@ -32,7 +32,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAG) -lreadline $(LIBRARIES) $(INCLUDES) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(OBJS) -o $(NAME) -lft -lreadline
 
 %.o: %.c
 	@$(CC) $(CFLAG) -c $(INCLUDES) $< -o $@
