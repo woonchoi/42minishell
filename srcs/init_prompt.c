@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 22:08:31 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/22 19:42:24 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/22 19:43:46 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	parse_env_list(t_env_list **env_list, char **envp)
 		temp = (t_env_list *)malloc(sizeof(t_env_list));
 		if (!temp)
 			return ; // need to add terminate minishell
-		temp->key = ft_strndup(envp[i], ft_strchr(envp[i], '=') - envp[i] + 1);
+		temp->key = ft_strndup(envp[i], ft_strchr(envp[i], '=') - envp[i]);
 		temp->value = ft_split(ft_strchr(envp[i], '=') + 1, ':');
 		temp->next = 0;
 		parse_list_add_back(env_list, temp);
