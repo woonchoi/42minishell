@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:08:35 by jasong            #+#    #+#              #
-#    Updated: 2022/02/22 18:06:20 by jasong           ###   ########.fr        #
+#    Updated: 2022/05/22 19:38:38 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = libft.a
 
 SOURCES = ft_atoi.c ft_toupper.c ft_tolower.c \
 		  ft_isascii.c ft_isprint.c ft_isdigit.c \
-		  ft_isalpha.c ft_isalnum.c ft_strncmp.c \
+		  ft_isalpha.c ft_isalnum.c ft_strncmp.c ft_strndup.c \
 		  ft_strlen.c ft_strlcpy.c ft_memset.c ft_bzero.c \
 		  ft_memcpy.c ft_strchr.c ft_strrchr.c ft_memccpy.c ft_memmove.c \
 		  ft_strdup.c ft_memchr.c ft_memcmp.c ft_strlcat.c ft_strnstr.c ft_calloc.c \
