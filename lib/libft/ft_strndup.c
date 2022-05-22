@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/22 19:18:26 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/05/22 19:37:30 by woonchoi          #+#    #+#             */
+/*   Updated: 2022/05/22 19:39:19 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "libft.h"
+#include <stdlib.h>
 
-typedef struct	s_env_list
+char	*ft_strndup(const char *src, int n)
 {
-	char				*key;
-	char				**value;
-	struct s_env_list	*next;
-}	t_env_list;
+	char	*dest;
+	int		i;
 
-typedef struct	s_mshell_info
-{
-	t_env_list	*env_head;
-}	t_mshell_info;
-
-#endif
+	i = 0;
+	dest = (char *)malloc(n + 1);
+	if (!dest)
+		return (NULL);
+	while (i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
