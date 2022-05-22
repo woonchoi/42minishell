@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
+#    By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/05/21 09:19:51 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/05/22 19:04:13 by jasong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,14 +38,14 @@ $(NAME): $(LIBFT) $(OBJS)
 	@$(CC) $(CFLAG) -c $(INCLUDES) $< -o $@
 
 $(LIBFT):
-	@$(MAKE) -C $(LIBFT_DIR) all
+	@$(MAKE) -s -C $(LIBFT_DIR) all
 
 clean:
-	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(MAKE) -s -C $(LIBFT_DIR) clean
 	@rm -rf $(OBJS)
 
 fclean:
-	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@$(MAKE) -s -C $(LIBFT_DIR) fclean
 	@rm -rf $(OBJS)
 	rm -rf $(NAME)
 
