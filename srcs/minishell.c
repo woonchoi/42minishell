@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:28:50 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/22 19:36:15 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:47:04 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	terminate_arg(int argc, char **argv)
 {
 	if (!argv)
 		argc += 1;
+	argc = (int)argc;
 }
 
 void	test(t_mshell_info *info)
