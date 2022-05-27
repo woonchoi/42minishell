@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:28:50 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/22 20:38:26 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/25 16:27:10 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int main(int argc, char **argv, char **envp)
 	set_signal();
 	init_mshell_info(&info, envp);
 	test(&info);
-	prompt();
+	prompt(&info);
 	return (0);
 }
