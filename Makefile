@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/05/30 18:01:25 by jasong           ###   ########.fr        #
+#    Updated: 2022/05/30 18:11:25 by jasong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ INCLUDES = -I$(LIBFT_DIR) -I$(INC_DIR) -I$(CLUSTER_RL_DIR)/include
 
 SRC_DIR = ./srcs/
 
-MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c
+MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c tokenizing/tokenizing.c
 MAIN_SRCDIR = $(addprefix $(SRC_DIR), $(MAIN_SRCS))
 
 SRCS = $(MAIN_SRCDIR)

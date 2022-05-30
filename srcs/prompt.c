@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:50:54 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/26 15:24:34 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:32:46 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ void	prompt(t_mshell_info *info)
 			exit(0);
 		}
 		add_history(info->input);
+		//변수 초기화
+		info->error = 0;
+		info->tinfo.qstatus = -1;
+		info->index = 0;
+		info->tinfo.tokenlist = NULL;
+		lexer(info);
 		free(info->input);
 	}
 }
