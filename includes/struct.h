@@ -44,7 +44,6 @@ typedef struct	s_token
 
 typedef struct	s_parse_info
 {
-	int			cmd_count;
 	t_tree_list	*head;
 }	t_parse_info;
 
@@ -59,6 +58,8 @@ typedef struct	s_mshell_info
 	t_token_info	tinfo;
 	t_parse_info	pinfo;
 	t_tree_list		*head;
+	t_env_list		*env_head;
+	int				cmd_count;
 	char			*input;
 	int				error;
 	int				index;
