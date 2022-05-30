@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 14:37:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/27 20:58:38 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/28 21:45:01 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,39 @@ void	tokenizer(t_mshell_info *info)
 			redirection_add_back(info);
 	}
 	string_add_back(info);
+}
+
+int		is_redirection(int tokentype)
+{
+	if (tokentype == INPUT_R
+		|| tokentype == OUTPUT_R
+		|| tokentype == APPEND_R
+		|| tokentype == HEREDOC)
+		return (TRUE);
+	return (FALSE);
+}
+
+int	check_pipe_is_next(t_token *token)
+{
+	if (token->tokentype == PIPE)
+	{
+		
+	}
+}
+
+void	validate_syntax(t_mshell_info *info)
+{
+	t_token	*tokenlist;
+
+	tokenlist = info->tinfo.tokenlist;
+	while (tokenlist)
+	{
+		if (is_redirection(tokenlist->tokentype))
+		{
+			if ()
+		}
+
+	}
 }
 
 void	lexer(t_mshell_info *info)

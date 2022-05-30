@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/27 20:24:15 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/28 00:03:49 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct	s_tree_list
 
 typedef struct	s_token
 {
-	int		token_type;
+	int		tokentype;
 	char	*token;
 	struct s_token	*prev;
 	struct s_token	*next;
