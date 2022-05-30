@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 14:37:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/28 21:45:01 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:36:33 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ int	get_qstatus(char c, int qstatus)
 		else if (c == DOUBLE_Q)
 			qstatus = DOUBLE_Q;
 	}
-	else if (qstatus = SINGLE_Q)
+	else if (qstatus == SINGLE_Q)
 	{
 		if (c == SINGLE_Q)
 			qstatus = NO_Q;
 	}
-	else if (qstatus = DOUBLE_Q)
+	else if (qstatus == DOUBLE_Q)
 	{
 		if (c == DOUBLE_Q)
 			qstatus = NO_Q;
 	}
+	return (qstatus);
 }
 
 int	check_quote(t_mshell_info *info)
@@ -46,7 +47,7 @@ int	check_quote(t_mshell_info *info)
 	if (info->tinfo.qstatus != NO_Q)
 	{
 		info->error = TRUE;
-		ft_putstr_fd("bash : Unclosed quote found", 2);
+		ft_putstr_fd("bash : Unclosed quote found\n", 2);
 	}
 	return (info->error);
 }
@@ -178,7 +179,7 @@ void	tokenizer(t_mshell_info *info)
 		is_in_charset(info->input[info->index], SEPLIST))
 	{
 		if (info->input[info->index] == PIPE)
-			tinfo->tokenlist = token_add_back(token, PIPE, "|");
+			tinfo->tokenlist = token_add_back(tinfo->tokenlist, PIPE, "|");
 		else
 			redirection_add_back(info);
 	}
@@ -227,7 +228,7 @@ int	check_redirection_is_next(t_token *token)
 	else if (token->tokentype == APPEND_R)
 		temp = ">>";
 	else if (token->tokentype == HEREDOC)
-		temp == "<<";
+		temp = "<<";
 	if (temp)
 	{
 		ft_putstr_fd("bash: unexpected token '", 2);
@@ -235,7 +236,7 @@ int	check_redirection_is_next(t_token *token)
 		ft_putstr_fd("detected\n", 2);
 		return (TRUE);
 	}
-	return (FALSE;
+	return (FALSE);
 }
 
 void	validate_syntax(t_mshell_info *info)
@@ -243,7 +244,7 @@ void	validate_syntax(t_mshell_info *info)
 	t_token	*tokenlist;
 
 	tokenlist = info->tinfo.tokenlist;
-	while (tokenlist)
+	while (tokenlist && tokenlist->next)
 	{
 		if (is_redirection(tokenlist->tokentype))
 		{
@@ -267,6 +268,23 @@ void	validate_syntax(t_mshell_info *info)
 	}
 }
 
+void	print_lexer_result(t_mshell_info *info)
+{
+	t_token *cur;
+	int		i;
+
+	cur = info->tinfo.tokenlist;
+	i = 1;
+	while (cur)
+	{
+		printf("current index : %d", i);
+		printf("| token_type == %d ", cur->tokentype);
+		printf("| token == %s\n", cur->token);
+		cur = cur->next;
+		++i;
+	}
+}
+
 void	lexer(t_mshell_info *info)
 {
 	if (info->error)
@@ -283,5 +301,6 @@ void	lexer(t_mshell_info *info)
 		info->error = TRUE;
 		return ;
 	}
+	print_lexer_result(info);
 	validate_syntax(info);
 }

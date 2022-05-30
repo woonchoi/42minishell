@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/25 16:27:21 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:21:58 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,9 @@ char	*preadline(char *shellname);
 void	prompt(t_mshell_info *info);
 
 void	init_mshell_info(t_mshell_info *info, char **envp);
+
+void	lexer(t_mshell_info *info);
+
+/* LEXER */
 
 #endif

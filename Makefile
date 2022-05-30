@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/05/22 19:36:28 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/05/30 18:11:25 by jasong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,15 @@ CFLAG = -Wall -Wextra -Werror -g -fsanitize=address
 LIBFT_DIR = ./lib/libft/
 LIBFT = $(LIBFT_DIR)libft.a
 INC_DIR = ./includes/
+CLUSTER_RL_DIR = $(HOME)/.brew/opt/readline
 
-LIBRARIES= -L$(LIBFT_DIR)
-INCLUDES = -I$(LIBFT_DIR) -I$(INC_DIR)
+
+LIBRARIES= -L$(LIBFT_DIR) -L$(CLUSTER_RL_DIR)/lib
+INCLUDES = -I$(LIBFT_DIR) -I$(INC_DIR) -I$(CLUSTER_RL_DIR)/include
 
 SRC_DIR = ./srcs/
 
-MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c
+MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c tokenizing/tokenizing.c
 MAIN_SRCDIR = $(addprefix $(SRC_DIR), $(MAIN_SRCS))
 
 SRCS = $(MAIN_SRCDIR)
