@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/22 19:36:12 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/25 16:27:21 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/wait.h>
 # include "libft.h"
 # include "struct.h"
+# include "constant.h"
 
 int		g_exit_status;
 
@@ -29,7 +30,7 @@ void	signal_handler(int signum);
 void	set_signal();
 
 char	*preadline(char *shellname);
-void	prompt();
+void	prompt(t_mshell_info *info);
 
 void	init_mshell_info(t_mshell_info *info, char **envp);
 

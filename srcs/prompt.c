@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:50:54 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/21 00:00:49 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/26 15:24:34 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,18 @@ char	*preadline(char *shellname)
 	return (cmdline);
 }
 
-void	prompt()
+void	prompt(t_mshell_info *info)
 {
-	char	*input;
-
 	while(1)
 	{
-		input = preadline("minishell$ ");
-		if (!input)
+		info->input = preadline("minishell$ ");
+		if (!info->input)
 		{
 			rl_replace_line("", 0);
 			printf("exit\n");
 			exit(0);
 		}
-		add_history(input);
-		free(input);
+		add_history(info->input);
+		free(info->input);
 	}
 }

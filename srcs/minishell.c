@@ -6,7 +6,11 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:28:50 by woonchoi          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/05/23 14:47:04 by jasong           ###   ########.fr       */
+=======
+/*   Updated: 2022/05/25 16:27:10 by woonchoi         ###   ########.fr       */
+>>>>>>> 96b9c69aa48795f9df333015679a00bcf8e2009f
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +51,6 @@ int main(int argc, char **argv, char **envp)
 	set_signal();
 	init_mshell_info(&info, envp);
 	test(&info);
-	prompt();
+	prompt(&info);
 	return (0);
 }

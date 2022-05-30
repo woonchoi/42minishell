@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 22:08:31 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/22 19:43:46 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/25 16:28:15 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ static t_env_list	*init_env(char **envp)
 
 void	init_mshell_info(t_mshell_info *info, char **envp)
 {
+	info->cmd_count = 0;
 	info->env_head = init_env(envp);
+	info->head = 0;
 }
