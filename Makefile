@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/05/30 17:50:23 by jasong           ###   ########.fr        #
+#    Updated: 2022/05/30 18:01:25 by jasong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,11 @@ CFLAG = -Wall -Wextra -Werror -g -fsanitize=address
 LIBFT_DIR = ./lib/libft/
 LIBFT = $(LIBFT_DIR)libft.a
 INC_DIR = ./includes/
-LOCAL_READLINE_DIR = /opt/homebrew/opt/readline
 CLUSTER_RL_DIR = $(HOME)/.brew/opt/readline
 
 
-LIBRARIES= -L$(LIBFT_DIR) -L$(LOCAL_READLINE_DIR)/lib -L$(CLUSTER_RL_DIR)/lib
-INCLUDES = -I$(LIBFT_DIR) -I$(INC_DIR) -I$(LOCAL_READLINE_DIR)/include $(CLUSTER_RL_DIR)/include
+LIBRARIES= -L$(LIBFT_DIR) -L$(CLUSTER_RL_DIR)/lib
+INCLUDES = -I$(LIBFT_DIR) -I$(INC_DIR) -I$(CLUSTER_RL_DIR)/include
 
 SRC_DIR = ./srcs/
 
