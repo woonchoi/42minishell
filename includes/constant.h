@@ -42,7 +42,7 @@ typedef enum	e_token_type
 	GRAVE = '`',
 	SP = ' ',
 	NL = '\n',
-	NORMAL = 0,
+	NORMAL = 1,
 }	t_token_type;
 
 #endif
