@@ -235,7 +235,7 @@ int	check_redirection_is_next(t_token *token)
 		ft_putstr_fd("detected\n", 2);
 		return (TRUE);
 	}
-	return (FALSE;
+	return (FALSE);
 }
 
 void	validate_syntax(t_mshell_info *info)
