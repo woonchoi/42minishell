@@ -199,8 +199,43 @@ int	check_pipe_is_next(t_token *token)
 {
 	if (token->tokentype == PIPE)
 	{
-		
+		ft_putstr_fd("bash: unexpected token '|' detected\n", 2);
+		return (TRUE);
 	}
+	return (FALSE);
+}
+
+int	check_null_is_next(t_token *token)
+{
+	if (token->tokentype == PIPE)
+	{
+		ft_putstr_fd("bash: unexpected token 'newline' detected\n", 2);
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+int	check_redirection_is_next(t_token *token)
+{
+	char	*temp;
+
+	temp = NULL;
+	if (token->tokentype == INPUT_R)
+		temp = "<";
+	else if (token->tokentype == OUTPUT_R)
+		temp = ">";
+	else if (token->tokentype == APPEND_R)
+		temp = ">>";
+	else if (token->tokentype == HEREDOC)
+		temp == "<<";
+	if (temp)
+	{
+		ft_putstr_fd("bash: unexpected token '", 2);
+		ft_putstr_fd(temp, 2);
+		ft_putstr_fd("detected\n", 2);
+		return (TRUE);
+	}
+	return (FALSE;
 }
 
 void	validate_syntax(t_mshell_info *info)
@@ -212,9 +247,23 @@ void	validate_syntax(t_mshell_info *info)
 	{
 		if (is_redirection(tokenlist->tokentype))
 		{
-			if ()
+			if (check_pipe_is_next(tokenlist->next))
+				info->error = TRUE;
+			if (check_null_is_next(tokenlist->next))
+				info->error = TRUE;
+			if (check_redirection_is_next(tokenlist->next))
+				info->error = TRUE;
 		}
-
+		else if (tokenlist->tokentype == PIPE)
+		{
+			if (check_pipe_is_next(tokenlist->next))
+				info->error = TRUE;
+			if (check_null_is_next(tokenlist->next))
+				info->error = TRUE;
+		}
+		tokenlist = tokenlist->next;
+		if (info->error == TRUE)
+			return ;
 	}
 }
 
@@ -234,4 +283,5 @@ void	lexer(t_mshell_info *info)
 		info->error = TRUE;
 		return ;
 	}
+	validate_syntax(info);
 }
