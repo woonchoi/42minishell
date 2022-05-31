@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/30 18:21:58 by jasong           ###   ########.fr       */
+/*   Updated: 2022/05/31 20:32:28 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "libft.h"
 # include "struct.h"
 # include "constant.h"
+# include "lexer.h"
 
 int		g_exit_status;
 

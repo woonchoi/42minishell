@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 16:12:52 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/25 21:14:30 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/05/26 14:37:58 by woonchoi          #+#    #+#             */
+/*   Updated: 2022/05/31 20:26:59 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	get_state(char c, int state)
+void	tokenizer(t_mshell_info *info)
 {
-	if (state = DOUBLE_Q)
+	char	*token;
+	t_token_info	*tinfo;
 
-}
-
-int	parsing(t_mshell_info *info, char *input)
-{
-	int	i;
-	int	state;
-
-	i = 0;
-	state = 0;
-	while (input[i])
+	token = NULL;
+	tinfo = &info->tinfo;
+	tinfo->qstatus = get_qstatus(info->input[info->index], tinfo->qstatus);
+	if (tinfo->qstatus == NO_Q &&
+		is_in_charset(info->input[info->index], SEPLIST))
 	{
-		state = 
-	} 
+		if (info->input[info->index] == PIPE)
+			tinfo->tokenlist = token_add_back(tinfo->tokenlist, PIPE, "|");
+		else
+			redirection_add_back(info);
+	}
+	string_add_back(info);
 }
