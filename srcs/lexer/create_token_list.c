@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:58:01 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/31 16:58:31 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:51:55 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_token	*token_add_back(t_token *token, int type, char *str)
 		return (new_token);
 	else
 	{
-		cur = new_token;
+		cur = token;
 		while (cur->next)
 			cur = cur->next;
 		cur->next = new_token;
@@ -66,7 +66,7 @@ void	string_add_back(t_mshell_info *info)
 	temp = ft_strndup(&info->input[info->index], i - info->index);
 	str = ft_strtrim(temp, SPACELIST);
 	free(temp);
-	if (i > 0)
+	if (i != info->index)
 		info->index = i - 1;
 	if (!is_only_space(str))
 		tinfo->tokenlist = token_add_back(tinfo->tokenlist, NORMAL, str);

@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/31 20:32:28 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:44:15 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	*preadline(char *shellname);
 void	prompt(t_mshell_info *info);
 
 void	init_mshell_info(t_mshell_info *info, char **envp);
+
+void	init_prompt_cycle(t_mshell_info *info);
 
 void	lexer(t_mshell_info *info);
 

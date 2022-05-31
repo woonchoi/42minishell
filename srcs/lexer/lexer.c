@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:26:37 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/31 20:26:53 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:49:35 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	lexer(t_mshell_info *info)
 		return ;
 	while (info->input[info->index])
 	{
+		printf("%s\n", &info->input[info->index]);
 		tokenizer(info);
 		info->index++;
 	}
