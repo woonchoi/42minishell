@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:26:37 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/31 20:49:35 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:58:20 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	print_lexer_result(t_mshell_info *info)
 		cur = cur->next;
 		++i;
 	}
+	printf("current pipe count = %d\n", info->cmd_count);
 }
 
 void	lexer(t_mshell_info *info)
