@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/05/31 20:44:58 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/02 20:36:08 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ INCLUDES = -I$(LIBFT_DIR) -I$(INC_DIR) -I$(CLUSTER_RL_DIR)/include
 SRC_DIR = ./srcs/
 
 MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c init_struct.c\
-			lexer/tokenizer.c lexer/create_token_list.c lexer/lexer.c lexer/tokenizing_util.c lexer/validate_token_list.c
+			lexer/tokenizer.c lexer/create_token_list.c lexer/lexer.c lexer/tokenizing_util.c lexer/validate_token_list.c\
+			parser/parser.c
+
 MAIN_SRCDIR = $(addprefix $(SRC_DIR), $(MAIN_SRCS))
 
 SRCS = $(MAIN_SRCDIR)
