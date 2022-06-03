@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/03 16:04:15 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:49:35 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	init_prompt_cycle(t_mshell_info *info);
 
 void	print_lexer_result(t_mshell_info *info);
 void	lexer(t_mshell_info *info);
+void	safety_free(void *data);
 
 void	scanner(t_mshell_info *info);
 

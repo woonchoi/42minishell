@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:34:06 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/03 16:21:06 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:59:05 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	preprocess_expand_ds(char *token, t_expand_token *exp_v)
 	temp = exp_v->str1;
 	exp_v->str2 = ft_strndup(&token[exp_v->j], exp_v->i - exp_v->j);
 	exp_v->str1 = ft_strjoin(exp_v->str1, exp_v->str2);
-	free(temp);
-	free(exp_v->str2);
+	safety_free(temp);
+	safety_free(exp_v->str2);
 	exp_v->str2 = NULL;
 }
 
@@ -65,7 +65,7 @@ void	expand_question(t_expand_token *exp_v)
 	exp_v->str1 = ft_strjoin(exp_v->str1, ft_itoa(test_exit_status));
 	exp_v->i++;
 	exp_v->j = exp_v->i + 1;
-	free(temp);
+	safety_free(temp);
 }
 
 char	*get_key_in_token(char *token, t_expand_token *exp_v)
@@ -101,6 +101,26 @@ char	*get_value_with_key(char *key, t_env_list *env)
 	return (value);
 }
 
+int	check_dollar_critical_case(char *token, int i, int qstatus)
+{
+	if (ft_strlen(token) == 1
+		|| (!ft_strncmp(token, "$\"", 2) && qstatus == DOUBLE_Q)
+		|| (!ft_strncmp(token, "$\'", 2) && qstatus == DOUBLE_Q))
+		return (TRUE);
+	return (FALSE);
+}
+
+void	expand_critical_case(t_expand_token *exp_v)
+{
+	char *temp;
+
+	temp = exp_v->str1;
+	exp_v->str1 = ft_strjoin(exp_v->str1, "$");
+	exp_v->j = exp_v->i + 1;
+	if (temp)
+		safety_free(temp);
+}
+
 void	expand_envvars(char *token, t_expand_token *exp_v, t_env_list *env)
 {
 	char	*key;
@@ -109,20 +129,24 @@ void	expand_envvars(char *token, t_expand_token *exp_v, t_env_list *env)
 
 	if (check_dollar_next_question(token, exp_v))
 		expand_question(exp_v);
+	else if (check_dollar_critical_case(token, exp_v->i, exp_v->qstatus))
+		expand_critical_case(exp_v);
 	else
 	{
 		temp = exp_v->str1;
 		key = get_key_in_token(token, exp_v);
 		value = get_value_with_key(key, env);
 		if (value)
+		{
 			exp_v->str1 = ft_strjoin(exp_v->str1, value);
+			safety_free(temp);
+		}
 		if (!ft_strlen(key))
 			exp_v->i += 1;
 		exp_v->i += ft_strlen(key);
 		exp_v->j = exp_v->i + 1;
-		free(key);
-		free(value);
-		free(temp);
+		safety_free(key);
+		safety_free(value);
 	}
 }
 
@@ -183,7 +207,7 @@ void	expand_token(t_token *cur, t_env_list *env)
 	if (!find_ds_need_expand(cur->token))
 		return ;
 	cur->token = create_expand_result(cur->token, env);
-	free(temp);
+	safety_free(temp);
 }
 
 void	expand_tokens(t_mshell_info *info)
