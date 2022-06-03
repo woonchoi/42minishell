@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:50:54 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/02 20:41:46 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:05:03 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	prompt(t_mshell_info *info)
 		add_history(info->input);
 		//변수 초기화
 		lexer(info);
-		parser(info);
+		scanner(info);
 		print_lexer_result(info);
 		free(info->input);
 	}
