@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:34:06 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/03 16:59:05 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:07:17 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,13 +176,20 @@ void	save_current_string(char *token, t_expand_token *exp_v)
 	exp_v->j = exp_v->i + 1;
 }
 
+void	expand_remain_string(char *token, t_expand_token *exp_v)
+{
+	char	*temp;
+
+	temp = exp_v->str1;
+	exp_v->str1 = ft_strjoin(exp_v->str1, &token[exp_v->j]);
+	safety_free(temp);
+}
+
 char	*create_expand_result(char *token, t_env_list *env)
 {
 	t_expand_token	exp_v;
-	char	*new_token;
 
 	init_expand_token_value(&exp_v);
-	new_token = NULL;
 	while (token[exp_v.i])
 	{
 		exp_v.qstatus = get_qstatus(token[exp_v.i], exp_v.qstatus);
@@ -196,6 +203,27 @@ char	*create_expand_result(char *token, t_env_list *env)
 		}
 		exp_v.i++;
 	}
+	if (exp_v.i != exp_v.j + 1)
+		expand_remain_string(token, &exp_v);
+	return (exp_v.str1);
+}
+
+char	*delete_quote(char *token)
+{
+	t_expand_token	exp_v;
+	char	*new_token;
+
+	init_expand_token_value(&exp_v);
+	new_token = NULL;
+	while (token[exp_v.i])
+	{
+		exp_v.qstatus = get_qstatus(token[exp_v.i], exp_v.qstatus);
+		if (check_quote_need_delete(token[exp_v.i], &exp_v))
+			save_current_string(token, &exp_v);
+		exp_v.i++;
+	}
+	if (exp_v.i != exp_v.j + 1)
+		expand_remain_string(token, &exp_v);
 	return (exp_v.str1);
 }
 
@@ -205,7 +233,11 @@ void	expand_token(t_token *cur, t_env_list *env)
 
 	temp = cur->token;
 	if (!find_ds_need_expand(cur->token))
+	{
+		cur->token = delete_quote(cur->token);
+		safety_free(temp);
 		return ;
+	}
 	cur->token = create_expand_result(cur->token, env);
 	safety_free(temp);
 }
