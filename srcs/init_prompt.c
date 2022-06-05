@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 22:08:31 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/25 16:28:15 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/01 22:03:08 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	parse_list_add_back(t_env_list **env_list, t_env_list *temp)
 static void	parse_env_list(t_env_list **env_list, char **envp)
 {
 	int			i;
+	char		*env_temp;
 	t_env_list	*temp;
 
 	i = 0;
@@ -40,7 +41,11 @@ static void	parse_env_list(t_env_list **env_list, char **envp)
 		if (!temp)
 			return ; // need to add terminate minishell
 		temp->key = ft_strndup(envp[i], ft_strchr(envp[i], '=') - envp[i]);
-		temp->value = ft_split(ft_strchr(envp[i], '=') + 1, ':');
+		env_temp = ft_strchr(envp[i], '=');
+		if (env_temp)
+			env_temp++;
+		temp->value = ft_strdup(env_temp);
+		temp->split_value = ft_split(ft_strchr(envp[i], '=') + 1, ':');
 		temp->next = 0;
 		parse_list_add_back(env_list, temp);
 		i++;

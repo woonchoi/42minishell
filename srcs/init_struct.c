@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/08 13:39:29 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/02 21:05:04 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/05/31 20:33:44 by woonchoi          #+#    #+#             */
+/*   Updated: 2022/05/31 20:44:10 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include "../includes/minishell.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	init_prompt_cycle(t_mshell_info *info)
 {
-	size_t	len1;
-	size_t	len2;
-	char	*join;
-
-	if (!(s1 || s2))
-		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	join = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!join)
-		return (NULL);
-	ft_strlcpy(join, s1, len1 + 1);
-	ft_strlcat(join, s2, len1 + len2 + 1);
-	return (join);
+	info->error = 0;
+	info->index = 0;
+	info->tinfo.qstatus = -1;
+	info->tinfo.tokenlist = 0;
+	info->head = NULL;
+	info->cmd_count = 0;
+	info->input = 0;
 }

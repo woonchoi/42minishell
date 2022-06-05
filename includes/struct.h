@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/28 00:03:49 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/01 21:57:31 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 typedef struct	s_env_list
 {
 	char				*key;
-	char				**value;
+	char				*value;
+	char				**split_value;
 	struct s_env_list	*next;
 }	t_env_list;
 
@@ -42,21 +43,24 @@ typedef struct	s_token
 	struct s_token	*next;
 }	t_token;
 
-typedef struct	s_parse_info
-{
-	t_tree_list	*head;
-}	t_parse_info;
-
 typedef struct	s_token_info
 {
 	int			qstatus;
 	t_token		*tokenlist;
 }	t_token_info;
 
+typedef struct	s_expand_token
+{
+	char	*str1;
+	char	*str2;
+	int		i;
+	int		j;
+	int		qstatus;
+}	t_expand_token;
+
 typedef struct	s_mshell_info
 {
 	t_token_info	tinfo;
-	t_parse_info	pinfo;
 	t_tree_list		*head;
 	t_env_list		*env_head;
 	int				cmd_count;

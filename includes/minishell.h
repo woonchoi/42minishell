@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/30 18:21:58 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/03 16:49:35 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "libft.h"
 # include "struct.h"
 # include "constant.h"
+# include "lexer.h"
 
 int		g_exit_status;
 
@@ -34,7 +35,15 @@ void	prompt(t_mshell_info *info);
 
 void	init_mshell_info(t_mshell_info *info, char **envp);
 
+void	init_prompt_cycle(t_mshell_info *info);
+
+void	print_lexer_result(t_mshell_info *info);
 void	lexer(t_mshell_info *info);
+void	safety_free(void *data);
+
+void	scanner(t_mshell_info *info);
+
+void	parser(t_mshell_info *info);
 
 /* LEXER */
 

@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:39:56 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/28 00:03:49 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:52:41 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 
 typedef enum	e_cmd_type
 {
-	INPUT_R = 1,
-	OUTPUT_R = 2,
-	APPEND_R = 3,
-	HEREDOC = 4,
-	CMD = 5,
-	OPTARG = 6,
-	BRANCH = 7,
+	NORMAL = 1,
+	INPUT_R = 2,
+	OUTPUT_R = 3,
+	APPEND_R = 4,
+	HEREDOC = 5,
+	CMD = 6,
+	OPTARG = 7,
+	BRANCH = 8,
 }	t_cmd_type;
 
 typedef enum	e_token_type
@@ -42,7 +43,6 @@ typedef enum	e_token_type
 	GRAVE = '`',
 	SP = ' ',
 	NL = '\n',
-	NORMAL = 1,
 }	t_token_type;
 
 #endif
