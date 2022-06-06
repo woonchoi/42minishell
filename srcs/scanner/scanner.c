@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:34:06 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/05 12:33:29 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/06 14:30:03 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,7 @@ void	expand_token(t_token *cur, t_env_list *env)
 	{
 		cur->token = delete_quote(cur->token);
 		safety_free(temp);
-		return ;
+		return ; 
 	}
 	cur->token = create_expand_result(cur->token, env);
 	safety_free(temp);

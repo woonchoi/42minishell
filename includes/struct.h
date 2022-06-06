@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/01 21:57:31 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:12:50 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@ typedef struct	s_tree
 
 typedef struct	s_tree_list
 {
+	int			fd[2];
+	pid_t		pid;
 	t_tree		*root;
-	struct s_tree_list	*next;
 }	t_tree_list;
 
 typedef struct	s_token
 {
 	int		tokentype;
 	char	*token;
+	char	*token_origin;
 	struct s_token	*prev;
 	struct s_token	*next;
 }	t_token;
@@ -58,10 +60,19 @@ typedef struct	s_expand_token
 	int		qstatus;
 }	t_expand_token;
 
+typedef struct	s_parse_util
+{
+	t_tree	*red_cur;
+	t_tree	*cmd_cur;
+	char	*temp;
+	int		cmd_status;
+	int		red_status;
+}	t_parse_util;
+
 typedef struct	s_mshell_info
 {
 	t_token_info	tinfo;
-	t_tree_list		*head;
+	t_tree_list		*tree;
 	t_env_list		*env_head;
 	int				cmd_count;
 	char			*input;
