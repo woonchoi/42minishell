@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/06 15:28:24 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/06 19:29:26 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct	s_parse_util
 	int		cmd_status;
 	int		red_status;
 	int		heredoc_status;
+	int		heredoc_count;
 }	t_parse_util;
 
 typedef struct	s_mshell_info
@@ -79,6 +80,7 @@ typedef struct	s_mshell_info
 	char			*input;
 	int				error;
 	int				index;
+	int				heredoc_count;
 }	t_mshell_info;
 
 #endif

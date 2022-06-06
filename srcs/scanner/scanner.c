@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:34:06 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/06 15:50:22 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/06 20:51:48 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,7 @@ char	*create_expand_result(char *token, t_env_list *env)
 		}
 		exp_v.i++;
 	}
-	if (exp_v.i != exp_v.j + 1)
+	if (exp_v.i != exp_v.j)
 		expand_remain_string(token, &exp_v);
 	return (exp_v.str1);
 }
@@ -222,7 +222,7 @@ char	*delete_quote(char *token)
 			save_current_string(token, &exp_v);
 		exp_v.i++;
 	}
-	if (exp_v.i != exp_v.j + 1)
+	if (exp_v.i != exp_v.j)
 		expand_remain_string(token, &exp_v);
 	return (exp_v.str1);
 }
@@ -234,16 +234,19 @@ void	expand_token(t_token *cur, t_env_list *env)
 
 	temp = cur->token;
 	temp_origin = cur->token_origin;
-	cur->token_origin = delete_quote(cur->token_origin);
-	safety_free(temp_origin);
-	if (!find_ds_need_expand(cur->token))
+	if (cur->tokentype == NORMAL)
 	{
-		cur->token = delete_quote(cur->token);
+		cur->token_origin = delete_quote(cur->token_origin);
+		safety_free(temp_origin);
+		if (!find_ds_need_expand(cur->token))
+		{
+			cur->token = delete_quote(cur->token);
+			safety_free(temp);
+			return ; 
+		}
+		cur->token = create_expand_result(cur->token, env);
 		safety_free(temp);
-		return ; 
 	}
-	cur->token = create_expand_result(cur->token, env);
-	safety_free(temp);
 }
 
 void	expand_tokens(t_mshell_info *info)
