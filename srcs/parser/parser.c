@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:12:52 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/06 15:04:55 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:28:01 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,20 @@ void	init_parse_util(t_parse_util *par_v, t_tree *root)
 	par_v->red_cur = root;
 	par_v->cmd_cur = root;
 	par_v->temp = NULL;
+	par_v->cmd_status = 0;
+	par_v->red_status = 0;
 }
 
 void	build_tree_with_token(t_token *cur, t_tree *root)
 {
 	t_parse_util	par_v;
 
+	init_parse_util(&par_v, root);
 	while (cur)
 	{
 		if (cur->tokentype = PIPE)
 			break ;
-		if (cur->tokentype = NULL)
+		if (cur->tokentype = NORMAL)
 	}
 }
 

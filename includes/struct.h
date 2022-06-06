@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/06 15:12:50 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:28:24 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct	s_parse_util
 	char	*temp;
 	int		cmd_status;
 	int		red_status;
+	int		heredoc_status;
 }	t_parse_util;
 
 typedef struct	s_mshell_info

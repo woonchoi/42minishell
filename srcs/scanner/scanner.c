@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:34:06 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/06 14:30:03 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:50:22 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,8 +230,12 @@ char	*delete_quote(char *token)
 void	expand_token(t_token *cur, t_env_list *env)
 {
 	char	*temp;
+	char	*temp_origin;
 
 	temp = cur->token;
+	temp_origin = cur->token_origin;
+	cur->token_origin = delete_quote(cur->token_origin);
+	safety_free(temp_origin);
 	if (!find_ds_need_expand(cur->token))
 	{
 		cur->token = delete_quote(cur->token);
