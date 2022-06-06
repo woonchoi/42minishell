@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/03 16:50:09 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/06 20:26:08 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC_DIR = ./srcs/
 
 MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c init_struct.c\
 			lexer/tokenizer.c lexer/create_token_list.c lexer/lexer.c lexer/tokenizing_util.c lexer/validate_token_list.c\
-			scanner/scanner.c util_free/safety_free.c
+			scanner/scanner.c util_free/safety_free.c parser/parser.c
 
 MAIN_SRCDIR = $(addprefix $(SRC_DIR), $(MAIN_SRCS))
 

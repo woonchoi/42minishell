@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:26:37 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/01 20:58:20 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:25:15 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	print_lexer_result(t_mshell_info *info)
 	{
 		printf("current index : %d", i);
 		printf("| token_type == %d ", cur->tokentype);
-		printf("| token == %s\n", cur->token);
+		printf("| token == %s", cur->token);
+		printf("| token_origin == %s\n", cur->token_origin);
 		cur = cur->next;
 		++i;
 	}

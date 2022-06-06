@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:58:01 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/31 20:51:55 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:13:35 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_token	*create_token(int type, char *str)
 		return (NULL);
 	ret->tokentype = type;
 	ret->token = ft_strdup(str);
+	ret->token_origin = ft_strdup(str);
 	ret->next = NULL;
 	ret->prev = NULL;
 	return (ret);
