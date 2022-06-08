@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 16:47:51 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/08 19:31:34 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "constant.h"
 # include "lexer.h"
 # include "parser.h"
+# include "scanner.h"
 
 int		g_exit_status;
 

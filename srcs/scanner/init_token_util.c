@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   init_token_util.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 16:12:52 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 19:16:02 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/06/08 19:24:49 by woonchoi          #+#    #+#             */
+/*   Updated: 2022/06/08 19:25:11 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	parser(t_mshell_info *info)
+void	init_expand_token_value(t_expand_token *exp_v)
 {
-	if (info->error)
-		return ;
-	build_tree(info);
+	exp_v->str1 = NULL;
+	exp_v->str2 = NULL;
+	exp_v->i = 0;
+	exp_v->j = 0;
+	exp_v->qstatus = NO_Q;
 }
