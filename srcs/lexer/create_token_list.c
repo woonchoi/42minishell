@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:58:01 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/06 15:13:35 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:32:56 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_token	*create_token(int type, char *str)
 	ret->token = ft_strdup(str);
 	ret->token_origin = ft_strdup(str);
 	ret->next = NULL;
-	ret->prev = NULL;
 	return (ret);
 }
 
@@ -43,7 +42,6 @@ t_token	*token_add_back(t_token *token, int type, char *str)
 		while (cur->next)
 			cur = cur->next;
 		cur->next = new_token;
-		new_token->prev = cur;
 	}
 	return (token);
 }
@@ -66,13 +64,12 @@ void	string_add_back(t_mshell_info *info)
 	}
 	temp = ft_strndup(&info->input[info->index], i - info->index);
 	str = ft_strtrim(temp, SPACELIST);
-	free(temp);
+	safety_free(temp);
 	if (i != info->index)
 		info->index = i - 1;
 	if (!is_only_space(str))
 		tinfo->tokenlist = token_add_back(tinfo->tokenlist, NORMAL, str);
-	else
-		free(str);
+	safety_free(str);
 }
 
 void	redirection_add_back(t_mshell_info *info)

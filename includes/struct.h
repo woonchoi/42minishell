@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/06 19:29:26 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:05:10 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct	s_token
 	int		tokentype;
 	char	*token;
 	char	*token_origin;
-	struct s_token	*prev;
 	struct s_token	*next;
 }	t_token;
 
