@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 19:31:34 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:00:13 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include "lexer.h"
 # include "parser.h"
 # include "scanner.h"
+
+void	execute(t_mshell_info *info);
 
 int		g_exit_status;
 

@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:50:54 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 12:06:24 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:01:03 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	prompt(t_mshell_info *info)
 		scanner(info);
 		print_lexer_result(info);
 		parser(info);
+		execute(info);
 		terminate_free(info);
 	}
 }

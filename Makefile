@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/08 19:33:05 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/09 16:00:36 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c init_struct.c\
 			util_free/safety_free.c\
 			parser/build_parse_tree.c parser/init_parser.c parser/parse_result_util.c parser/parser_add_tree_node.c parser/parser.c\
 			util_free/terminate_free.c\
+			execute/execute.c\
 
 
 MAIN_SRCDIR = $(addprefix $(SRC_DIR), $(MAIN_SRCS))
