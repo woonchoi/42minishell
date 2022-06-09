@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/08 19:33:05 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/09 02:49:51 by jasong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ LIBFT = $(LIBFT_DIR)libft.a
 INC_DIR = ./includes/
 CLUSTER_RL_DIR = $(HOME)/.brew/opt/readline
 
+JASONG_LOCAL_RL_DIR = /opt/homebrew/opt/readline
+JASONG_LIB_FLAG = -L$(JASONG_LOCAL_RL_DIR)/lib
+JASONG_INC_FLAG = -I$(JASONG_LOCAL_RL_DIR)/include
 
 LIBRARIES= -L$(LIBFT_DIR) -L$(CLUSTER_RL_DIR)/lib
 INCLUDES = -I$(LIBFT_DIR) -I$(INC_DIR) -I$(CLUSTER_RL_DIR)/include
@@ -41,10 +44,10 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(OBJS) -o $(NAME) -lft -lreadline
+	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(OBJS) -o $(NAME) -lft -lreadline
 
 %.o: %.c
-	@$(CC) $(CFLAG) -c $(INCLUDES) $< -o $@
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
 
 $(LIBFT):
 	@$(MAKE) -s -C $(LIBFT_DIR) all
@@ -59,5 +62,12 @@ fclean:
 	rm -rf $(NAME)
 
 re : fclean all
+
+jasong: $(LIBFT)
+	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(MAIN_SRCDIR) -o $@ -lft -lreadline
+
+jclean : fclean
+	rm -rf jasong.dSYM
+	rm -rf jasong
 
 .PHONY: all clean fclean re

@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_ls.c                                       :+:      :+:    :+:   */
+/*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 12:35:54 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/05 12:36:44 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/06/09 17:08:33 by jasong            #+#    #+#             */
+/*   Updated: 2022/06/09 17:11:55 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#ifndef BUILTIN_H
+# define BUILTIN_H
+# include "minishell.h"
+# include <string.h>
 
-int		builtin_ls(t_mshell_info *info)
-{
-	
-}
+int		builtin_cd(char *path, t_mshell_info *info);
+int		builtin_echo(char *argv[]);
+void	ft_error(char *cmd, char *cmd_arg, char *errmsg)
+
+
+#endif
