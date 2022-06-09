@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:27:08 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 19:30:14 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:01:11 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 void	expand_question(t_expand_token *exp_v)
 {
-	int		test_exit_status;
 	char	*temp;
 
-	test_exit_status = 0;
 	temp = exp_v->str1;
-	exp_v->str1 = ft_strjoin(exp_v->str1, ft_itoa(test_exit_status));
+	exp_v->str1 = ft_strjoin(exp_v->str1, ft_itoa(g_exit_status));
 	exp_v->i++;
 	exp_v->j = exp_v->i + 1;
 	safety_free(temp);
