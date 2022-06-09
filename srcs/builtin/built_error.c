@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin.h                                          :+:      :+:    :+:   */
+/*   built_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/09 17:08:33 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/09 21:23:33 by jasong           ###   ########.fr       */
+/*   Created: 2022/06/08 18:44:19 by jasong            #+#    #+#             */
+/*   Updated: 2022/06/09 19:15:44 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTIN_H
-# define BUILTIN_H
-# include "minishell.h"
-# include <string.h>
+#include "minishell.h"
 
-int		builtin_cd(char *path, t_mshell_info *info);
-int		builtin_echo(char *argv[]);
-void	ft_error(char *cmd, char *cmd_arg, char *errmsg);
-void	ft_s_quote_error(char *cmd, char *cmd_arg, char *errmsg);
-int		check_avaliable_key(char *key);
-
-#endif
+void	ft_error(char *cmd, char *cmd_arg, char *errmsg)
+{
+	ft_putstr_fd("bash: ", 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd(": ", 2);
+	if (cmd_arg)
+	{
+		ft_putstr_fd(cmd_arg, 2);
+		ft_putstr_fd(": ", 2);
+	}
+	ft_putstr_fd(errmsg, 2);
+	ft_putstr_fd("\n", 2);
+}
