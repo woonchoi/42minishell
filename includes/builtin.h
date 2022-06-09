@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:08:33 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:11:55 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/09 18:05:56 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 int		builtin_cd(char *path, t_mshell_info *info);
 int		builtin_echo(char *argv[]);
-void	ft_error(char *cmd, char *cmd_arg, char *errmsg)
-
+void	ft_error(char *cmd, char *cmd_arg, char *errmsg);
 
 #endif

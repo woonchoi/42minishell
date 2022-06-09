@@ -6,7 +6,13 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:10:41 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:10:41 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/09 17:38:28 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+# include "minishell.h"
+
+int	builtin_export(char *argv[], )
+{
+
+}
