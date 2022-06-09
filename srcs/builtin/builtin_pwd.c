@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_ls.c                                       :+:      :+:    :+:   */
+/*   builtin_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 12:35:54 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/05 12:36:44 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/06/08 19:56:21 by jasong            #+#    #+#             */
+/*   Updated: 2022/06/09 18:25:20 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
-int		builtin_ls(t_mshell_info *info)
+int	builtin_pwd(void)
 {
-	
+	char	*path;
+
+	path = getcwd(NULL, 0);
+	ft_putendl_fd(path, ft_strlen(path));
+	free(path);
+	path = NULL;
+	return (0);
 }
