@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/09 17:11:07 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/10 13:46:42 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <fcntl.h>
 # include <sys/wait.h>
 # include "libft.h"
 # include "struct.h"
@@ -48,6 +49,7 @@ void	lexer(t_mshell_info *info);
 void	safety_free(void *data);
 
 void	scanner(t_mshell_info *info);
+void	execute(t_mshell_info *info);
 
 void	parser(t_mshell_info *info);
 

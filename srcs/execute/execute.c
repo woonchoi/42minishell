@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 20:32:05 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/09 23:02:56 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:58:51 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,11 +182,16 @@ int	execute_redirection(t_mshell_info *info, t_tree *node)
 	else if (node->l_child->type == APPEND_R)
 		return (append_redir(node->r_child->token));
 	else if (node->l_child->type == HEREDOC)
-		return (heredoc_redir(node->r_child->token));
+		return (heredoc(info));
 	return (0);
 }
 
-void	preorder_tree(t_mshell_info *info, t_tree *node)
+int		execute_cmd(t_mshell_info *info, t_tree *node)
+{
+
+}
+
+void	preorder(t_mshell_info *info, t_tree *node)
 {
 	if (!node)
 		return ;
@@ -196,18 +201,50 @@ void	preorder_tree(t_mshell_info *info, t_tree *node)
 		if (!g_exit_status)
 			return ;
 	}
-	preorder_tree(info, node->l_child);
-	preorder_tree(info, node->r_child);
+	else if (node->l_child && )
+	preorder(info, node->l_child);
+	preorder(info, node->r_child);
 }
 
-void	execute(t_mshell_info *info)
+void	preorder_once(t_mshell_info *info, t_tree *node)
 {
 	int	in;
 	int	out;
 
+	in = dup(STDIN_FILENO);
+	out = dup(STDOUT_FILENO);
+	preorder(info, node);
+	dup2(in, STDIN_FILENO);
+	dup2(out, STDOUT_FILENO);
+	close(in);
+	close(out);
+}
+
+void	preorder_general(t_mshell_info *info, t_tree_list *tree)
+{
+	int	in;
+	int	out;
+	int	i;
+
+	in = dup(STDIN_FILENO);
+	out = dup(STDOUT_FILENO);
+	i = -1;
+	while (++i < info->cmd_count + 1)
+	{
+		if (i < info->cmd_count)
+		{
+			pipe(tree[i].fd);
+			tree[i + 1].prev_fd = dup(tree[i].fd[0]);
+			close(tree[i].fd[0]);
+		}
+	}
+}
+
+void	execute(t_mshell_info *info)
+{
 	if (info->error == TRUE)
 		return ;
 	heredoc_process(info);
 	if (no_fork_cmd(info->tree[0].root) && info->cmd_count == 0)
-		
+		preorder_once(info, info->tree[0].root);
 }
