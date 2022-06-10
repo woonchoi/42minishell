@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:57:06 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/09 21:44:46 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/10 20:42:47 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	delete_env(t_env_list **env_head, char *del_key)
 
 	del_loc = env_key_location(*env_head, del_key);
 	temp = *env_head;
+	if (!del_loc)
+		return ;
 	if (temp == del_loc)
 	{
 		*env_head = temp->next;
@@ -80,16 +82,16 @@ void	delete_env(t_env_list **env_head, char *del_key)
 	free(del_loc);
 }
 
-int	builtin_unset(t_env_list *env_head, char *argv[])
+int	builtin_unset(char **argv, t_env_list *env_head)
 {
 	int	i;
 
 	i = 0;
-	if (!argv[i])
+	if (!argv)
 		return (0);
 	while (argv[i])
 	{
-		if (!check_avaliable_arg(argv[i]))
+		if (!check_avaliable_key(argv[i]))
 		{
 			ft_s_quote_error("unset", argv[i], "not a valid identifier");
 			return (1);

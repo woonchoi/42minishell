@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:39:56 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/06 14:49:22 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/10 19:41:41 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@ typedef enum	e_cmd_type
 	OPTARG = 7,
 	BRANCH = 8,
 }	t_cmd_type;
+
+typedef enum	e_builtin_cmd
+{
+	CMD_CD = 1,
+	CMD_PWD = 2,
+	CMD_ENV = 3,
+	CMD_ECHO = 4,
+	CMD_EXIT = 5,
+	CMD_UNSET = 6,
+	CMD_EXPORT = 7,
+}	t_builtin_cmd;
 
 typedef enum	e_token_type
 {

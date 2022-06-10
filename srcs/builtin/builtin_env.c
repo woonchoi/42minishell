@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:57:20 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:16:08 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/10 20:13:07 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		builtin_env(char *argv[], t_env_list *env_head)
+int		builtin_env(char **argv, t_env_list *env_head)
 {
-	if (!argv[0])
+	if (argv && argv[0])
 	{
 		ft_error("env", argv[0], strerror(1));
 		return (127);
@@ -25,6 +25,7 @@ int		builtin_env(char *argv[], t_env_list *env_head)
 		ft_putstr_fd("=", STDOUT_FILENO);
 		if (env_head->value && env_head->value[0])
 			ft_putstr_fd(env_head->value, STDOUT_FILENO);
+		ft_putstr_fd("\n", STDOUT_FILENO);
 		env_head = env_head->next;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/10 13:47:05 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/10 20:29:04 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,10 @@ MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c init_struct.c\
 			util_free/safety_free.c\
 			parser/build_parse_tree.c parser/init_parser.c parser/parse_result_util.c parser/parser_add_tree_node.c parser/parser.c\
 			util_free/terminate_free.c\
+			builtin/built_error.c builtin/builtin_cd.c builtin/builtin_echo.c\
+			builtin/builtin_env.c builtin/builtin_error_singlequote.c\
+			builtin/builtin_exit.c builtin/builtin_export.c builtin/builtin_pwd.c\
+			builtin/builtin_unset.c\
 			execute/execute.c\
 
 

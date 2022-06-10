@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 20:32:05 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/10 15:58:51 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/10 20:46:31 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,35 @@ int	no_fork_cmd(t_tree *node)
 	if (cmd);
 	{
 		len = ft_strlen(cmd);
-		if (!ft_strncmp(cmd, "cd", len + 1)
-			|| !ft_strncmp(cmd, "env", len + 1)
-			|| !ft_strncmp(cmd, "exit", len + 1)
-			|| !ft_strncmp(cmd, "unset", len + 1)
-			|| !ft_strncmp(cmd, "export", len + 1))
+		if (!ft_strncmp(cmd, "cd", 3)
+			|| !ft_strncmp(cmd, "env", 4)
+			|| !ft_strncmp(cmd, "exit", 5)
+			|| !ft_strncmp(cmd, "unset", 6)
+			|| !ft_strncmp(cmd, "export", 7))
 			return (TRUE);
 	}
+	return (FALSE);
+}
+
+int	check_builtin(char *cmd)
+{
+	printf("!!!!!\n");
+	printf("%s\n", cmd);
+	printf("!!!!\n");
+	if (!ft_strncmp(cmd, "cd", 3))
+		return (CMD_CD);
+	if (!ft_strncmp(cmd, "pwd", 4))
+		return (CMD_PWD);
+	if (!ft_strncmp(cmd, "env", 4))
+		return (CMD_ENV);
+	if (!ft_strncmp(cmd, "echo", 5))
+		return (CMD_ECHO);
+	if (!ft_strncmp(cmd, "exit", 5))
+		return (CMD_EXIT);
+	if (!ft_strncmp(cmd, "unset", 6))
+		return (CMD_UNSET);
+	if (!ft_strncmp(cmd, "export", 7))
+		return (CMD_EXPORT);
 	return (FALSE);
 }
 
@@ -186,13 +208,77 @@ int	execute_redirection(t_mshell_info *info, t_tree *node)
 	return (0);
 }
 
+char	**get_path_env_list(t_mshell_info *info)
+{
+	t_env_list	*cur;
+
+	cur = info->env_head;
+	while (cur)
+	{
+		if (!ft_strncmp(cur->key, "PATH", 5))
+			break ;
+		cur = cur->next;
+	}
+	if (cur)
+		return (cur->split_value);
+	return (NULL);
+}
+
+char	*get_cmd_path(t_mshell_info *info, char *token)
+{
+	char	*temp;
+	char	**path_list;
+
+	path_list = get_path_env_list(info);
+	if (!path_list)
+	{
+		info->error = TRUE;
+		return (NULL);
+	}
+}
+
+int		execute_builtin(t_mshell_info *info, int cmd, char **optarg)
+{
+	printf("check1 current cmd = %d\n", cmd);
+	if (cmd == CMD_CD)
+		return (builtin_cd(optarg, info));
+	if (cmd == CMD_PWD)
+		return (builtin_pwd());
+	if (cmd == CMD_ENV)
+		return (builtin_env(optarg, info->env_head));
+	if (cmd == CMD_ECHO)
+		return (builtin_echo(optarg));
+	if (cmd == CMD_EXIT)
+		return (builtin_exit(optarg, !info->cmd_count));
+	if (cmd == CMD_UNSET)
+		return (builtin_unset(optarg, info->env_head));
+	if (cmd == CMD_EXPORT)
+		return (builtin_export(optarg, info));
+	printf("check2\n");
+	return (0);
+}
+
 int		execute_cmd(t_mshell_info *info, t_tree *node)
 {
+	char	*cmd;
+	char	**optarg;
+	int		builtin_cmd;
 
+	optarg = NULL;
+	builtin_cmd = check_builtin(node->l_child->token);
+	if (builtin_cmd)
+	{
+		if (node->r_child)
+			optarg = ft_split(node->r_child->token, '\n');
+		g_exit_status = execute_builtin(info, builtin_cmd, optarg);
+	}
+	cmd = get_cmd_path(info, node->l_child->token);
+	return (0);
 }
 
 void	preorder(t_mshell_info *info, t_tree *node)
 {
+	printf("preorder\n");
 	if (!node)
 		return ;
 	if (node->l_child && is_redirection(node->l_child->type))
@@ -201,7 +287,11 @@ void	preorder(t_mshell_info *info, t_tree *node)
 		if (!g_exit_status)
 			return ;
 	}
-	else if (node->l_child && )
+	else if (node->l_child && node->l_child->type == CMD)
+	{
+		if(execute_cmd(info, node))
+			return ;
+	}
 	preorder(info, node->l_child);
 	preorder(info, node->r_child);
 }
@@ -242,9 +332,13 @@ void	preorder_general(t_mshell_info *info, t_tree_list *tree)
 
 void	execute(t_mshell_info *info)
 {
+	printf("checkexecute\n");
 	if (info->error == TRUE)
 		return ;
+	printf("checkexecute\n");
 	heredoc_process(info);
 	if (no_fork_cmd(info->tree[0].root) && info->cmd_count == 0)
 		preorder_once(info, info->tree[0].root);
+	else
+		preorder_general(info, info->tree);
 }

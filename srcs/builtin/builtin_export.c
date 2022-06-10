@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:10:41 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/09 21:31:25 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/10 20:30:49 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	builtin_export(char *argv[], t_mshell_info *info)
 
 	i = -1;
 	if (argv[0] == NULL)
-		print_export_env(info);
+		print_export_env(info->env_head);
 	while (argv[++i])
 	{
 		if (!add_env(argv[i], &info->env_head))
