@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 20:32:05 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/11 18:05:57 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/11 20:14:49 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,19 @@ void	preorder_redirection(t_tree *node, t_mshell_info *info, int *i)
 {
 	if (!node || !node->l_child)
 		return ;
-	if (node->l_child->type == HEREDOC)
+	if (node->l_child->type == HEREDOC && !node->r_child)
+	{
+		ft_putendl_fd("bash: syntax error near unexpected token `newline'\n", 2);
+		g_exit_status = 258;
+		return ;
+	}
+	else if (node->l_child->type == HEREDOC && node->r_child)
 		set_heredoc(info, node->r_child->token, i);
 	else
+	{
 		preorder_redirection(node->l_child, info, i);
 		preorder_redirection(node->r_child, info, i);
+	}
 }
 
 void	run_heredoc(t_mshell_info *info)
@@ -186,7 +194,7 @@ int	heredoc(t_mshell_info *info)
 	int	i;
 
 	i = 0;
-	while (info->heredoc[i].check)
+	while (i < info->heredoc_count && info->heredoc[i].check)
 		i++;
 	if (dup2(info->heredoc[i].fd[0], STDIN_FILENO) == -1)
 		return (130);

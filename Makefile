@@ -6,14 +6,15 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/11 19:14:03 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/11 19:36:11 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-CFLAG = 
+CFLAG =
+SANITIZER = -g -fsanitize=address
 LIBFT_DIR = ./lib/libft/
 LIBFT = $(LIBFT_DIR)libft.a
 INC_DIR = ./includes/
@@ -49,10 +50,10 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(OBJS) -o $(NAME) -lft -lreadline
+	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(OBJS) -o $(NAME) -lft -lreadline
 
 %.o: %.c
-	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	@$(CC) $(CFLAG) -c $(INCLUDES) $< -o $@
 
 $(LIBFT):
 	@$(MAKE) -s -C $(LIBFT_DIR) all
@@ -74,5 +75,13 @@ jasong: $(LIBFT)
 jclean : fclean
 	rm -rf jasong.dSYM
 	rm -rf jasong
+
+debug: $(LIBFT)
+	$(CC) $(CFLAG) $(LIBRARIES) $(SANITIZER) $(INCLUDES) $(MAIN_SRCDIR) -o $@ -lft -lreadline
+
+dclean:
+	@$(MAKE) -s -C $(LIBFT_DIR) fclean
+	rm -rf debug
+	rm -rf debug.dSYM
 
 .PHONY: all clean fclean re
