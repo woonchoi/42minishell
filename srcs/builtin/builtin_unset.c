@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:57:06 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/11 13:39:34 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/11 18:00:51 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ int	check_avaliable_key(char *key)
 	int	i;
 
 	i = 0;
-	if (!key && (!ft_isalpha(key[i]) || key[i] != '_'))
+	if (!key)
+		return (FALSE);
+	if (!key[i] || (!ft_isalpha(key[i]) && key[i] != '_'))
 		return (FALSE);
 	i++;
 	while (key[i])
 	{
-		if (!(ft_isalnum(key[i]) || key[i] != '_'))
+		if ((!ft_isalnum(key[i]) && key[i] != '_'))
 			return (FALSE);
 		i++;
 	}

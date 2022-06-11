@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:10:41 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/11 13:50:26 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/11 18:03:47 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	check_delimeter(char *argv)
 	sep = ft_strchr(argv, '=');
 	if (!sep)
 		return (NO_DEL);
-	if (*(sep - 1) == '+')
+	if (sep - argv > 1 && *(sep - 1) == '+')
 		return (ADD_VAL);
 	return (ADD_ENV);
 }
@@ -156,12 +156,20 @@ int	builtin_export(char *argv[], t_mshell_info *info)
 
 	i = -1;
 	if (!argv)
+	{
 		print_export_env(info->env_head);
+		return (0);
+	}
 	while (argv[++i])
 	{
-		ret = 0;
+		ret = 1;
 		delimeter = check_delimeter(argv[i]);
-		if (delimeter == ADD_VAL)
+		if (delimeter == NO_DEL)
+		{
+			if (check_avaliable_key(argv[i]))
+				ret = 0;
+		}
+		else if (delimeter == ADD_VAL)
 			ret = add_value(argv[i], info->env_head);
 		else if (delimeter == ADD_ENV)
 			ret = add_env(argv[i], '=', &info->env_head);

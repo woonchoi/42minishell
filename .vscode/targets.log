@@ -8,11 +8,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sat Jun 11 17:01:12 2022
+# Make data base, printed on Sat Jun 11 17:17:59 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -36,17 +35,18 @@ _ = /usr/bin/make
 # makefile (from `Makefile', line 23)
 JASONG_LIB_FLAG = -L$(JASONG_LOCAL_RL_DIR)/lib
 # makefile (from `Makefile', line 1)
+ 
 MAKEFILE_LIST :=  Makefile
 # environment
-VSCODE_NODE_CACHED_DATA_DIR = /Users/jasong/Library/Application Support/Code/CachedData/6ab598523be7a800d7f3eb4d92d7ab9a66069390
+VSCODE_NODE_CACHED_DATA_DIR = 
 # environment
 VERBOSE_LOGGING = true
 # environment
-VSCODE_LOGS = /Users/jasong/Library/Application Support/Code/logs/20220611T170108
+VSCODE_LOGS = /Users/jasong/Library/Application Support/Code/logs/20220611T171754
 # makefile (from `Makefile', line 47)
 OBJS = $(SRCS:.c=.o)
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cj54003499/T/vscode-ipc-7b1135d5-7915-43a7-9fe9-e513862b51f5.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cj54003499/T/vscode-ipc-a660c08d-547c-4d64-91aa-62cdb9ed9253.sock
 # environment
 PATH = /Users/jasong/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -62,7 +62,7 @@ LIBFT_DIR = ./lib/libft/
 # makefile (from `Makefile', line 22)
 JASONG_LOCAL_RL_DIR = /opt/homebrew/opt/readline
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.SSSv4CIIKm/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.cjrTy2UpQ7/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -138,11 +138,10 @@ MFLAGS = -Rrqp
 # environment
 MAIL = jasong@student.42seoul.kr
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.2140
+XPC_SERVICE_NAME = com.microsoft.VSCode.2064
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
- 
 +F = $(notdir $+)
 # makefile (from `Makefile', line 44)
 MAIN_SRCDIR = $(addprefix $(SRC_DIR), $(MAIN_SRCS))
@@ -173,9 +172,9 @@ MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c init_struct.c le
 # environment
 LANG = C
 # environment
-VSCODE_PID = 11004
+VSCODE_PID = 94605
 # variable set hash-table stats:
-# Load=80/1024=8%, Rehash=0, Collisions=6/117=5%
+# Load=80/1024=8%, Rehash=0, Collisions=10/130=8%
 
 # Pattern-specific Variable Values
 
@@ -184,15 +183,14 @@ VSCODE_PID = 11004
 # Directories
 
 # srcs/scanner (device 16777225, inode 8038337): 13 files, no impossibilities so far.
-# srcs/execute (device 16777225, inode 8038366): 3 files, no impossibilities so far.
 # . (device 16777225, inode 8013981): 11 files, no impossibilities.
 # srcs/util_free (device 16777225, inode 8038344): 5 files, no impossibilities so far.
-# srcs/builtin (device 16777225, inode 8021270): 19 files, no impossibilities so far.
+# srcs/builtin (device 16777225, inode 8021270): 15 files, no impossibilities so far.
 # srcs (device 16777225, inode 8014116): 16 files, no impossibilities so far.
 # srcs/lexer (device 16777225, inode 8038323): 11 files, no impossibilities so far.
 # srcs/parser (device 16777225, inode 8038330): 11 files, no impossibilities so far.
 
-# 89 files, no impossibilities in 8 directories.
+# 82 files, no impossibilities in 7 directories.
 
 # Implicit Rules
 
@@ -208,7 +206,7 @@ VSCODE_PID = 11004
 srcs/scanner/expand_envvars.o: srcs/scanner/expand_envvars.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/scanner/expand_envvars'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -220,7 +218,7 @@ srcs/scanner/expand_envvars.o: srcs/scanner/expand_envvars.c
 srcs/parser/build_parse_tree.o: srcs/parser/build_parse_tree.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/parser/build_parse_tree'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -238,22 +236,17 @@ srcs/parser/parse_result_util.c:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-srcs/builtin/builtin_pwd.o: srcs/builtin/builtin_pwd.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `srcs/builtin/builtin_pwd'
-#  Last modified 2022-06-11 13:01:44
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 55):
-	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
-	
+# Not a target:
+srcs/builtin/builtin_pwd.o:
+#  Implicit rule search has not been done.
+ 
+#  Modification time never checked.
+#  File has not been updated.
 
 srcs/parser/parser_add_tree_node.o: srcs/parser/parser_add_tree_node.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/parser/parser_add_tree_node'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -265,7 +258,7 @@ srcs/parser/parser_add_tree_node.o: srcs/parser/parser_add_tree_node.c
 srcs/util_free/safety_free.o: srcs/util_free/safety_free.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/util_free/safety_free'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -277,7 +270,7 @@ srcs/util_free/safety_free.o: srcs/util_free/safety_free.c
 srcs/scanner/expand_util.o: srcs/scanner/expand_util.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/scanner/expand_util'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -286,22 +279,16 @@ srcs/scanner/expand_util.o: srcs/scanner/expand_util.c
 	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
 	
 
-srcs/builtin/builtin_unset.o: srcs/builtin/builtin_unset.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `srcs/builtin/builtin_unset'
-#  Last modified 2022-06-11 13:50:32
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 55):
-	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
-	
+# Not a target:
+srcs/builtin/builtin_unset.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 srcs/lexer/create_token_list.o: srcs/lexer/create_token_list.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/lexer/create_token_list'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -325,9 +312,9 @@ all: minishell
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/13=0%
 
 # Not a target:
 srcs/lexer/lexer.c:
@@ -346,7 +333,7 @@ srcs/lexer/lexer.c:
 # Not a target:
 srcs/builtin/builtin_error_singlequote.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-11 12:49:09
+#  Last modified 2022-06-11 17:12:03
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -362,19 +349,9 @@ srcs/scanner/scanner.c:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-srcs/execute/execute.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-11 12:52:04
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
 srcs/scanner/get_token_env.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-11 12:49:09
- 
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -392,7 +369,7 @@ srcs/signal_handler.c:
 srcs/util_free/terminate_free.o: srcs/util_free/terminate_free.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/util_free/terminate_free'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -410,7 +387,7 @@ srcs/util_free/terminate_free.o: srcs/util_free/terminate_free.c
 srcs/parser/parser.o: srcs/parser/parser.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/parser/parser'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -422,7 +399,7 @@ srcs/parser/parser.o: srcs/parser/parser.c
 srcs/lexer/tokenizer.o: srcs/lexer/tokenizer.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/lexer/tokenizer'
-#  Last modified 2022-06-11 13:01:42
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -434,7 +411,7 @@ srcs/lexer/tokenizer.o: srcs/lexer/tokenizer.c
 srcs/scanner/init_token_util.o: srcs/scanner/init_token_util.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/scanner/init_token_util'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -473,7 +450,7 @@ srcs/scanner/expand_tokens.c:
 srcs/builtin/built_error.o: srcs/builtin/built_error.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/builtin/built_error'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -503,7 +480,7 @@ srcs/parser/build_parse_tree.c:
 srcs/init_struct.o: srcs/init_struct.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/init_struct'
-#  Last modified 2022-06-11 13:01:42
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -513,18 +490,10 @@ srcs/init_struct.o: srcs/init_struct.c
 	
 
 # Not a target:
-srcs/builtin/builtin_pwd.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-11 12:49:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
 srcs/parser/parser_add_tree_node.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-11 12:49:14
+ 
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -541,11 +510,11 @@ srcs/util_free/safety_free.c:
 
 minishell: lib/libft/libft.a srcs/signal_handler.o srcs/prompt.o srcs/minishell.o srcs/init_prompt.o srcs/init_struct.o srcs/lexer/tokenizer.o srcs/lexer/create_token_list.o srcs/lexer/lexer.o srcs/lexer/tokenizing_util.o srcs/lexer/validate_token_list.o srcs/scanner/expand_envvars.o srcs/scanner/expand_tokens.o srcs/scanner/expand_util.o srcs/scanner/get_token_env.o srcs/scanner/init_token_util.o srcs/scanner/scanner.o srcs/util_free/safety_free.o srcs/parser/build_parse_tree.o srcs/parser/init_parser.o srcs/parser/parse_result_util.o srcs/parser/parser_add_tree_node.o srcs/parser/parser.o srcs/util_free/terminate_free.o srcs/builtin/built_error.o srcs/builtin/builtin_cd.o srcs/builtin/builtin_echo.o srcs/builtin/builtin_env.o srcs/builtin/builtin_error_singlequote.o srcs/builtin/builtin_exit.o srcs/builtin/builtin_export.o srcs/builtin/builtin_pwd.o srcs/builtin/builtin_unset.o srcs/execute/execute.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-11 13:50:32
+#  Last modified 2022-06-11 17:12:08
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/13=0%
 #  commands to execute (from `Makefile', line 52):
 	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(OBJS) -o $(NAME) -lft -lreadline
 	
@@ -554,15 +523,6 @@ minishell: lib/libft/libft.a srcs/signal_handler.o srcs/prompt.o srcs/minishell.
 srcs/scanner/expand_util.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-11 12:49:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-srcs/builtin/builtin_unset.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-11 13:39:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -589,7 +549,7 @@ srcs/builtin/builtin_env.c:
 srcs/parser/init_parser.o: srcs/parser/init_parser.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/parser/init_parser'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -606,7 +566,6 @@ fclean:
 #  commands to execute (from `Makefile', line 65):
 	@$(MAKE) -s -C $(LIBFT_DIR) fclean
 	@rm -rf $(OBJS)
- 
 	rm -rf $(NAME)
 	
 
@@ -622,7 +581,7 @@ jclean: fclean
 srcs/minishell.o: srcs/minishell.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/minishell'
-#  Last modified 2022-06-11 13:01:42
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -634,7 +593,7 @@ srcs/minishell.o: srcs/minishell.c
 srcs/prompt.o: srcs/prompt.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/prompt'
-#  Last modified 2022-06-11 13:01:42
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -646,7 +605,7 @@ srcs/prompt.o: srcs/prompt.c
 srcs/lexer/validate_token_list.o: srcs/lexer/validate_token_list.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/lexer/validate_token_list'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -673,7 +632,7 @@ srcs/util_free/terminate_free.c:
 srcs/builtin/builtin_echo.o: srcs/builtin/builtin_echo.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/builtin/builtin_echo'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -694,7 +653,7 @@ srcs/parser/parser.c:
 srcs/lexer/tokenizing_util.o: srcs/lexer/tokenizing_util.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/lexer/tokenizing_util'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -724,11 +683,27 @@ srcs/scanner/init_token_util.c:
 srcs/builtin/builtin_export.o: srcs/builtin/builtin_export.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/builtin/builtin_export'
-#  Last modified 2022-06-11 13:50:32
+#  Last modified 2022-06-11 17:09:27
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := srcs/builtin/builtin_export.o
+# automatic
+# % := 
+# automatic
+# * := srcs/builtin/builtin_export
+# automatic
+# + := srcs/builtin/builtin_export.c
+# automatic
+# | := 
+# automatic
+# < := srcs/builtin/builtin_export.c
+# automatic
+# ^ := srcs/builtin/builtin_export.c
+# automatic
+# ? := srcs/builtin/builtin_export.c
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=8/32=25%, Rehash=0, Collisions=10/23=43%
 #  commands to execute (from `Makefile', line 55):
 	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
 	
@@ -742,7 +717,7 @@ re: fclean all
 srcs/parser/parse_result_util.o: srcs/parser/parse_result_util.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/parser/parse_result_util'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -753,6 +728,7 @@ srcs/parser/parse_result_util.o: srcs/parser/parse_result_util.c
 
 # Not a target:
 srcs/builtin/built_error.c:
+ 
 #  Implicit rule search has been done.
 #  Last modified 2022-06-11 12:49:09
 #  File has been updated.
@@ -782,7 +758,7 @@ srcs/init_struct.c:
 srcs/init_prompt.o: srcs/init_prompt.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/init_prompt'
-#  Last modified 2022-06-11 13:01:42
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -794,7 +770,7 @@ srcs/init_prompt.o: srcs/init_prompt.c
 srcs/lexer/lexer.o: srcs/lexer/lexer.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/lexer/lexer'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -806,7 +782,7 @@ srcs/lexer/lexer.o: srcs/lexer/lexer.c
 srcs/builtin/builtin_error_singlequote.o: srcs/builtin/builtin_error_singlequote.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/builtin/builtin_error_singlequote'
-#  Last modified 2022-06-11 13:01:44
+#  Last modified 2022-06-11 17:12:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -827,7 +803,7 @@ srcs/parser/init_parser.c:
 srcs/scanner/scanner.o: srcs/scanner/scanner.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/scanner/scanner'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -844,22 +820,15 @@ jasong: lib/libft/libft.a
 	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(MAIN_SRCDIR) -o $@ -lft -lreadline
 	
 
-srcs/execute/execute.o: srcs/execute/execute.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `srcs/execute/execute'
-#  Last modified 2022-06-11 13:01:44
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 55):
-	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
-	
+# Not a target:
+srcs/execute/execute.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
- 
 lib/libft/libft.a:
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-11 13:01:42
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 #  commands to execute (from `Makefile', line 58):
@@ -869,7 +838,7 @@ lib/libft/libft.a:
 srcs/scanner/get_token_env.o: srcs/scanner/get_token_env.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/scanner/get_token_env'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -881,7 +850,7 @@ srcs/scanner/get_token_env.o: srcs/scanner/get_token_env.c
 srcs/signal_handler.o: srcs/signal_handler.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/signal_handler'
-#  Last modified 2022-06-11 13:01:42
+#  Last modified 2022-06-11 17:03:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -929,7 +898,7 @@ srcs/lexer/validate_token_list.c:
 srcs/builtin/builtin_env.o: srcs/builtin/builtin_env.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/builtin/builtin_env'
-#  Last modified 2022-06-11 13:01:44
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -950,7 +919,7 @@ srcs/builtin/builtin_echo.c:
 srcs/builtin/builtin_cd.o: srcs/builtin/builtin_cd.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/builtin/builtin_cd'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -962,7 +931,7 @@ srcs/builtin/builtin_cd.o: srcs/builtin/builtin_cd.c
 srcs/builtin/builtin_exit.o: srcs/builtin/builtin_exit.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/builtin/builtin_exit'
-#  Last modified 2022-06-11 13:01:44
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -983,7 +952,7 @@ srcs/lexer/tokenizing_util.c:
 srcs/scanner/expand_tokens.o: srcs/scanner/expand_tokens.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/scanner/expand_tokens'
-#  Last modified 2022-06-11 13:01:43
+#  Last modified 2022-06-11 17:03:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -995,14 +964,14 @@ srcs/scanner/expand_tokens.o: srcs/scanner/expand_tokens.c
 # Not a target:
 srcs/builtin/builtin_export.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-11 13:50:26
+#  Last modified 2022-06-11 17:14:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=78/1024=8%, Rehash=0, Collisions=35/233=15%
+# Load=75/1024=7%, Rehash=0, Collisions=32/221=14%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -1012,8 +981,9 @@ srcs/builtin/builtin_export.c:
 # # of strings in strcache: 1
 # # of strcache buffers: 1
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+ 
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sat Jun 11 17:01:12 2022
+# Finished Make data base on Sat Jun 11 17:17:59 2022
 
  

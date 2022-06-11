@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 19:37:30 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/22 19:39:19 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/11 18:05:51 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strndup(const char *src, int n)
 	int		i;
 
 	i = 0;
+	if (n <= 0)
+		return (NULL);
 	dest = (char *)malloc(n + 1);
 	if (!dest)
 		return (NULL);
