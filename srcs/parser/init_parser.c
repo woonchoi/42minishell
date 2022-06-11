@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:00:36 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 15:00:54 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/11 20:35:52 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void	init_parse_util(t_parse_util *par_v, t_tree *root)
 	par_v->cmd_status = FALSE;
 	par_v->red_status = FALSE;
 	par_v->heredoc_status = FALSE;
+	par_v->heredoc_count = 0;
 }

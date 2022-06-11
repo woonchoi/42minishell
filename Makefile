@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/11 19:36:11 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/11 20:19:55 by jasong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,4 +84,4 @@ dclean:
 	rm -rf debug
 	rm -rf debug.dSYM
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug
