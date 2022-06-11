@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:08:33 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/10 20:27:13 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/11 21:03:28 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ t_env_list	*env_key_location(t_env_list *env_head, char *key);
 void		ft_error(char *cmd, char *cmd_arg, char *errmsg);
 void		ft_s_quote_error(char *cmd, char *cmd_arg, char *errmsg);
 int			check_avaliable_key(char *key);
+void 		free_split_value(char **s_val);
 
 #endif

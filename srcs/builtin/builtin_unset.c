@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:57:06 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/11 18:00:51 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/11 21:03:15 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_avaliable_key(char *key)
 	return (TRUE);
 }
 
-static void free_split_value(char **s_val)
+void free_split_value(char **s_val)
 {
 	int	i;
 

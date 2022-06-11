@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:10:41 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/11 18:03:47 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/11 21:04:06 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,9 @@ int	add_env(char *argv, int del, t_env_list **env_head)
 		{
 			new_value = ft_strdup(sep + 1);
 			free(key_loc->value);
+			free_split_value(key_loc->split_value);
 			key_loc->value = new_value;
+			key_loc->split_value = ft_split(new_env, ':');
 		}
 	}
 	else
