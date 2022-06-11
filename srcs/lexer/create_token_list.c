@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:58:01 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 12:32:56 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/11 19:13:38 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,16 @@ void	string_add_back(t_mshell_info *info)
 	tinfo = &info->tinfo;
 	while (info->input[i])
 	{
-		if (is_in_charset(info->input[i], SEPLIST) && tinfo->qstatus == NO_Q)
+		if ((is_in_charset(info->input[i], SEPLIST)
+			|| is_in_charset(info->input[i], SPACELIST)) && tinfo->qstatus == NO_Q)
 			break ;
 		i++;
 		tinfo->qstatus = get_qstatus(info->input[i], tinfo->qstatus);
 	}
 	temp = ft_strndup(&info->input[info->index], i - info->index);
+	printf("current string : |%s|\n", temp);
 	str = ft_strtrim(temp, SPACELIST);
+	printf("trim data : |%s|\n", str);
 	safety_free(temp);
 	if (i != info->index)
 		info->index = i - 1;

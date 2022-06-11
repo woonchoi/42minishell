@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:23:44 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/31 20:24:29 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/11 18:59:31 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	is_only_space(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		if (!is_in_charset(str[i], SPACELIST))
 			return (FALSE);
