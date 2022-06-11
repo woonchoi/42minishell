@@ -1,7 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 3.81
 # Copyright (C) 2006  Free Software Foundation, Inc.
- 
 # This is free software; see the source for copying conditions.
 # There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
@@ -9,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Mon May 30 18:11:51 2022
+# Make data base, printed on Sat Jun 11 17:01:12 2022
 
 # Variables
 
@@ -18,13 +17,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
-# environment
-LC_CTYPE = UTF-8
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# makefile (from `Makefile', line 24)
+# makefile (from `Makefile', line 27)
 INCLUDES = -I$(LIBFT_DIR) -I$(INC_DIR) -I$(CLUSTER_RL_DIR)/include
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
@@ -35,21 +30,23 @@ CURDIR := /Users/jasong/42minishell
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{},"_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
+# makefile (from `Makefile', line 23)
+JASONG_LIB_FLAG = -L$(JASONG_LOCAL_RL_DIR)/lib
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
-VSCODE_NODE_CACHED_DATA_DIR = 
+VSCODE_NODE_CACHED_DATA_DIR = /Users/jasong/Library/Application Support/Code/CachedData/6ab598523be7a800d7f3eb4d92d7ab9a66069390
 # environment
 VERBOSE_LOGGING = true
 # environment
-VSCODE_LOGS = /Users/jasong/Library/Application Support/Code/logs/20220530T174559
-# makefile (from `Makefile', line 32)
+VSCODE_LOGS = /Users/jasong/Library/Application Support/Code/logs/20220611T170108
+# makefile (from `Makefile', line 47)
 OBJS = $(SRCS:.c=.o)
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cj54003499/T/vscode-ipc-ff612ce3-015f-444b-857e-a52b54f16aa3.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cj54003499/T/vscode-ipc-7b1135d5-7915-43a7-9fe9-e513862b51f5.sock
 # environment
 PATH = /Users/jasong/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -62,8 +59,10 @@ ELECTRON_RUN_AS_NODE = 1
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # makefile (from `Makefile', line 17)
 LIBFT_DIR = ./lib/libft/
+# makefile (from `Makefile', line 22)
+JASONG_LOCAL_RL_DIR = /opt/homebrew/opt/readline
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.Mgepl55vNF/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.SSSv4CIIKm/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -74,10 +73,10 @@ CLUSTER_RL_DIR = $(HOME)/.brew/opt/readline
 INC_DIR = ./includes/
 # environment
 HOME = /Users/jasong
+# makefile (from `Makefile', line 24)
+JASONG_INC_FLAG = -I$(JASONG_LOCAL_RL_DIR)/include
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
-# environment
-VSCODE_CLI = 1
 # environment
 LOGNAME = jasong
 # environment
@@ -85,20 +84,18 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 ZSH = /Users/jasong/.oh-my-zsh
 # makefile (from `Makefile', line 16)
-CFLAG = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAG = -g -fsanitize=address
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 XPC_FLAGS = 0x0
-# environment
-COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
-# environment
-LC_TERMINAL = iTerm2
-# makefile (from `Makefile', line 31)
+# default
+MAKECMDGOALS := all
+# makefile (from `Makefile', line 46)
 SRCS = $(MAIN_SRCDIR)
 # environment
 SHLVL = 1
@@ -114,10 +111,6 @@ AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
 USER = jasong
 # makefile
 .DEFAULT_GOAL := all
-# default
-MAKECMDGOALS := all
-# environment
-TERM_SESSION_ID = w0t0p0:506777C3-CFB7-4194-846A-DBB13683414C
 # makefile (from `Makefile', line 13)
 NAME = minishell
 # environment
@@ -128,8 +121,6 @@ LESS = -R
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
-# environment
-TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
 # environment
@@ -145,38 +136,29 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-TERM_PROGRAM_VERSION = 3.3.7
-# environment
 MAIL = jasong@student.42seoul.kr
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.2076
-# environment
-LC_TERMINAL_VERSION = 3.3.7
+XPC_SERVICE_NAME = com.microsoft.VSCode.2140
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
+ 
 +F = $(notdir $+)
-# environment
-ITERM_SESSION_ID = w0t0p0:506777C3-CFB7-4194-846A-DBB13683414C
-# makefile (from `Makefile', line 29)
+# makefile (from `Makefile', line 44)
 MAIN_SRCDIR = $(addprefix $(SRC_DIR), $(MAIN_SRCS))
-# environment
-COLORFGBG = 15;0
 # environment
 __CF_USER_TEXT_ENCODING = 0x19129:0x0:0x0
 # default
 MAKEFILES := 
-# makefile (from `Makefile', line 26)
+# makefile (from `Makefile', line 29)
 SRC_DIR = ./srcs/
 # automatic
 <F = $(notdir $<)
 # environment
-ITERM_PROFILE = Default
-# environment
 PAGER = less
 # environment
 LC_ALL = C
-# makefile (from `Makefile', line 23)
+# makefile (from `Makefile', line 26)
 LIBRARIES = -L$(LIBFT_DIR) -L$(CLUSTER_RL_DIR)/lib
 # automatic
 ^F = $(notdir $^)
@@ -186,16 +168,14 @@ SUFFIXES :=
 .INCLUDE_DIRS = /usr/local/include
 # environment
 MAKELEVEL := 0
-# makefile (from `Makefile', line 28)
-MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c tokenizing/tokenizing.c
+# makefile (from `Makefile', line 31)
+MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c init_struct.c lexer/tokenizer.c lexer/create_token_list.c lexer/lexer.c lexer/tokenizing_util.c lexer/validate_token_list.c scanner/expand_envvars.c scanner/expand_tokens.c scanner/expand_util.c scanner/get_token_env.c scanner/init_token_util.c scanner/scanner.c util_free/safety_free.c parser/build_parse_tree.c parser/init_parser.c parser/parse_result_util.c parser/parser_add_tree_node.c parser/parser.c util_free/terminate_free.c builtin/built_error.c builtin/builtin_cd.c builtin/builtin_echo.c builtin/builtin_env.c builtin/builtin_error_singlequote.c builtin/builtin_exit.c builtin/builtin_export.c builtin/builtin_pwd.c builtin/builtin_unset.c execute/execute.c 
 # environment
 LANG = C
 # environment
-TERM = xterm-256color
-# environment
-VSCODE_PID = 96907
+VSCODE_PID = 11004
 # variable set hash-table stats:
-# Load=90/1024=9%, Rehash=0, Collisions=9/134=7%
+# Load=80/1024=8%, Rehash=0, Collisions=6/117=5%
 
 # Pattern-specific Variable Values
 
@@ -203,27 +183,137 @@ VSCODE_PID = 96907
 
 # Directories
 
-# srcs/tokenizing (device 16777225, inode 8014253): 3 files, no impossibilities so far.
-# . (device 16777225, inode 8013981): 9 files, no impossibilities.
-# srcs (device 16777225, inode 8014116): 10 files, no impossibilities so far.
+# srcs/scanner (device 16777225, inode 8038337): 13 files, no impossibilities so far.
+# srcs/execute (device 16777225, inode 8038366): 3 files, no impossibilities so far.
+# . (device 16777225, inode 8013981): 11 files, no impossibilities.
+# srcs/util_free (device 16777225, inode 8038344): 5 files, no impossibilities so far.
+# srcs/builtin (device 16777225, inode 8021270): 19 files, no impossibilities so far.
+# srcs (device 16777225, inode 8014116): 16 files, no impossibilities so far.
+# srcs/lexer (device 16777225, inode 8038323): 11 files, no impossibilities so far.
+# srcs/parser (device 16777225, inode 8038330): 11 files, no impossibilities so far.
 
-# 22 files, no impossibilities in 3 directories.
+# 89 files, no impossibilities in 8 directories.
 
 # Implicit Rules
 
 %.o: %.c
-#  commands to execute (from `Makefile', line 40):
-	@$(CC) $(CFLAG) -c $(INCLUDES) $< -o $@
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
 	
 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
 
+srcs/scanner/expand_envvars.o: srcs/scanner/expand_envvars.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/scanner/expand_envvars'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+srcs/parser/build_parse_tree.o: srcs/parser/build_parse_tree.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/parser/build_parse_tree'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+# Not a target:
+srcs/parser/parse_result_util.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+srcs/builtin/builtin_pwd.o: srcs/builtin/builtin_pwd.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/builtin/builtin_pwd'
+#  Last modified 2022-06-11 13:01:44
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+srcs/parser/parser_add_tree_node.o: srcs/parser/parser_add_tree_node.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/parser/parser_add_tree_node'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+srcs/util_free/safety_free.o: srcs/util_free/safety_free.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/util_free/safety_free'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+srcs/scanner/expand_util.o: srcs/scanner/expand_util.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/scanner/expand_util'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+srcs/builtin/builtin_unset.o: srcs/builtin/builtin_unset.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/builtin/builtin_unset'
+#  Last modified 2022-06-11 13:50:32
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+srcs/lexer/create_token_list.o: srcs/lexer/create_token_list.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/lexer/create_token_list'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
 # Not a target:
 srcs/init_prompt.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 17:50:43
+#  Last modified 2022-06-11 12:49:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -235,9 +325,18 @@ all: minishell
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/9=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/lexer/lexer.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 .PHONY: all clean fclean re
 #  Implicit rule search has not been done.
@@ -245,22 +344,62 @@ all: minishell
 #  File has not been updated.
 
 # Not a target:
-srcs/signal_handler.c:
+srcs/builtin/builtin_error_singlequote.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 17:46:23
+#  Last modified 2022-06-11 12:49:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-srcs/tokenizing/tokenizing.c:
+srcs/scanner/scanner.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 18:07:19
+#  Last modified 2022-06-11 12:49:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/execute/execute.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:52:04
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/scanner/get_token_env.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+ 
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/signal_handler.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-30 19:39:24
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+srcs/util_free/terminate_free.o: srcs/util_free/terminate_free.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/util_free/terminate_free'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
 
 # Not a target:
 .SUFFIXES:
@@ -268,24 +407,195 @@ srcs/tokenizing/tokenizing.c:
 #  Modification time never checked.
 #  File has not been updated.
 
+srcs/parser/parser.o: srcs/parser/parser.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/parser/parser'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+srcs/lexer/tokenizer.o: srcs/lexer/tokenizer.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/lexer/tokenizer'
+#  Last modified 2022-06-11 13:01:42
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+srcs/scanner/init_token_util.o: srcs/scanner/init_token_util.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/scanner/init_token_util'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 18:11:25
+#  Last modified 2022-06-11 12:49:14
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-minishell: lib/libft/libft.a srcs/signal_handler.o srcs/prompt.o srcs/minishell.o srcs/init_prompt.o srcs/tokenizing/tokenizing.o
-#  Implicit rule search has not been done.
-#  File does not exist.
+# Not a target:
+srcs/builtin/builtin_exit.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:14
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/9=0%
-#  commands to execute (from `Makefile', line 37):
-	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(OBJS) -o $(NAME) -lft -lreadline
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/scanner/expand_tokens.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+srcs/builtin/built_error.o: srcs/builtin/built_error.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/builtin/built_error'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+# Not a target:
+srcs/scanner/expand_envvars.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:14
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/parser/build_parse_tree.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+srcs/init_struct.o: srcs/init_struct.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/init_struct'
+#  Last modified 2022-06-11 13:01:42
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+# Not a target:
+srcs/builtin/builtin_pwd.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/parser/parser_add_tree_node.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:14
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/util_free/safety_free.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+minishell: lib/libft/libft.a srcs/signal_handler.o srcs/prompt.o srcs/minishell.o srcs/init_prompt.o srcs/init_struct.o srcs/lexer/tokenizer.o srcs/lexer/create_token_list.o srcs/lexer/lexer.o srcs/lexer/tokenizing_util.o srcs/lexer/validate_token_list.o srcs/scanner/expand_envvars.o srcs/scanner/expand_tokens.o srcs/scanner/expand_util.o srcs/scanner/get_token_env.o srcs/scanner/init_token_util.o srcs/scanner/scanner.o srcs/util_free/safety_free.o srcs/parser/build_parse_tree.o srcs/parser/init_parser.o srcs/parser/parse_result_util.o srcs/parser/parser_add_tree_node.o srcs/parser/parser.o srcs/util_free/terminate_free.o srcs/builtin/built_error.o srcs/builtin/builtin_cd.o srcs/builtin/builtin_echo.o srcs/builtin/builtin_env.o srcs/builtin/builtin_error_singlequote.o srcs/builtin/builtin_exit.o srcs/builtin/builtin_export.o srcs/builtin/builtin_pwd.o srcs/builtin/builtin_unset.o srcs/execute/execute.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-06-11 13:50:32
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 52):
+	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(OBJS) -o $(NAME) -lft -lreadline
+	
+
+# Not a target:
+srcs/scanner/expand_util.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/builtin/builtin_unset.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 13:39:34
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/lexer/create_token_list.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/builtin/builtin_env.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:14
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+srcs/parser/init_parser.o: srcs/parser/init_parser.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/parser/init_parser'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
 	
 
 fclean:
@@ -293,36 +603,66 @@ fclean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 50):
+#  commands to execute (from `Makefile', line 65):
 	@$(MAKE) -s -C $(LIBFT_DIR) fclean
 	@rm -rf $(OBJS)
+ 
 	rm -rf $(NAME)
+	
+
+jclean: fclean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 75):
+	rm -rf jasong.dSYM
+	rm -rf jasong
 	
 
 srcs/minishell.o: srcs/minishell.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/minishell'
-#  Last modified 2022-05-30 18:11:31
+#  Last modified 2022-06-11 13:01:42
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 40):
-	@$(CC) $(CFLAG) -c $(INCLUDES) $< -o $@
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
 	
 
 srcs/prompt.o: srcs/prompt.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/prompt'
-#  Last modified 2022-05-30 18:11:31
+#  Last modified 2022-06-11 13:01:42
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 40):
- 
-	@$(CC) $(CFLAG) -c $(INCLUDES) $< -o $@
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
 	
+
+srcs/lexer/validate_token_list.o: srcs/lexer/validate_token_list.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/lexer/validate_token_list'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+# Not a target:
+srcs/util_free/terminate_free.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
@@ -330,87 +670,239 @@ srcs/prompt.o: srcs/prompt.c
 #  Modification time never checked.
 #  File has not been updated.
 
+srcs/builtin/builtin_echo.o: srcs/builtin/builtin_echo.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/builtin/builtin_echo'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+# Not a target:
+srcs/parser/parser.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+srcs/lexer/tokenizing_util.o: srcs/lexer/tokenizing_util.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/lexer/tokenizing_util'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+# Not a target:
+srcs/lexer/tokenizer.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/scanner/init_token_util.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+srcs/builtin/builtin_export.o: srcs/builtin/builtin_export.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/builtin/builtin_export'
+#  Last modified 2022-06-11 13:50:32
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
 
+srcs/parser/parse_result_util.o: srcs/parser/parse_result_util.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/parser/parse_result_util'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+# Not a target:
+srcs/builtin/built_error.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 46):
+#  commands to execute (from `Makefile', line 61):
 	@$(MAKE) -s -C $(LIBFT_DIR) clean
 	@rm -rf $(OBJS)
 	
 
-srcs/init_prompt.o: srcs/init_prompt.c
+# Not a target:
+srcs/init_struct.c:
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: `srcs/init_prompt'
-#  Last modified 2022-05-30 18:11:31
+#  Last modified 2022-06-11 12:49:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 40):
-	@$(CC) $(CFLAG) -c $(INCLUDES) $< -o $@
-	
 
-lib/libft/libft.a:
-#  Implicit rule search has not been done.
-#  Last modified 2022-05-30 18:11:30
+srcs/init_prompt.o: srcs/init_prompt.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/init_prompt'
+#  Last modified 2022-06-11 13:01:42
 #  File has been updated.
 #  Successfully updated.
-#  commands to execute (from `Makefile', line 43):
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+srcs/lexer/lexer.o: srcs/lexer/lexer.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/lexer/lexer'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+srcs/builtin/builtin_error_singlequote.o: srcs/builtin/builtin_error_singlequote.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/builtin/builtin_error_singlequote'
+#  Last modified 2022-06-11 13:01:44
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+# Not a target:
+srcs/parser/init_parser.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+srcs/scanner/scanner.o: srcs/scanner/scanner.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/scanner/scanner'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+jasong: lib/libft/libft.a
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 72):
+	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(MAIN_SRCDIR) -o $@ -lft -lreadline
+	
+
+srcs/execute/execute.o: srcs/execute/execute.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/execute/execute'
+#  Last modified 2022-06-11 13:01:44
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+ 
+lib/libft/libft.a:
+#  Implicit rule search has not been done.
+#  Last modified 2022-06-11 13:01:42
+#  File has been updated.
+#  Successfully updated.
+#  commands to execute (from `Makefile', line 58):
 	@$(MAKE) -s -C $(LIBFT_DIR) all
+	
+
+srcs/scanner/get_token_env.o: srcs/scanner/get_token_env.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/scanner/get_token_env'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
 	
 
 srcs/signal_handler.o: srcs/signal_handler.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/signal_handler'
-#  Last modified 2022-05-30 18:11:30
+#  Last modified 2022-06-11 13:01:42
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 40):
-	@$(CC) $(CFLAG) -c $(INCLUDES) $< -o $@
-	
-
-srcs/tokenizing/tokenizing.o: srcs/tokenizing/tokenizing.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `srcs/tokenizing/tokenizing'
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := srcs/tokenizing/tokenizing.o
-# automatic
-# % := 
-# automatic
-# * := srcs/tokenizing/tokenizing
-# automatic
-# + := srcs/tokenizing/tokenizing.c
-# automatic
-# | := 
-# automatic
-# < := srcs/tokenizing/tokenizing.c
-# automatic
-# ^ := srcs/tokenizing/tokenizing.c
-# automatic
-# ? := srcs/tokenizing/tokenizing.c
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=6/19=32%
-#  commands to execute (from `Makefile', line 40):
-	@$(CC) $(CFLAG) -c $(INCLUDES) $< -o $@
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
 	
 
 # Not a target:
 srcs/minishell.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 18:08:47
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/builtin/builtin_cd.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:14
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -419,14 +911,98 @@ srcs/minishell.c:
 # Not a target:
 srcs/prompt.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 17:50:43
+#  Last modified 2022-06-11 12:49:14
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/lexer/validate_token_list.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+srcs/builtin/builtin_env.o: srcs/builtin/builtin_env.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/builtin/builtin_env'
+#  Last modified 2022-06-11 13:01:44
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+# Not a target:
+srcs/builtin/builtin_echo.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:14
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+srcs/builtin/builtin_cd.o: srcs/builtin/builtin_cd.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/builtin/builtin_cd'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+srcs/builtin/builtin_exit.o: srcs/builtin/builtin_exit.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/builtin/builtin_exit'
+#  Last modified 2022-06-11 13:01:44
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+# Not a target:
+srcs/lexer/tokenizing_util.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 12:49:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+srcs/scanner/expand_tokens.o: srcs/scanner/expand_tokens.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/scanner/expand_tokens'
+#  Last modified 2022-06-11 13:01:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 55):
+	@$(CC) $(CFLAG) -c $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $< -o $@
+	
+
+# Not a target:
+srcs/builtin/builtin_export.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-11 13:50:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=20/1024=2%, Rehash=0, Collisions=0/61=0%
+# Load=78/1024=8%, Rehash=0, Collisions=35/233=15%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -438,6 +1014,6 @@ srcs/prompt.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon May 30 18:11:51 2022
+# Finished Make data base on Sat Jun 11 17:01:12 2022
 
  

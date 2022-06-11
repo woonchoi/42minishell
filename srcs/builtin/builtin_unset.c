@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:57:06 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/10 20:42:47 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/11 13:39:34 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ int	check_avaliable_key(char *key)
 {
 	int	i;
 
-	i = -1;
-	while (key[++i])
+	i = 0;
+	if (!key && (!ft_isalpha(key[i]) || key[i] != '_'))
+		return (FALSE);
+	i++;
+	while (key[i])
 	{
-		if (!(ft_isalpha(key[i]) || key[i] == '_'))
+		if (!(ft_isalnum(key[i]) || key[i] != '_'))
 			return (FALSE);
+		i++;
 	}
 	return (TRUE);
 }
@@ -61,6 +65,8 @@ void	delete_env(t_env_list **env_head, char *del_key)
 	t_env_list	*temp;
 
 	del_loc = env_key_location(*env_head, del_key);
+	if (!env_head || !*env_head)
+		printf("env_head is null. check something");
 	temp = *env_head;
 	if (!del_loc)
 		return ;
@@ -97,6 +103,7 @@ int	builtin_unset(char **argv, t_env_list *env_head)
 			return (1);
 		}
 		delete_env(&env_head, argv[i]);
+		i++;
 	}
 	return (0);
 }

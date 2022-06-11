@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:10:41 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/10 20:30:49 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/11 13:50:26 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
+#define NO_DEL 0
+#define ADD_VAL 1
+#define ADD_ENV 2
 
 t_env_list	*new_env_list(char *argv)
 {
@@ -73,35 +76,100 @@ void	print_export_env(t_env_list *env_head)
 	}
 }
 
-int	add_env(char *argv, t_env_list **env_head)
+int	add_env(char *argv, int del, t_env_list **env_head)
 {
 	char		*sep;
+	char		*key;
+	char		*new_value;
+	t_env_list	*key_loc;
 	t_env_list	*new_env;
+
+	sep = ft_strchr(argv, del);
+	if (!sep)
+		return (1);
+	key = ft_strndup(argv, sep - argv);
+	if (!key)
+		return (1);
+	key_loc = env_key_location(*env_head, key);
+	free(key);
+	if (key_loc)
+	{
+		if (del == '+')
+			new_value = ft_strdup(sep + 2);
+		else
+		{
+			new_value = ft_strdup(sep + 1);
+			free(key_loc->value);
+			key_loc->value = new_value;
+		}
+	}
+	else
+	{
+		new_env = new_env_list(argv);
+		if (!new_env)
+			return (1);
+		env_add_back(env_head, new_env);
+	}
+	return (0);
+}
+
+int	check_delimeter(char *argv)
+{
+	char	*sep;
 
 	sep = ft_strchr(argv, '=');
 	if (!sep)
-		return (FALSE);
-	new_env = new_env_list(argv);
-	if (!new_env)
-		return (FALSE);
-	env_add_back(env_head, new_env);
-	return (TRUE);
+		return (NO_DEL);
+	if (*(sep - 1) == '+')
+		return (ADD_VAL);
+	return (ADD_ENV);
+}
+
+int	add_value(char *argv, t_env_list *env_head)
+{
+	char		*sep;
+	char		*key;
+	char		*join_value;
+	t_env_list	*add_loc;
+
+	sep = ft_strchr(argv, '+');
+	if (!sep)
+		return (1);
+	key = ft_strndup(argv, sep - argv);
+	if (!key)
+		return (1);
+	add_loc = env_key_location(env_head, key);
+	free(key);
+	if (!add_loc)
+		add_env(argv, '+', &env_head);
+	join_value = ft_strjoin(add_loc->value, sep + 2);
+	free(add_loc->value);
+	add_loc->value = join_value;
+	return (0);
 }
 
 int	builtin_export(char *argv[], t_mshell_info *info)
 {
 	int	i;
+	int	delimeter;
+	int	ret;
 
 	i = -1;
-	if (argv[0] == NULL)
+	if (!argv)
 		print_export_env(info->env_head);
 	while (argv[++i])
 	{
-		if (!add_env(argv[i], &info->env_head))
+		ret = 0;
+		delimeter = check_delimeter(argv[i]);
+		if (delimeter == ADD_VAL)
+			ret = add_value(argv[i], info->env_head);
+		else if (delimeter == ADD_ENV)
+			ret = add_env(argv[i], '=', &info->env_head);
+		if (ret)
 		{
 			ft_s_quote_error("export", argv[i], "not a valid identifier");
 			return (1);
-		}	
+		}
 	}
 	return (0);
 }

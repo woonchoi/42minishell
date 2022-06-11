@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 20:32:05 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/10 20:46:31 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/11 12:52:04 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,9 @@ int	no_fork_cmd(t_tree *node)
 
 int	check_builtin(char *cmd)
 {
-	printf("!!!!!\n");
-	printf("%s\n", cmd);
-	printf("!!!!\n");
+	//printf("!!!!!\n");
+	//printf("%s\n", cmd);
+	//printf("!!!!\n");
 	if (!ft_strncmp(cmd, "cd", 3))
 		return (CMD_CD);
 	if (!ft_strncmp(cmd, "pwd", 4))
@@ -239,7 +239,7 @@ char	*get_cmd_path(t_mshell_info *info, char *token)
 
 int		execute_builtin(t_mshell_info *info, int cmd, char **optarg)
 {
-	printf("check1 current cmd = %d\n", cmd);
+	//printf("check1 current cmd = %d\n", cmd);
 	if (cmd == CMD_CD)
 		return (builtin_cd(optarg, info));
 	if (cmd == CMD_PWD)
@@ -254,7 +254,7 @@ int		execute_builtin(t_mshell_info *info, int cmd, char **optarg)
 		return (builtin_unset(optarg, info->env_head));
 	if (cmd == CMD_EXPORT)
 		return (builtin_export(optarg, info));
-	printf("check2\n");
+	//printf("check2\n");
 	return (0);
 }
 
@@ -278,7 +278,7 @@ int		execute_cmd(t_mshell_info *info, t_tree *node)
 
 void	preorder(t_mshell_info *info, t_tree *node)
 {
-	printf("preorder\n");
+	//printf("preorder\n");
 	if (!node)
 		return ;
 	if (node->l_child && is_redirection(node->l_child->type))
@@ -332,10 +332,10 @@ void	preorder_general(t_mshell_info *info, t_tree_list *tree)
 
 void	execute(t_mshell_info *info)
 {
-	printf("checkexecute\n");
+	//printf("checkexecute\n");
 	if (info->error == TRUE)
 		return ;
-	printf("checkexecute\n");
+	//printf("checkexecute\n");
 	heredoc_process(info);
 	if (no_fork_cmd(info->tree[0].root) && info->cmd_count == 0)
 		preorder_once(info, info->tree[0].root);
