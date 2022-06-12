@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/10 13:59:03 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/12 14:46:00 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct	s_mshell_info
 	t_env_list		*env_head;
 	t_heredoc		*heredoc;
 	int				cmd_count;
+	char			**envp;
 	char			*input;
 	int				error;
 	int				index;

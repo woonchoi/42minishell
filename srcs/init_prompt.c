@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 22:08:31 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/06 15:25:39 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:11:02 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,10 @@ void	init_mshell_info(t_mshell_info *info, char **envp)
 	info->cmd_count = 0;
 	info->env_head = init_env(envp);
 	info->tree = NULL;
+	info->heredoc = NULL;
+	info->envp = envp;
+	info->input = NULL;
+	info->error = FALSE;
+	info->index = 0;
+	info->heredoc_count = 0;
 }

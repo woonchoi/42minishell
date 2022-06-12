@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 20:32:05 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/11 20:14:49 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:33:26 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,19 +232,6 @@ char	**get_path_env_list(t_mshell_info *info)
 	return (NULL);
 }
 
-char	*get_cmd_path(t_mshell_info *info, char *token)
-{
-	char	*temp;
-	char	**path_list;
-
-	path_list = get_path_env_list(info);
-	if (!path_list)
-	{
-		info->error = TRUE;
-		return (NULL);
-	}
-}
-
 int		execute_builtin(t_mshell_info *info, int cmd, char **optarg)
 {
 	//printf("check1 current cmd = %d\n", cmd);
@@ -266,13 +253,86 @@ int		execute_builtin(t_mshell_info *info, int cmd, char **optarg)
 	return (0);
 }
 
+char	*strjoin_free(char *a, char *b)
+{
+	char	*temp;
+
+	temp = ft_strjoin(a, b);
+	safety_free(a);
+	return (temp);
+}
+
+char	*match_cmd_path(t_mshell_info *info, char *token, char **path)
+{
+	DIR				*cur_dir;
+	struct dirent	*cur_dir_info;
+	char			*temp;
+	int				i;
+
+	temp = NULL;
+	i = -1;
+	while (path[++i])
+	{
+		cur_dir = opendir(path[i]);
+		cur_dir_info = readdir(cur_dir);
+		while (cur_dir_info != NULL)
+		{
+			if (!ft_strncmp(token, cur_dir_info->d_name, ft_strlen(token) + 1))
+			{
+				temp = ft_strjoin(path[i], "/");
+				temp = strjoin_free(temp, token);
+				closedir(cur_dir);
+				return (temp);
+			}
+			cur_dir_info = readdir(cur_dir);
+		}
+		closedir(cur_dir);
+	}
+	return (temp);
+}
+
+char	*get_cmd_path(t_mshell_info *info, char *token)
+{
+	char	*temp;
+	char	**path_list;
+	int		i;
+
+	path_list = get_path_env_list(info);
+	if (!path_list)
+	{
+		info->error = TRUE;
+		return (NULL);
+	}
+	else
+		temp = match_cmd_path(info, token, path_list);
+	if (temp != NULL)
+		return (temp);
+	else
+		return (token);
+}
+
+char	*join_cmd_optarg(char *cmd, char *optarg)
+{
+	char	*ret;
+	char	*temp;
+
+	ret = ft_strjoin(cmd, "\n");
+	temp = ret;
+	ret = ft_strjoin(ret, optarg);
+	safety_free(temp);
+	safety_free(cmd);
+	return (ret);
+}
+
 int		execute_cmd(t_mshell_info *info, t_tree *node)
 {
 	char	*cmd;
+	char	*cmd_opt;
 	char	**optarg;
 	int		builtin_cmd;
 
 	optarg = NULL;
+	cmd_opt = ft_strdup(node->l_child->token);
 	builtin_cmd = check_builtin(node->l_child->token);
 	if (builtin_cmd)
 	{
@@ -280,7 +340,14 @@ int		execute_cmd(t_mshell_info *info, t_tree *node)
 			optarg = ft_split(node->r_child->token, '\n');
 		g_exit_status = execute_builtin(info, builtin_cmd, optarg);
 	}
-	cmd = get_cmd_path(info, node->l_child->token);
+	else
+	{
+		if (node->r_child)
+			cmd_opt = join_cmd_optarg(cmd_opt, node->r_child->token);
+		optarg = ft_split(cmd_opt, '\n');
+		cmd = get_cmd_path(info, node->l_child->token);
+		execve(cmd, optarg, info->envp);
+	}
 	return (0);
 }
 
@@ -297,7 +364,7 @@ void	preorder(t_mshell_info *info, t_tree *node)
 	}
 	else if (node->l_child && node->l_child->type == CMD)
 	{
-		if(execute_cmd(info, node))
+		if (execute_cmd(info, node))
 			return ;
 	}
 	preorder(info, node->l_child);
@@ -318,6 +385,61 @@ void	preorder_once(t_mshell_info *info, t_tree *node)
 	close(out);
 }
 
+void	set_pipe(t_mshell_info *info, int i)
+{
+	if (info->tree[i].prev_fd > -1)
+	{
+		dup2(info->tree[i].prev_fd, 0);
+		close(info->tree[i].prev_fd);
+	}
+	if (i + 1 < info->cmd_count + 1)
+	{
+		dup2(info->tree[i].fd[1], 1);
+		close(info->tree[i].fd[0]);
+		close(info->tree[i].fd[1]);
+	}
+}
+
+void	fork_cmd(t_mshell_info *info, int i, int in, int out)
+{
+	info->tree[i].pid = fork();
+	if (info->tree[i].pid < 0)
+		exit(1);
+	else if (info->tree[i].pid == 0)
+	{
+		set_pipe(info, i);
+		preorder(info, info->tree[i].root);
+		exit(g_exit_status);
+	}
+	else
+	{
+		if (i + 1 < info->cmd_count + 1)
+		{
+			close(info->tree[i].fd[0]);
+			close(info->tree[i].fd[1]);
+		}
+		dup2(in, STDIN_FILENO);
+		dup2(out, STDOUT_FILENO);
+		close(in);
+		close(out);
+	}
+}
+
+int	check_exit_status(t_mshell_info *info)
+{
+	int	status;
+	int	i;
+
+	i = 0;
+	while (i < info->cmd_count + 1)
+	{
+		if (waitpid(info->tree[i].pid, &status, 0) == -1)
+			exit(1);
+		i++;
+	}
+	return (1);
+}
+
 void	preorder_general(t_mshell_info *info, t_tree_list *tree)
 {
 	int	in;
@@ -335,7 +457,9 @@ void	preorder_general(t_mshell_info *info, t_tree_list *tree)
 			tree[i + 1].prev_fd = dup(tree[i].fd[0]);
 			close(tree[i].fd[0]);
 		}
+		fork_cmd(info, i, in, out);
 	}
+	g_exit_status = check_exit_status(info);
 }
 
 void	execute(t_mshell_info *info)
