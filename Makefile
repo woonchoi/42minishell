@@ -6,14 +6,14 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/13 20:58:51 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/13 21:59:56 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-CFLAG =
+CFLAG = -Wall -Werror -Wextra
 SANITIZER = -g -fsanitize=address
 LIBFT_DIR = ./lib/libft/
 LIBFT = $(LIBFT_DIR)libft.a
