@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
+#    By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/13 18:57:31 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/13 20:22:19 by jasong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,7 +121,7 @@ fclean:
 re : fclean all
 
 jasong: $(LIBFT)
-	$(CC) $(CFLAG) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(SRCS) -o $@ -lft -lreadline
+	$(CC) $(SANITIZER) $(CFLAG) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(SRCS) -o $@ -lft -lreadline
 
 jclean : fclean
 	rm -rf jasong.dSYM
@@ -135,4 +135,4 @@ dclean:
 	rm -rf debug
 	rm -rf debug.dSYM
 
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re debug jasong
