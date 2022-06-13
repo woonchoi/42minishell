@@ -6,7 +6,7 @@
 #    By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/13 18:08:47 by jasong           ###   ########.fr        #
+#    Updated: 2022/06/13 18:10:42 by jasong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,14 +119,14 @@ fclean:
 re : fclean all
 
 jasong: $(LIBFT)
-	$(CC) $(CFLAG) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(MAIN_SRCDIR) -o $@ -lft -lreadline
+	$(CC) $(CFLAG) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(SRCS) -o $@ -lft -lreadline
 
 jclean : fclean
 	rm -rf jasong.dSYM
 	rm -rf jasong
 
 debug: $(LIBFT)
-	$(CC) $(CFLAG) $(LIBRARIES) $(SANITIZER) $(INCLUDES) $(MAIN_SRCDIR) -o $@ -lft -lreadline
+	$(CC) $(CFLAG) $(LIBRARIES) $(SANITIZER) $(INCLUDES) $(SRCS) -o $@ -lft -lreadline
 
 dclean:
 	@$(MAKE) -s -C $(LIBFT_DIR) fclean
