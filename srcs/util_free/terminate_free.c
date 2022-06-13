@@ -6,11 +6,11 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 15:14:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 12:14:32 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:15:10 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	iterate_free_tree(t_tree *node)
 {
@@ -27,7 +27,7 @@ void	iterate_free_tree(t_tree *node)
 	iterate_free_tree(r_child);
 }
 
-void	free_parse_tree(t_mshell_info *info)
+void	free_parse_tree(t_info *info)
 {
 	t_tree_list	*tree;
 	int			i;
@@ -36,12 +36,12 @@ void	free_parse_tree(t_mshell_info *info)
 	if (!tree)
 		return ;
 	i = -1;
-	while (++i < info->cmd_count + 1)
+	while (++i < info->cmd_count)
 		iterate_free_tree(tree[i].root);
 	safety_free(tree);
 }
 
-void	free_tokenlist(t_mshell_info *info)
+void	free_tokenlist(t_info *info)
 {
 	t_token	*cur;
 	t_token	*temp;
@@ -57,7 +57,7 @@ void	free_tokenlist(t_mshell_info *info)
 	}
 }
 
-void	terminate_free(t_mshell_info *info)
+void	terminate_free(t_info *info)
 {
 	free_tokenlist(info);
 	free_parse_tree(info);

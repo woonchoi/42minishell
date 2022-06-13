@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:56:23 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/09 18:25:23 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/13 18:39:14 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	flow(long long num, long long sign)
 	return (FALSE);
 }
 
-static long long exit_num(char *num)
+static long long	exit_num(char *num)
 {
 	long long	i;
 	long long	neg_sign;
@@ -53,24 +53,24 @@ static long long exit_num(char *num)
 	return ((unsigned char)(ret * neg_sign));
 }
 
-int	builtin_exit(char *argv[], int pipe_flag) // pipe로 넘어오면 pipe flag = 0
+int	builtin_exit(char **argv, int pipe_flag)
 {
-	if (!argv[0])
+	if (argv[1] == NULL)
 	{
 		if (pipe_flag != TRUE)
 			ft_putendl_fd("exit", 1);
 		exit(0);
 	}
-	if (exit_num(argv[0]) < 0)
+	if (exit_num(argv[1]) < 0)
 	{
 		ft_error("exit", argv[0], "numeric argument required");
 		exit(255);
 	}
-	if (argv[1] != NULL)
+	ft_putstr_fd("exit", 1);
+	if (argv[2] != NULL)
 	{
 		ft_error("exit", NULL, "too many arguments");
 		exit(1);
 	}
-	ft_putstr_fd("exit", 1);
-	exit(exit_num(argv[0]));
+	exit(exit_num(argv[1]));
 }

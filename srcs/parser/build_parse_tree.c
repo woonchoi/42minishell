@@ -6,13 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:01:11 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 15:01:42 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 21:56:18 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
-void	build_redirection(t_token *cur, t_parse_util *par_v, t_mshell_info *info)
+void	build_redirection(t_token *cur, t_parse_util *par_v, t_info *info)
 {
 	if (cur->tokentype == HEREDOC)
 	{
@@ -24,7 +24,7 @@ void	build_redirection(t_token *cur, t_parse_util *par_v, t_mshell_info *info)
 	add_red_node(&par_v->red_cur, cur->token, cur->tokentype, info);
 }
 
-void	build_cmd_arg(t_token *cur, t_parse_util *par_v, t_mshell_info *info)
+void	build_cmd_arg(t_token *cur, t_parse_util *par_v, t_info *info)
 {
 	if (par_v->heredoc_status)
 	{
@@ -45,7 +45,7 @@ void	build_cmd_arg(t_token *cur, t_parse_util *par_v, t_mshell_info *info)
 		add_cmd_arg(&par_v->cmd_cur, cur->token, info);
 }
 
-void	build_tree_with_token(t_token **cur, t_tree *root, t_mshell_info *info)
+void	build_tree_with_token(t_token **cur, t_tree *root, t_info *info)
 {
 	t_parse_util	par_v;
 
@@ -59,13 +59,14 @@ void	build_tree_with_token(t_token **cur, t_tree *root, t_mshell_info *info)
 		}
 		else if (is_redirection((*cur)->tokentype))
 			build_redirection((*cur), &par_v, info);
-		else if ((*cur)->tokentype == NORMAL)
+		else if ((*cur)->tokentype == STR)
 			build_cmd_arg((*cur), &par_v, info);
 		(*cur) = (*cur)->next;
 	}
+	info->heredoc_count = par_v.heredoc_count;
 }
 
-void	build_tree(t_mshell_info *info)
+void	build_tree(t_info *info)
 {
 	t_token	*cur;
 	int		i;
@@ -75,12 +76,9 @@ void	build_tree(t_mshell_info *info)
 	init_tree_with_pipecount(info);
 	if (info->error)
 		return ;
-	while (++i < info->cmd_count + 1)
+	while (++i < info->cmd_count)
 	{
-		printf("PIPE NUMBER : %d \n\n", i);
 		info->tree[i].root = create_node(ROOT, "root", info);
 		build_tree_with_token(&cur, info->tree[i].root, info);
-		print_tree_result(info->tree[i].root);
-		printf("\n");
 	}
 }

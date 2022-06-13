@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_result_util.c                                :+:      :+:    :+:   */
+/*   heredoc_process.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 14:58:40 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 14:59:01 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/06/13 13:12:53 by woonchoi          #+#    #+#             */
+/*   Updated: 2022/06/13 20:44:07 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
-void	preorder_tree(t_tree *node)
+void	heredoc_process(t_info *info)
 {
-	if (node)
-	{
-		printf("current node type : %d | current node data : %s\n", node->type, node->token);
-		preorder_tree(node->l_child);
-		preorder_tree(node->r_child);
-	}
-}
+	int	h_cnt;
 
-void	print_tree_result(t_tree *root)
-{
-	preorder_tree(root);
+	h_cnt = info->heredoc_count;
+	if (h_cnt == 0)
+		return ;
+	info->heredoc = (t_heredoc *)ft_calloc(sizeof(t_heredoc), h_cnt + 1);
+	run_heredoc(info);
 }

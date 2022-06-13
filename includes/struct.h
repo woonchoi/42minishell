@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 12:05:10 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:11:20 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,24 @@ typedef struct	s_tree
 
 typedef struct	s_tree_list
 {
-	int			fd[2];
-	pid_t		pid;
-	t_tree		*root;
+	int		fd[2];
+	int		prev_fd;
+	pid_t	pid;
+	t_tree	*root;
 }	t_tree_list;
 
 typedef struct	s_token
 {
-	int		tokentype;
-	char	*token;
-	char	*token_origin;
+	int				tokentype;
+	char			*token;
+	char			*token_origin;
 	struct s_token	*next;
 }	t_token;
 
 typedef struct	s_token_info
 {
-	int			qstatus;
-	t_token		*tokenlist;
+	int		qstatus;
+	t_token	*tokenlist;
 }	t_token_info;
 
 typedef struct	s_expand_token
@@ -70,16 +71,24 @@ typedef struct	s_parse_util
 	int		heredoc_count;
 }	t_parse_util;
 
-typedef struct	s_mshell_info
+typedef struct	s_heredoc
+{
+	int	fd[2];
+	int check;
+}	t_heredoc;
+
+typedef struct	s_info
 {
 	t_token_info	tinfo;
 	t_tree_list		*tree;
 	t_env_list		*env_head;
+	t_heredoc		*heredoc;
 	int				cmd_count;
+	char			**envp;
 	char			*input;
 	int				error;
 	int				index;
 	int				heredoc_count;
-}	t_mshell_info;
+}	t_info;
 
 #endif

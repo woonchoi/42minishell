@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_token_util.c                                  :+:      :+:    :+:   */
+/*   print_execute_error.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 19:24:49 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:01:42 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/06/13 17:00:42 by woonchoi          #+#    #+#             */
+/*   Updated: 2022/06/13 17:04:25 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_expand_token_value(t_expand_token *exp_v)
+int	print_red_error(char *path)
 {
-	exp_v->str1 = NULL;
-	exp_v->str2 = NULL;
-	exp_v->i = 0;
-	exp_v->j = 0;
-	exp_v->qstatus = NO_Q;
+	ft_putstr_fd("minishell: ", STDERR_FILENO);
+	ft_putstr_fd(path, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(strerror(errno), STDERR_FILENO);
+	return (1);
 }

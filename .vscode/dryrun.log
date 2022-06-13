@@ -4,11 +4,13 @@ make: Entering directory `/Users/jasong/42minishell'
  
 make[1]: Entering directory `/Users/jasong/42minishell/lib/libft'
 gcc -Wall -Wextra -Werror -c ft_atoi.c -o ft_atoi.o
+ 
 gcc -Wall -Wextra -Werror -c ft_toupper.c -o ft_toupper.o
 gcc -Wall -Wextra -Werror -c ft_tolower.c -o ft_tolower.o
 gcc -Wall -Wextra -Werror -c ft_isascii.c -o ft_isascii.o
 gcc -Wall -Wextra -Werror -c ft_isprint.c -o ft_isprint.o
 gcc -Wall -Wextra -Werror -c ft_isdigit.c -o ft_isdigit.o
+ 
 gcc -Wall -Wextra -Werror -c ft_isalpha.c -o ft_isalpha.o
 gcc -Wall -Wextra -Werror -c ft_isalnum.c -o ft_isalnum.o
 gcc -Wall -Wextra -Werror -c ft_strncmp.c -o ft_strncmp.o
@@ -18,6 +20,7 @@ gcc -Wall -Wextra -Werror -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -Wall -Wextra -Werror -c ft_memset.c -o ft_memset.o
 gcc -Wall -Wextra -Werror -c ft_bzero.c -o ft_bzero.o
 gcc -Wall -Wextra -Werror -c ft_memcpy.c -o ft_memcpy.o
+ 
 gcc -Wall -Wextra -Werror -c ft_strchr.c -o ft_strchr.o
 gcc -Wall -Wextra -Werror -c ft_strrchr.c -o ft_strrchr.o
 gcc -Wall -Wextra -Werror -c ft_memccpy.c -o ft_memccpy.o
@@ -26,6 +29,7 @@ gcc -Wall -Wextra -Werror -c ft_strdup.c -o ft_strdup.o
 gcc -Wall -Wextra -Werror -c ft_memchr.c -o ft_memchr.o
 gcc -Wall -Wextra -Werror -c ft_memcmp.c -o ft_memcmp.o
 gcc -Wall -Wextra -Werror -c ft_strlcat.c -o ft_strlcat.o
+ 
 gcc -Wall -Wextra -Werror -c ft_strnstr.c -o ft_strnstr.o
 gcc -Wall -Wextra -Werror -c ft_calloc.c -o ft_calloc.o
 gcc -Wall -Wextra -Werror -c ft_substr.c -o ft_substr.o
@@ -33,6 +37,7 @@ gcc -Wall -Wextra -Werror -c ft_strjoin.c -o ft_strjoin.o
 gcc -Wall -Wextra -Werror -c ft_strtrim.c -o ft_strtrim.o
 gcc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
 gcc -Wall -Wextra -Werror -c ft_itoa.c -o ft_itoa.o
+ 
 gcc -Wall -Wextra -Werror -c ft_strmapi.c -o ft_strmapi.o
 gcc -Wall -Wextra -Werror -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -Wall -Wextra -Werror -c ft_putstr_fd.c -o ft_putstr_fd.o
@@ -40,11 +45,44 @@ gcc -Wall -Wextra -Werror -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -Wall -Wextra -Werror -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 ar -cr libft.a ft_atoi.o ft_toupper.o ft_tolower.o ft_isascii.o ft_isprint.o ft_isdigit.o ft_isalpha.o ft_isalnum.o ft_strncmp.o ft_strndup.o ft_strlen.o ft_strlcpy.o ft_memset.o ft_bzero.o ft_memcpy.o ft_strchr.o ft_strrchr.o ft_memccpy.o ft_memmove.o ft_strdup.o ft_memchr.o ft_memcmp.o ft_strlcat.o ft_strnstr.o ft_calloc.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o
 make[1]: Leaving directory `/Users/jasong/42minishell/lib/libft'
-gcc -Wall -Wextra -Werror -g -fsanitize=address -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/signal_handler.c -o srcs/signal_handler.o
-gcc -Wall -Wextra -Werror -g -fsanitize=address -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/prompt.c -o srcs/prompt.o
-gcc -Wall -Wextra -Werror -g -fsanitize=address -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/minishell.c -o srcs/minishell.o
-gcc -Wall -Wextra -Werror -g -fsanitize=address -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/init_prompt.c -o srcs/init_prompt.o
-gcc -Wall -Wextra -Werror -g -fsanitize=address -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/tokenizing/tokenizing.c -o srcs/tokenizing/tokenizing.o
-gcc -Wall -Wextra -Werror -g -fsanitize=address -L./lib/libft/ -L/Users/jasong/.brew/opt/readline/lib -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include ./srcs/signal_handler.o ./srcs/prompt.o ./srcs/minishell.o ./srcs/init_prompt.o ./srcs/tokenizing/tokenizing.o -o minishell -lft -lreadline
+ 
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/signal_handler.c -o srcs/signal_handler.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/prompt.c -o srcs/prompt.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/minishell.c -o srcs/minishell.o
+ 
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/init_prompt.c -o srcs/init_prompt.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/init_struct.c -o srcs/init_struct.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/lexer/tokenizer.c -o srcs/lexer/tokenizer.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/lexer/create_token_list.c -o srcs/lexer/create_token_list.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/lexer/lexer.c -o srcs/lexer/lexer.o
+ 
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/lexer/tokenizing_util.c -o srcs/lexer/tokenizing_util.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/lexer/validate_token_list.c -o srcs/lexer/validate_token_list.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/scanner/expand_envvars.c -o srcs/scanner/expand_envvars.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/scanner/expand_tokens.c -o srcs/scanner/expand_tokens.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/scanner/expand_util.c -o srcs/scanner/expand_util.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/scanner/get_token_env.c -o srcs/scanner/get_token_env.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/scanner/init_token_util.c -o srcs/scanner/init_token_util.o
+ 
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/scanner/scanner.c -o srcs/scanner/scanner.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/util_free/safety_free.c -o srcs/util_free/safety_free.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/parser/build_parse_tree.c -o srcs/parser/build_parse_tree.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/parser/init_parser.c -o srcs/parser/init_parser.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/parser/parse_result_util.c -o srcs/parser/parse_result_util.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/parser/parser_add_tree_node.c -o srcs/parser/parser_add_tree_node.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/parser/parser.c -o srcs/parser/parser.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/util_free/terminate_free.c -o srcs/util_free/terminate_free.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/builtin/built_error.c -o srcs/builtin/built_error.o
+ 
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/builtin/builtin_cd.c -o srcs/builtin/builtin_cd.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/builtin/builtin_echo.c -o srcs/builtin/builtin_echo.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/builtin/builtin_env.c -o srcs/builtin/builtin_env.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/builtin/builtin_error_singlequote.c -o srcs/builtin/builtin_error_singlequote.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/builtin/builtin_exit.c -o srcs/builtin/builtin_exit.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/builtin/builtin_export.c -o srcs/builtin/builtin_export.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/builtin/builtin_pwd.c -o srcs/builtin/builtin_pwd.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/builtin/builtin_unset.c -o srcs/builtin/builtin_unset.o
+gcc  -c -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include srcs/execute/execute.c -o srcs/execute/execute.o
+gcc  -L./lib/libft/ -L/Users/jasong/.brew/opt/readline/lib -I./lib/libft/ -I./includes/ -I/Users/jasong/.brew/opt/readline/include ./srcs/signal_handler.o ./srcs/prompt.o ./srcs/minishell.o ./srcs/init_prompt.o ./srcs/init_struct.o ./srcs/lexer/tokenizer.o ./srcs/lexer/create_token_list.o ./srcs/lexer/lexer.o ./srcs/lexer/tokenizing_util.o ./srcs/lexer/validate_token_list.o ./srcs/scanner/expand_envvars.o ./srcs/scanner/expand_tokens.o ./srcs/scanner/expand_util.o ./srcs/scanner/get_token_env.o ./srcs/scanner/init_token_util.o ./srcs/scanner/scanner.o ./srcs/util_free/safety_free.o ./srcs/parser/build_parse_tree.o ./srcs/parser/init_parser.o ./srcs/parser/parse_result_util.o ./srcs/parser/parser_add_tree_node.o ./srcs/parser/parser.o ./srcs/util_free/terminate_free.o ./srcs/builtin/built_error.o ./srcs/builtin/builtin_cd.o ./srcs/builtin/builtin_echo.o ./srcs/builtin/builtin_env.o ./srcs/builtin/builtin_error_singlequote.o ./srcs/builtin/builtin_exit.o ./srcs/builtin/builtin_export.o ./srcs/builtin/builtin_pwd.o ./srcs/builtin/builtin_unset.o ./srcs/execute/execute.o -o minishell -lft -lreadline
 make: Leaving directory `/Users/jasong/42minishell'
  

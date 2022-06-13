@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_token_util.c                                  :+:      :+:    :+:   */
+/*   join_cmd_optarg.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 19:24:49 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:01:42 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/06/13 17:17:55 by woonchoi          #+#    #+#             */
+/*   Updated: 2022/06/13 17:32:16 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_expand_token_value(t_expand_token *exp_v)
+char	*join_cmd_optarg(t_tree *node)
 {
-	exp_v->str1 = NULL;
-	exp_v->str2 = NULL;
-	exp_v->i = 0;
-	exp_v->j = 0;
-	exp_v->qstatus = NO_Q;
+	char	*cmdopt;
+	char	*temp;
+
+	cmdopt = ft_strdup(node->l_child->token);
+	temp = cmdopt;
+	cmdopt = ft_strjoin(cmdopt, "\n");
+	safety_free(temp);
+	if (node->r_child)
+	{
+		temp = cmdopt;
+		cmdopt = ft_strjoin(cmdopt, node->r_child->token);
+		safety_free(temp);
+	}
+	return (cmdopt);
 }

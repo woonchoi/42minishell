@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:45:42 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/05/30 18:24:30 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/12 19:04:04 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 extern int	g_exit_status;
 
@@ -48,7 +48,7 @@ void	signal_handler(int signum)
 		sigquit_handler();
 }
 
-void	set_signal()
+void	set_signal(void)
 {
 	signal(SIGINT, signal_handler);
 	signal(SIGQUIT, signal_handler);

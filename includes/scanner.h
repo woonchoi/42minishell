@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:29:26 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 19:31:27 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/12 19:11:29 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	save_current_string(char *token, t_expand_token *exp_v);
 char	*create_expand_result(char *token, t_env_list *env);
 char	*delete_quote(char *token);
 void	expand_token(t_token *cur, t_env_list *env);
-void	expand_tokens(t_mshell_info *info);
+void	expand_tokens(t_info *info);
 
 #endif

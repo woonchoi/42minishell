@@ -6,12 +6,11 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 22:08:31 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/06 15:25:39 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/12 19:11:29 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 static void	parse_list_add_back(t_env_list **env_list, t_env_list *temp)
 {
@@ -39,7 +38,7 @@ static void	parse_env_list(t_env_list **env_list, char **envp)
 	{
 		temp = (t_env_list *)malloc(sizeof(t_env_list));
 		if (!temp)
-			return ; // need to add terminate minishell
+			terminate_error("terminate_error");
 		temp->key = ft_strndup(envp[i], ft_strchr(envp[i], '=') - envp[i]);
 		env_temp = ft_strchr(envp[i], '=');
 		if (env_temp)
@@ -61,9 +60,15 @@ static t_env_list	*init_env(char **envp)
 	return (env_list);
 }
 
-void	init_mshell_info(t_mshell_info *info, char **envp)
+void	init_info(t_info *info, char **envp)
 {
 	info->cmd_count = 0;
 	info->env_head = init_env(envp);
 	info->tree = NULL;
+	info->heredoc = NULL;
+	info->envp = envp;
+	info->input = NULL;
+	info->error = FALSE;
+	info->index = 0;
+	info->heredoc_count = 0;
 }

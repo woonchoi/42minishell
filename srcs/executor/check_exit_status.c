@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_token_util.c                                  :+:      :+:    :+:   */
+/*   check_exit_status.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 19:24:49 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:01:42 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/06/13 18:27:17 by woonchoi          #+#    #+#             */
+/*   Updated: 2022/06/13 18:29:53 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_expand_token_value(t_expand_token *exp_v)
+int	check_exit_status(t_info *info)
 {
-	exp_v->str1 = NULL;
-	exp_v->str2 = NULL;
-	exp_v->i = 0;
-	exp_v->j = 0;
-	exp_v->qstatus = NO_Q;
+	int	status;
+	int	i;
+
+	i = -1;
+	while (++i < info->cmd_count)
+	{
+		if (waitpid(info->tree[i].pid, &status, 0) == -1)
+			exit(1);
+	}
+	return (1);
 }

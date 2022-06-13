@@ -6,20 +6,18 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:27:08 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 19:30:14 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:03:08 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	expand_question(t_expand_token *exp_v)
 {
-	int		test_exit_status;
 	char	*temp;
 
-	test_exit_status = 0;
 	temp = exp_v->str1;
-	exp_v->str1 = ft_strjoin(exp_v->str1, ft_itoa(test_exit_status));
+	exp_v->str1 = ft_strjoin(exp_v->str1, ft_itoa(g_exit_status));
 	exp_v->i++;
 	exp_v->j = exp_v->i + 1;
 	safety_free(temp);
@@ -27,7 +25,7 @@ void	expand_question(t_expand_token *exp_v)
 
 void	expand_critical_case(t_expand_token *exp_v)
 {
-	char *temp;
+	char	*temp;
 
 	temp = exp_v->str1;
 	exp_v->str1 = ft_strjoin(exp_v->str1, "$");

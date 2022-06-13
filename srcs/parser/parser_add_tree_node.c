@@ -6,13 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 14:59:43 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 15:00:18 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:08:49 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
-t_tree	*create_node(int type, char *token, t_mshell_info *info)
+t_tree	*create_node(int type, char *token, t_info *info)
 {
 	t_tree	*node;
 
@@ -24,10 +24,10 @@ t_tree	*create_node(int type, char *token, t_mshell_info *info)
 	}
 	node->type = type;
 	node->token = ft_strdup(token);
-	return (node); 
+	return (node);
 }
 
-void	add_red_node(t_tree **parent, char *s, int t, t_mshell_info *info)
+void	add_red_node(t_tree **parent, char *s, int t, t_info *info)
 {
 	if ((*parent)->type == ROOT)
 	{
@@ -45,21 +45,21 @@ void	add_red_node(t_tree **parent, char *s, int t, t_mshell_info *info)
 	}
 }
 
-void	add_arg_node(t_tree **parent, char *s, int t, t_mshell_info *info)
+void	add_arg_node(t_tree **parent, char *s, int t, t_info *info)
 {
 	(*parent)->l_child->r_child = create_node(t, s, info);
 }
 
-void	add_cmd_node(t_tree **parent, char *s, int t, t_mshell_info *info)
+void	add_cmd_node(t_tree **parent, char *s, int t, t_info *info)
 {
 	(*parent)->r_child = create_node(BRANCH, "cmd branch", info);
 	(*parent) = (*parent)->r_child;
 	(*parent)->l_child = create_node(t, s, info);
 }
 
-void	add_cmd_arg(t_tree **parent, char *s, t_mshell_info *info)
+void	add_cmd_arg(t_tree **parent, char *s, t_info *info)
 {
-	char *temp;
+	char	*temp;
 
 	if ((*parent)->type == BRANCH)
 	{
@@ -69,7 +69,7 @@ void	add_cmd_arg(t_tree **parent, char *s, t_mshell_info *info)
 	else if ((*parent)->type == OPTARG)
 	{
 		temp = (*parent)->token;
-		(*parent)->token = ft_strjoin((*parent)->token, " ");
+		(*parent)->token = ft_strjoin((*parent)->token, "\n");
 		safety_free(temp);
 		temp = (*parent)->token;
 		(*parent)->token = ft_strjoin((*parent)->token, s);

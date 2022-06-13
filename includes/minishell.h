@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/09 17:11:07 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/13 20:21:25 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <signal.h>
+# include <errno.h>
+# include <dirent.h>
+# include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 # include <sys/wait.h>
 # include "libft.h"
 # include "struct.h"
@@ -27,6 +32,7 @@
 # include "parser.h"
 # include "scanner.h"
 # include "builtin.h"
+# include "executor.h"
 
 int		g_exit_status;
 
@@ -34,22 +40,27 @@ void	signal_handler(int signum);
 void	set_signal();
 
 char	*preadline(char *shellname);
-void	prompt(t_mshell_info *info);
+void	prompt(t_info *info);
 
-void	init_mshell_info(t_mshell_info *info, char **envp);
+void	init_info(t_info *info, char **envp);
 
 int		is_redirection(int tokentype);
+void	terminate_error(char *str);
 
-void	init_prompt_cycle(t_mshell_info *info);
-void	terminate_free(t_mshell_info *info);
+void	init_prompt_cycle(t_info *info);
+void	terminate_free(t_info *info);
 
-void	print_lexer_result(t_mshell_info *info);
-void	lexer(t_mshell_info *info);
+void	print_lexer_result(t_info *info);
+void	lexer(t_info *info);
 void	safety_free(void *data);
+void	safety_free_doublearray(void **data);
 
-void	scanner(t_mshell_info *info);
+void	scanner(t_info *info);
+void	execute(t_info *info);
 
-void	parser(t_mshell_info *info);
+void	print_tree_result(t_tree *root);
+
+void	parser(t_info *info);
 
 /* LEXER */
 

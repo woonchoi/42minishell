@@ -6,12 +6,11 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:50:54 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 12:06:24 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 19:54:11 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//prototype of prompt
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 char	*preadline(char *shellname)
 {
@@ -23,9 +22,9 @@ char	*preadline(char *shellname)
 	return (cmdline);
 }
 
-void	prompt(t_mshell_info *info)
+void	prompt(t_info *info)
 {
-	while(1)
+	while (TRUE)
 	{
 		init_prompt_cycle(info);
 		info->input = preadline("minishell$ ");
@@ -36,11 +35,10 @@ void	prompt(t_mshell_info *info)
 			exit(0);
 		}
 		add_history(info->input);
-		//변수 초기화
 		lexer(info);
 		scanner(info);
-		print_lexer_result(info);
 		parser(info);
+		executor(info);
 		terminate_free(info);
 	}
 }

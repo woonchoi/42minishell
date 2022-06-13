@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:57:06 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/09 21:44:46 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/13 18:39:35 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,22 @@ int	check_avaliable_key(char *key)
 {
 	int	i;
 
-	i = -1;
-	while (key[++i])
+	i = 0;
+	if (!key)
+		return (FALSE);
+	if (!key[i] || (!ft_isalpha(key[i]) && key[i] != '_'))
+		return (FALSE);
+	i++;
+	while (key[i])
 	{
-		if (!(ft_isalpha(key[i]) || key[i] == '_'))
+		if ((!ft_isalnum(key[i]) && key[i] != '_'))
 			return (FALSE);
+		i++;
 	}
 	return (TRUE);
 }
 
-static void free_split_value(char **s_val)
+void	free_split_value(char **s_val)
 {
 	int	i;
 
@@ -41,27 +47,17 @@ static void free_split_value(char **s_val)
 	free(s_val);
 }
 
-t_env_list	*env_key_location(t_env_list *env_head, char *key)
-{
-	int	key_len;
-
-	key_len = ft_strlen(key);
-	while (env_head)
-	{
-		if (!ft_strncmp(env_head->key, key, key_len + 1))
-			return (env_head);
-		env_head = env_head->next;
-	}
-	return (NULL);
-}
-
 void	delete_env(t_env_list **env_head, char *del_key)
 {
 	t_env_list	*del_loc;
 	t_env_list	*temp;
 
 	del_loc = env_key_location(*env_head, del_key);
+	if (!env_head || !*env_head)
+		printf("env_head is null. check something");
 	temp = *env_head;
+	if (!del_loc)
+		return ;
 	if (temp == del_loc)
 	{
 		*env_head = temp->next;
@@ -80,21 +76,22 @@ void	delete_env(t_env_list **env_head, char *del_key)
 	free(del_loc);
 }
 
-int	builtin_unset(t_env_list *env_head, char *argv[])
+int	builtin_unset(char **argv, t_env_list *env_head)
 {
 	int	i;
 
 	i = 0;
-	if (!argv[i])
+	if (argv[1] == NULL)
 		return (0);
 	while (argv[i])
 	{
-		if (!check_avaliable_arg(argv[i]))
+		if (!check_avaliable_key(argv[i]))
 		{
 			ft_s_quote_error("unset", argv[i], "not a valid identifier");
 			return (1);
 		}
 		delete_env(&env_head, argv[i]);
+		i++;
 	}
 	return (0);
 }

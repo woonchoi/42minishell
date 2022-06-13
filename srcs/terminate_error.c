@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   built_error.c                                      :+:      :+:    :+:   */
+/*   terminate_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 18:44:19 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/09 19:15:44 by jasong           ###   ########.fr       */
+/*   Created: 2022/06/12 16:02:56 by woonchoi          #+#    #+#             */
+/*   Updated: 2022/06/12 19:08:00 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_error(char *cmd, char *cmd_arg, char *errmsg)
+void	terminate_error(char *str)
 {
-	ft_putstr_fd("bash: ", 2);
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd(": ", 2);
-	if (cmd_arg)
-	{
-		ft_putstr_fd(cmd_arg, 2);
-		ft_putstr_fd(": ", 2);
-	}
-	ft_putstr_fd(errmsg, 2);
-	ft_putstr_fd("\n", 2);
+	ft_putendl_fd(str, STDERR_FILENO);
+	exit(1);
 }
