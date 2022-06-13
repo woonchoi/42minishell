@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:26:18 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 17:26:39 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:02:07 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,14 @@ char	*get_cmd_path(t_info *info, char *token)
 	char	**path_list;
 	int		i;
 
+	temp = NULL;
 	path_list = get_path_env_list(info);
 	if (!path_list)
 	{
 		info->error = TRUE;
-		return (NULL);
+		return (temp);
 	}
 	else
 		temp = match_cmd_path(info, token, path_list);
-	if (temp != NULL)
-		return (temp);
-	else
-		return (token);
+	return (temp);
 }

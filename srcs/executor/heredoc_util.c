@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:27:30 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 16:33:13 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:03:12 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	preorder_heredoc(t_info *info, t_tree *node, int *i)
 	}
 	else if (node->l_child->type == HEREDOC && node->r_child)
 		set_heredoc(info, node->r_child->token, i);
-	preorder_heredoc(node->l_child, info, i);
-	preorder_heredoc(node->r_child, info, i);
+	preorder_heredoc(info, node->l_child, i);
+	preorder_heredoc(info, node->r_child, i);
 }
 
 void	run_heredoc(t_info *info)
