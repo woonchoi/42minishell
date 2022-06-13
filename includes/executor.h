@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:47:36 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 18:32:34 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:58:10 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		execute_cmd(t_info *info, t_tree *node);
 
 void	preorder(t_info *info, t_tree *node);
 void	preorder_once(t_info *info, t_tree *node, int in, int out);
-void	preorder_general(t_info *info, int in, int out);
+void	preorder_general(t_info *info, int *in, int *out);
 
 char	*expand_line(t_info *info, char *line);
 void	init_heredoc(t_info *info, char *str, int *i);

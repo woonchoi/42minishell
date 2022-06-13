@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:49:48 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 18:32:59 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 21:00:10 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,4 @@ void	preorder_once(t_info *info, t_tree *node, int in, int out)
 	dup2(out, STDOUT_FILENO);
 	close(in);
 	close(out);
-}
-
-void	preorder_general(t_info *info, int in, int out)
-{
-	int	i;
-
-	i = -1;
-	while (++i < info->cmd_count)
-	{
-		if (i < info->cmd_count)
-		{
-			pipe(info->tree[i].fd);
-			info->tree[i + 1].prev_fd = dup(info->tree[i].fd[0]);
-			close(info->tree[i].fd[0]);
-		}
-		fork_cmd(info, i, in, out);
-	}
-	g_exit_status = check_exit_status(info);
 }

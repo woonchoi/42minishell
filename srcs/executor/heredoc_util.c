@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:27:30 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 18:03:12 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:49:15 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	set_heredoc(t_info *info, char *str, int *i)
 
 void	preorder_heredoc(t_info *info, t_tree *node, int *i)
 {
-	if (!node && !node->l_child)
+	if (!node || !node->l_child)
 		return ;
 	if (node->l_child->type == HEREDOC && !node->r_child)
 	{
