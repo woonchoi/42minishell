@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
+#    By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/13 17:47:05 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/13 18:08:47 by jasong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ INC_DIR = ./includes/
 CLUSTER_RL_DIR = $(HOME)/.brew/opt/readline
 
 JASONG_LOCAL_RL_DIR = /opt/homebrew/opt/readline
-JASONG_LIB_FLAG = -L$(JASONG_LOCAL_RL_DIR)/lib
-JASONG_INC_FLAG = -I$(JASONG_LOCAL_RL_DIR)/include
+JASONG_LIB_FLAG = -L$(JASONG_LOCAL_RL_DIR)/lib -L$(LIBFT_DIR)
+JASONG_INC_FLAG = -I$(JASONG_LOCAL_RL_DIR)/include -I$(LIBFT_DIR) -I$(INC_DIR)
 
 LIBRARIES= -L$(LIBFT_DIR) -L$(CLUSTER_RL_DIR)/lib
 INCLUDES = -I$(LIBFT_DIR) -I$(INC_DIR) -I$(CLUSTER_RL_DIR)/include
@@ -119,7 +119,7 @@ fclean:
 re : fclean all
 
 jasong: $(LIBFT)
-	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(MAIN_SRCDIR) -o $@ -lft -lreadline
+	$(CC) $(CFLAG) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(MAIN_SRCDIR) -o $@ -lft -lreadline
 
 jclean : fclean
 	rm -rf jasong.dSYM

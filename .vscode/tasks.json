@@ -8,7 +8,7 @@
             "args": [
                 "-C",
                 "${workspaceFolder}",
-                "debug"
+                "jasong"
             ],
             "options": {
                 "cwd": "/usr/bin"
