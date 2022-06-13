@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:00:36 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:16:21 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 21:44:43 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ void	init_tree_with_pipecount(t_info *info)
 {
 	int	pipecount;
 	int	pipesize;
+	int	i;
 
+	i = -1;
 	if (info->error)
 		return ;
-	pipecount = info->cmd_count + 1;
+	pipecount = info->cmd_count;
 	pipesize = sizeof(t_tree_list);
 	info->tree = (t_tree_list *)ft_calloc(pipecount, pipesize);
 	if (!info->tree)
@@ -27,6 +29,8 @@ void	init_tree_with_pipecount(t_info *info)
 		info->error = TRUE;
 		safety_free(info->tree);
 	}
+	while (++i < pipecount)
+		info->tree[i].prev_fd = -1;
 }
 
 void	init_parse_util(t_parse_util *par_v, t_tree *root)
