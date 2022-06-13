@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:08:59 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 20:25:55 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:35:10 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ int	execute_cmd(t_info *info, t_tree *node)
 
 	cmdopt = join_cmd_optarg(node);
 	optarg = ft_split(cmdopt, '\n');
-	printf("cmdopt == %s && optarg[0] == %s && optarg[1] == %s\n", cmdopt, optarg[0], optarg[1]);
 	cmdpath = get_cmd_path(info, optarg[0]);
 	builtin_cmd = check_builtin(node->l_child->token);
-	printf("cmdopt == %s && cmdpath == %s\n", cmdopt, cmdpath);
 	if (builtin_cmd)
 		g_exit_status = execute_builtin(info, builtin_cmd, optarg);
 	else if (cmdpath)
