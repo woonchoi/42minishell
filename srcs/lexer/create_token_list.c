@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:58:01 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 09:19:13 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 19:24:46 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	string_add_back(t_info *info)
 	if (i != info->index)
 		info->index = i - 1;
 	if (!is_only_space(str))
-		tinfo->tokenlist = token_add_back(tinfo->tokenlist, NORMAL, str);
+		tinfo->tokenlist = token_add_back(tinfo->tokenlist, STR, str);
 	safety_free(str);
 }
 

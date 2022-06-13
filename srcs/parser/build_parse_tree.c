@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:01:11 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 15:03:05 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 19:24:46 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	build_tree_with_token(t_token **cur, t_tree *root, t_info *info)
 		}
 		else if (is_redirection((*cur)->tokentype))
 			build_redirection((*cur), &par_v, info);
-		else if ((*cur)->tokentype == NORMAL)
+		else if ((*cur)->tokentype == STR)
 			build_cmd_arg((*cur), &par_v, info);
 		(*cur) = (*cur)->next;
 	}

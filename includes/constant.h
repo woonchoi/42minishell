@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:39:56 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:09:45 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 19:24:46 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef enum	e_cmd_type
 {
 	ROOT = 0,
-	NORMAL = 1,
+	STR = 1,
 	INPUT_R = 2,
 	OUTPUT_R = 3,
 	APPEND_R = 4,
