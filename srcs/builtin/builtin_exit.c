@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:56:23 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/10 20:40:21 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:04:07 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	flow(long long num, long long sign)
 	return (FALSE);
 }
 
-static long long exit_num(char *num)
+static long long	exit_num(char *num)
 {
 	long long	i;
 	long long	neg_sign;
@@ -53,7 +53,7 @@ static long long exit_num(char *num)
 	return ((unsigned char)(ret * neg_sign));
 }
 
-int	builtin_exit(char **argv, int pipe_flag) // pipe로 넘어오면 pipe flag = 0
+int	builtin_exit(char **argv, int pipe_flag)
 {
 	if (!argv)
 	{

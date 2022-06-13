@@ -6,13 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:57:20 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/10 20:13:07 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:03:19 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		builtin_env(char **argv, t_env_list *env_head)
+int	builtin_env(char **argv, t_env_list *env_head)
 {
 	if (argv && argv[0])
 	{

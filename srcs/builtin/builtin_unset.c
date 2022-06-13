@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:57:06 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/11 21:03:15 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/13 15:34:15 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_avaliable_key(char *key)
 	return (TRUE);
 }
 
-void free_split_value(char **s_val)
+void	free_split_value(char **s_val)
 {
 	int	i;
 
@@ -45,20 +45,6 @@ void free_split_value(char **s_val)
 	}
 	free(s_val[i]);
 	free(s_val);
-}
-
-t_env_list	*env_key_location(t_env_list *env_head, char *key)
-{
-	int	key_len;
-
-	key_len = ft_strlen(key);
-	while (env_head)
-	{
-		if (!ft_strncmp(env_head->key, key, key_len + 1))
-			return (env_head);
-		env_head = env_head->next;
-	}
-	return (NULL);
 }
 
 void	delete_env(t_env_list **env_head, char *del_key)

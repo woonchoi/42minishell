@@ -6,13 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:42:01 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/10 20:23:50 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:01:28 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	builtin_echo(char **argv) //argv에 들어오는 내용은 data로 들어와야함 ex) echo "$HOME" > /Users/jasong
+int	builtin_echo(char **argv)
 {
 	int	newline_flag;
 	int	i;
