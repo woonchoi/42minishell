@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:11:48 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 21:41:43 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 21:55:55 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	set_pipe(t_info *info, int i)
 {
-	printf("cur prev %d\n", info->tree[i].prev_fd);
 	if (info->tree[i].prev_fd > -1)
 	{
 		dup2(info->tree[i].prev_fd, 0);

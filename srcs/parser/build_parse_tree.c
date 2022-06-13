@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:01:11 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 19:24:46 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 21:56:18 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,5 @@ void	build_tree(t_info *info)
 	{
 		info->tree[i].root = create_node(ROOT, "root", info);
 		build_tree_with_token(&cur, info->tree[i].root, info);
-		printf("\n");
-		print_tree_result(info->tree[i].root);
 	}
 }
