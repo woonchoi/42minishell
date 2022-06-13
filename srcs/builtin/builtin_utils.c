@@ -6,11 +6,17 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:08:45 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/13 15:39:09 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/13 18:54:34 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	free_two_arg(void *arg1, void *arg2)
+{
+	free(arg1);
+	free(arg2);
+}
 
 t_env_list	*new_env_list(char *argv)
 {
@@ -22,9 +28,9 @@ t_env_list	*new_env_list(char *argv)
 		return (NULL);
 	sep = ft_strchr(argv, '=');
 	new->key = ft_strndup(argv, sep - argv);
-	if (!new->key)
+	if (!new->key[0])
 	{
-		free(new);
+		free_two_arg(new->key, new);
 		return (NULL);
 	}
 	new->value = ft_strdup(sep + 1);
@@ -32,8 +38,7 @@ t_env_list	*new_env_list(char *argv)
 	{
 		if (new->value)
 			free(new->value);
-		free(new->key);
-		free(new);
+		free_two_arg(new->key, new);
 		return (NULL);
 	}
 	new->split_value = ft_split(sep + 1, ':');

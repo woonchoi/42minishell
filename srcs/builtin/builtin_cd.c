@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 21:26:19 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/12 19:11:29 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:40:36 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ int	builtin_cd(char **path, t_info *info)
 	int		ret;
 	char	*cd_path;
 
-	if (!path)
+	if (path[1] == NULL)
 		cd_path = get_value_with_key("HOME", info->env_head);
-	else if (path[0] && path[1])
+	else if (path[1] && path[2])
 	{
 		ft_error("cd", NULL, "too many arguments");
 		return (1);
 	}
 	else
-		cd_path = path[0];
+		cd_path = path[1];
 	ret = chdir(cd_path);
 	if (ret == -1)
 	{

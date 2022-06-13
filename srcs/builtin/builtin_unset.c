@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:57:06 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/13 15:34:15 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/13 18:39:35 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	builtin_unset(char **argv, t_env_list *env_head)
 	int	i;
 
 	i = 0;
-	if (!argv)
+	if (argv[1] == NULL)
 		return (0);
 	while (argv[i])
 	{

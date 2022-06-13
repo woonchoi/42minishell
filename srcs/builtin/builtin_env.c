@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:57:20 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/13 15:03:19 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/13 18:36:09 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	builtin_env(char **argv, t_env_list *env_head)
 {
-	if (argv && argv[0])
+	if (!argv)
+		return (0);
+	if (argv[1])
 	{
-		ft_error("env", argv[0], strerror(1));
+		ft_error("env", argv[1], strerror(2));
 		return (127);
 	}
 	while (env_head)

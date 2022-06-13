@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:56:23 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/13 15:04:07 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/13 18:39:14 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,22 @@ static long long	exit_num(char *num)
 
 int	builtin_exit(char **argv, int pipe_flag)
 {
-	if (!argv)
+	if (argv[1] == NULL)
 	{
 		if (pipe_flag != TRUE)
 			ft_putendl_fd("exit", 1);
 		exit(0);
 	}
-	if (exit_num(argv[0]) < 0)
+	if (exit_num(argv[1]) < 0)
 	{
 		ft_error("exit", argv[0], "numeric argument required");
 		exit(255);
 	}
 	ft_putstr_fd("exit", 1);
-	if (argv[1] != NULL)
+	if (argv[2] != NULL)
 	{
 		ft_error("exit", NULL, "too many arguments");
 		exit(1);
 	}
-	exit(exit_num(argv[0]));
+	exit(exit_num(argv[1]));
 }

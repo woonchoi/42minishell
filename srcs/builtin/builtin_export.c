@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:10:41 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/13 15:42:28 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/13 18:38:36 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ int	builtin_export(char *argv[], t_info *info)
 	int	delimeter;
 	int	ret;
 
-	i = -1;
-	if (!argv)
+	i = 0;
+	if (argv[1] == NULL)
 	{
 		print_export_env(info->env_head);
 		return (0);

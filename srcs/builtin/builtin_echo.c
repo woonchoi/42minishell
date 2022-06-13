@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_echo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:42:01 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/13 15:01:28 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/13 18:40:03 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	builtin_echo(char **argv)
 	int	i;
 
 	newline_flag = FALSE;
-	i = 0;
-	if (!argv)
+	i = 1;
+	if (argv[1])
 	{
 		ft_putendl_fd("", STDOUT_FILENO);
 		return (0);
