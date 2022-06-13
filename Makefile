@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/13 18:10:42 by jasong           ###   ########.fr        #
+#    Updated: 2022/06/13 18:31:32 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,8 @@ EXECUTOR_SRCS = check_cmd.c \
 				join_cmd_optarg.c \
 				preorder_tree.c \
 				print_execute_error.c \
+				check_exit_status.c \
+				fork_cmd.c \
 				executor.c \
 
 BUILTIN_SRCS =	builtin_cd.c \

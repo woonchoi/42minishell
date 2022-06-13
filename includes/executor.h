@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:47:36 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 17:54:19 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:32:34 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,14 @@ char	*match_cmd_path(t_info *info, char *token, char **path);
 char	*get_cmd_path(t_info *info, char *token);
 char	*join_cmd_optarg(t_tree *node);
 
+int		check_exit_status(t_info *info);
+void	fork_cmd(t_info *info, int i, int in, int out);
+
 int		execute_cmd(t_info *info, t_tree *node);
 
 void	preorder(t_info *info, t_tree *node);
 void	preorder_once(t_info *info, t_tree *node, int in, int out);
+void	preorder_general(t_info *info, int in, int out);
 
 char	*expand_line(t_info *info, char *line);
 void	init_heredoc(t_info *info, char *str, int *i);

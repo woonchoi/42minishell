@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.c                                         :+:      :+:    :+:   */
+/*   check_exit_status.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 13:11:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 18:32:25 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/06/13 18:27:17 by woonchoi          #+#    #+#             */
+/*   Updated: 2022/06/13 18:29:53 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	execute(t_info *info)
+int	check_exit_status(t_info *info)
 {
-	int	in;
-	int	out;
+	int	status;
 	int	i;
 
-	in = dup(STDIN_FILENO);
-	out = dup(STDOUT_FILENO);
 	i = -1;
-	if (no_fork_cmd(info->tree[0].root) && info->cmd_count == 1)
-		preorder_once(info, info->tree[0].root, in, out);
-	else
-		preorder_general(info, in, out);
-}
-
-void	executor(t_info *info)
-{
-	if (info->error == TRUE)
-		return ;
-	heredoc_process(info);
-	execute(info);
+	while (++i < info->cmd_count)
+	{
+		if (waitpid(info->tree[i].pid, &status, 0) == -1)
+			exit(1);
+	}
+	return (1);
 }
