@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 20:32:05 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:15:10 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:21:47 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	no_fork_cmd(t_tree *node)
 	if (!node || !node->r_child || !node->r_child->l_child)
 		return (TRUE);
 	cmd = node->r_child->l_child->token;
-	if (cmd);
+	if (cmd)
 	{
 		len = ft_strlen(cmd);
 		if (!ft_strncmp(cmd, "cd", 3)

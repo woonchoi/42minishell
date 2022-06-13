@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.c                                         :+:      :+:    :+:   */
+/*   heredoc_process.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 13:11:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:12:41 by woonchoi         ###   ########.fr       */
+/*   Created: 2022/06/13 13:12:53 by woonchoi          #+#    #+#             */
+/*   Updated: 2022/06/13 16:31:05 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	executor(t_info *info)
+void	heredoc_process(t_info *info)
 {
-	if (info->error == TRUE)
+	int	h_cnt;
+
+	h_cnt = info->heredoc_count;
+	if (h_cnt == 0)
 		return ;
-	heredoc_process(info);
+	info->heredoc = (t_heredoc *)ft_calloc(sizeof(t_heredoc), h_cnt);
+	run_heredoc(info);
 }

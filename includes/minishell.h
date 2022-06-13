@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 15:01:44 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:51:32 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <signal.h>
+# include <errno.h>
 # include <dirent.h>
+# include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <sys/stat.h>
@@ -30,6 +32,7 @@
 # include "parser.h"
 # include "scanner.h"
 # include "builtin.h"
+# include "executor.h"
 
 int		g_exit_status;
 
