@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:42:01 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/13 18:40:03 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/13 21:46:32 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	builtin_echo(char **argv)
 
 	newline_flag = FALSE;
 	i = 1;
-	if (argv[1])
+	if (argv[1] == NULL)
 	{
 		ft_putendl_fd("", STDOUT_FILENO);
 		return (0);
