@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:08:59 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 19:49:29 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:25:55 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,16 @@ int	execute_cmd(t_info *info, t_tree *node)
 	builtin_cmd = check_builtin(node->l_child->token);
 	printf("cmdopt == %s && cmdpath == %s\n", cmdopt, cmdpath);
 	if (builtin_cmd)
-		g_exit_status = execute_builtin(info, builtin_cmd, &optarg[1]);
+		g_exit_status = execute_builtin(info, builtin_cmd, optarg);
 	else if (cmdpath)
 		execve(cmdpath, optarg, info->envp);
 	else
 	{
 		execve(optarg[0], optarg, info->envp);
 		g_exit_status = 0;
+		exit(0);
 	}
+	safety_free(cmdopt);
+	safety_free(cmdpath);
+	safety_free_doublearray(optarg);
 }
