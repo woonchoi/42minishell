@@ -6,13 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 21:26:19 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/10 20:13:35 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/12 19:11:29 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	builtin_cd(char **path, t_mshell_info *info)
+int	builtin_cd(char **path, t_info *info)
 {
 	int		ret;
 	char	*cd_path;

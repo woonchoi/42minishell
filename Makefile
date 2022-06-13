@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/11 20:19:55 by jasong           ###   ########.fr        #
+#    Updated: 2022/06/13 15:01:29 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,13 +33,15 @@ MAIN_SRCS = signal_handler.c prompt.c minishell.c init_prompt.c init_struct.c\
 			lexer/tokenizer.c lexer/create_token_list.c lexer/lexer.c lexer/tokenizing_util.c lexer/validate_token_list.c\
 			scanner/expand_envvars.c scanner/expand_tokens.c scanner/expand_util.c scanner/get_token_env.c scanner/init_token_util.c scanner/scanner.c\
 			util_free/safety_free.c\
-			parser/build_parse_tree.c parser/init_parser.c parser/parse_result_util.c parser/parser_add_tree_node.c parser/parser.c\
+			parser/build_parse_tree.c parser/init_parser.c parser/parser_add_tree_node.c parser/parser.c\
 			util_free/terminate_free.c\
 			builtin/built_error.c builtin/builtin_cd.c builtin/builtin_echo.c\
 			builtin/builtin_env.c builtin/builtin_error_singlequote.c\
 			builtin/builtin_exit.c builtin/builtin_export.c builtin/builtin_pwd.c\
 			builtin/builtin_unset.c\
 			execute/execute.c\
+			test_code.c terminate_error.c\
+
 
 
 MAIN_SRCDIR = $(addprefix $(SRC_DIR), $(MAIN_SRCS))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:08:33 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/11 21:03:28 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/12 19:11:29 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 # include "minishell.h"
 # include <string.h>
 
-int			builtin_cd(char **path, t_mshell_info *info);
+int			builtin_cd(char **path, t_info *info);
 int			builtin_echo(char **argv);
 int			builtin_env(char **argv, t_env_list *env_head);
 int			builtin_exit(char **argv, int pipe_flag);
-int			builtin_export(char **argv, t_mshell_info *info);
+int			builtin_export(char **argv, t_info *info);
 int			builtin_pwd(void);
 int			builtin_unset(char **argv, t_env_list *env_head);
 

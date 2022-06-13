@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 22:08:31 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/12 19:11:29 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:15:37 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static t_env_list	*init_env(char **envp)
 
 void	init_info(t_info *info, char **envp)
 {
-	info->cmd_count = 0;
+	info->cmd_count = 1;
 	info->env_head = init_env(envp);
 	info->tree = NULL;
 	info->heredoc = NULL;

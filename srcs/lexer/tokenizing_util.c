@@ -6,11 +6,11 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:23:44 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/11 18:59:31 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/12 19:20:28 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int	get_qstatus(char c, int qstatus)
 {
@@ -34,7 +34,7 @@ int	get_qstatus(char c, int qstatus)
 	return (qstatus);
 }
 
-int	check_quote(t_mshell_info *info)
+int	check_quote(t_info *info)
 {
 	int	i;
 
@@ -47,14 +47,14 @@ int	check_quote(t_mshell_info *info)
 	if (info->tinfo.qstatus != NO_Q)
 	{
 		info->error = TRUE;
-		ft_putstr_fd("bash : Unclosed quote found\n", 2);
+		ft_putendl_fd("bash : Unclosed quote detected", STDERR_FILENO);
 	}
 	return (info->error);
 }
 
 int	is_in_charset(char c, const char *charset)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (charset[i])
@@ -80,7 +80,7 @@ int	is_only_space(char *str)
 	return (TRUE);
 }
 
-int		is_redirection(int tokentype)
+int	is_redirection(int tokentype)
 {
 	if (tokentype == INPUT_R
 		|| tokentype == OUTPUT_R

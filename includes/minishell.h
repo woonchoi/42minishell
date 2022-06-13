@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/12 14:31:55 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:01:44 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,26 @@ void	signal_handler(int signum);
 void	set_signal();
 
 char	*preadline(char *shellname);
-void	prompt(t_mshell_info *info);
+void	prompt(t_info *info);
 
-void	init_mshell_info(t_mshell_info *info, char **envp);
+void	init_info(t_info *info, char **envp);
 
 int		is_redirection(int tokentype);
+void	terminate_error(char *str);
 
-void	init_prompt_cycle(t_mshell_info *info);
-void	terminate_free(t_mshell_info *info);
+void	init_prompt_cycle(t_info *info);
+void	terminate_free(t_info *info);
 
-void	print_lexer_result(t_mshell_info *info);
-void	lexer(t_mshell_info *info);
+void	print_lexer_result(t_info *info);
+void	lexer(t_info *info);
 void	safety_free(void *data);
 
-void	scanner(t_mshell_info *info);
-void	execute(t_mshell_info *info);
+void	scanner(t_info *info);
+void	execute(t_info *info);
 
-void	parser(t_mshell_info *info);
+void	print_tree_result(t_tree *root);
+
+void	parser(t_info *info);
 
 /* LEXER */
 

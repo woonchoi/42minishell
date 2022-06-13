@@ -6,11 +6,11 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:26:08 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 19:31:15 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:01:39 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 char	*get_key_in_token(char *token, t_expand_token *exp_v)
 {

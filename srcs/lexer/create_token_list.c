@@ -6,11 +6,11 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:58:01 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/11 19:13:38 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 09:19:13 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 t_token	*create_token(int type, char *str)
 {
@@ -46,7 +46,7 @@ t_token	*token_add_back(t_token *token, int type, char *str)
 	return (token);
 }
 
-void	string_add_back(t_mshell_info *info)
+void	string_add_back(t_info *info)
 {
 	int				i;
 	char			*temp;
@@ -57,16 +57,14 @@ void	string_add_back(t_mshell_info *info)
 	tinfo = &info->tinfo;
 	while (info->input[i])
 	{
-		if ((is_in_charset(info->input[i], SEPLIST)
-			|| is_in_charset(info->input[i], SPACELIST)) && tinfo->qstatus == NO_Q)
+		if (is_in_charset(info->input[i], METACHARACTER)
+			&& tinfo->qstatus == NO_Q)
 			break ;
 		i++;
 		tinfo->qstatus = get_qstatus(info->input[i], tinfo->qstatus);
 	}
 	temp = ft_strndup(&info->input[info->index], i - info->index);
-	printf("current string : |%s|\n", temp);
 	str = ft_strtrim(temp, SPACELIST);
-	printf("trim data : |%s|\n", str);
 	safety_free(temp);
 	if (i != info->index)
 		info->index = i - 1;
@@ -75,7 +73,7 @@ void	string_add_back(t_mshell_info *info)
 	safety_free(str);
 }
 
-void	redirection_add_back(t_mshell_info *info)
+void	redirection_add_back(t_info *info)
 {
 	char			first_c;
 	char			second_c;

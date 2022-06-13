@@ -6,11 +6,11 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:22:44 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/08 19:31:57 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:01:26 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	save_current_string(char *token, t_expand_token *exp_v)
 {
@@ -33,7 +33,7 @@ char	*create_expand_result(char *token, t_env_list *env)
 		exp_v.qstatus = get_qstatus(token[exp_v.i], exp_v.qstatus);
 		if (check_quote_need_delete(token[exp_v.i], &exp_v))
 			save_current_string(token, &exp_v);
-		else if ((exp_v.qstatus == NO_Q || exp_v.qstatus == DOUBLE_Q) 
+		else if ((exp_v.qstatus == NO_Q || exp_v.qstatus == DOUBLE_Q)
 			&& token[exp_v.i] == '$')
 		{
 			preprocess_expand_ds(token, &exp_v);
@@ -49,7 +49,7 @@ char	*create_expand_result(char *token, t_env_list *env)
 char	*delete_quote(char *token)
 {
 	t_expand_token	exp_v;
-	char	*new_token;
+	char			*new_token;
 
 	init_expand_token_value(&exp_v);
 	new_token = NULL;
@@ -80,14 +80,14 @@ void	expand_token(t_token *cur, t_env_list *env)
 		{
 			cur->token = delete_quote(cur->token);
 			safety_free(temp);
-			return ; 
+			return ;
 		}
 		cur->token = create_expand_result(cur->token, env);
 		safety_free(temp);
 	}
 }
 
-void	expand_tokens(t_mshell_info *info)
+void	expand_tokens(t_info *info)
 {
 	t_token	*cur;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:10:41 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/11 21:04:06 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/12 19:11:29 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ int	add_value(char *argv, t_env_list *env_head)
 	return (0);
 }
 
-int	builtin_export(char *argv[], t_mshell_info *info)
+int	builtin_export(char *argv[], t_info *info)
 {
 	int	i;
 	int	delimeter;

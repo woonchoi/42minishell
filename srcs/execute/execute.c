@@ -6,13 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 20:32:05 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/12 15:33:26 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:15:10 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*expand_line(t_mshell_info *info, char *line)
+char	*expand_line(t_info *info, char *line)
 {
 	t_expand_token	exp_v;
 
@@ -31,7 +31,7 @@ char	*expand_line(t_mshell_info *info, char *line)
 	return (exp_v.str1);
 }
 
-void	init_heredoc(t_mshell_info *info, char *str, int *i)
+void	init_heredoc(t_info *info, char *str, int *i)
 {
 	char	*line;
 	char	*temp;
@@ -57,7 +57,7 @@ void	init_heredoc(t_mshell_info *info, char *str, int *i)
 	safety_free(line);
 }
 
-void	set_heredoc(t_mshell_info *info, char *str, int *i)
+void	set_heredoc(t_info *info, char *str, int *i)
 {
 	pipe(info->heredoc[*i].fd);
 	init_heredoc(info, str, i);
@@ -65,7 +65,7 @@ void	set_heredoc(t_mshell_info *info, char *str, int *i)
 	(*i)++;
 }
 
-void	preorder_redirection(t_tree *node, t_mshell_info *info, int *i)
+void	preorder_redirection(t_tree *node, t_info *info, int *i)
 {
 	if (!node || !node->l_child)
 		return ;
@@ -84,7 +84,7 @@ void	preorder_redirection(t_tree *node, t_mshell_info *info, int *i)
 	}
 }
 
-void	run_heredoc(t_mshell_info *info)
+void	run_heredoc(t_info *info)
 {
 	t_tree	*cur;
 	int		i;
@@ -92,14 +92,14 @@ void	run_heredoc(t_mshell_info *info)
 
 	i = -1;
 	heredoc_i = 0;
-	while (++i < info->cmd_count + 1)
+	while (++i < info->cmd_count)
 	{
 		cur = info->tree[i].root->l_child;
 		preorder_redirection(cur, info, &heredoc_i);
 	}
 }
 
-void	heredoc_process(t_mshell_info *info)
+void	heredoc_process(t_info *info)
 {
 	int	h_cnt;
 
@@ -189,7 +189,7 @@ int	append_redir(char *pathname)
 	return (0);
 }
 
-int	heredoc(t_mshell_info *info)
+int	heredoc(t_info *info)
 {
 	int	i;
 
@@ -203,7 +203,7 @@ int	heredoc(t_mshell_info *info)
 	return (0);
 }
 
-int	execute_redirection(t_mshell_info *info, t_tree *node)
+int	execute_redirection(t_info *info, t_tree *node)
 {
 	if (node->l_child->type == INPUT_R)
 		return (input_redir(node->r_child->token));
@@ -216,7 +216,7 @@ int	execute_redirection(t_mshell_info *info, t_tree *node)
 	return (0);
 }
 
-char	**get_path_env_list(t_mshell_info *info)
+char	**get_path_env_list(t_info *info)
 {
 	t_env_list	*cur;
 
@@ -232,7 +232,7 @@ char	**get_path_env_list(t_mshell_info *info)
 	return (NULL);
 }
 
-int		execute_builtin(t_mshell_info *info, int cmd, char **optarg)
+int		execute_builtin(t_info *info, int cmd, char **optarg)
 {
 	//printf("check1 current cmd = %d\n", cmd);
 	if (cmd == CMD_CD)
@@ -262,14 +262,13 @@ char	*strjoin_free(char *a, char *b)
 	return (temp);
 }
 
-char	*match_cmd_path(t_mshell_info *info, char *token, char **path)
+char	*match_cmd_path(t_info *info, char *token, char **path)
 {
 	DIR				*cur_dir;
 	struct dirent	*cur_dir_info;
 	char			*temp;
 	int				i;
 
-	temp = NULL;
 	i = -1;
 	while (path[++i])
 	{
@@ -288,10 +287,10 @@ char	*match_cmd_path(t_mshell_info *info, char *token, char **path)
 		}
 		closedir(cur_dir);
 	}
-	return (temp);
+	return (NULL);
 }
 
-char	*get_cmd_path(t_mshell_info *info, char *token)
+char	*get_cmd_path(t_info *info, char *token)
 {
 	char	*temp;
 	char	**path_list;
@@ -324,7 +323,7 @@ char	*join_cmd_optarg(char *cmd, char *optarg)
 	return (ret);
 }
 
-int		execute_cmd(t_mshell_info *info, t_tree *node)
+int		execute_cmd(t_info *info, t_tree *node)
 {
 	char	*cmd;
 	char	*cmd_opt;
@@ -351,7 +350,7 @@ int		execute_cmd(t_mshell_info *info, t_tree *node)
 	return (0);
 }
 
-void	preorder(t_mshell_info *info, t_tree *node)
+void	preorder(t_info *info, t_tree *node)
 {
 	//printf("preorder\n");
 	if (!node)
@@ -371,7 +370,7 @@ void	preorder(t_mshell_info *info, t_tree *node)
 	preorder(info, node->r_child);
 }
 
-void	preorder_once(t_mshell_info *info, t_tree *node)
+void	preorder_once(t_info *info, t_tree *node)
 {
 	int	in;
 	int	out;
@@ -385,14 +384,14 @@ void	preorder_once(t_mshell_info *info, t_tree *node)
 	close(out);
 }
 
-void	set_pipe(t_mshell_info *info, int i)
+void	set_pipe(t_info *info, int i)
 {
 	if (info->tree[i].prev_fd > -1)
 	{
 		dup2(info->tree[i].prev_fd, 0);
 		close(info->tree[i].prev_fd);
 	}
-	if (i + 1 < info->cmd_count + 1)
+	if (i + 1 < info->cmd_count)
 	{
 		dup2(info->tree[i].fd[1], 1);
 		close(info->tree[i].fd[0]);
@@ -400,7 +399,7 @@ void	set_pipe(t_mshell_info *info, int i)
 	}
 }
 
-void	fork_cmd(t_mshell_info *info, int i, int in, int out)
+void	fork_cmd(t_info *info, int i, int in, int out)
 {
 	info->tree[i].pid = fork();
 	if (info->tree[i].pid < 0)
@@ -413,7 +412,7 @@ void	fork_cmd(t_mshell_info *info, int i, int in, int out)
 	}
 	else
 	{
-		if (i + 1 < info->cmd_count + 1)
+		if (i + 1 < info->cmd_count)
 		{
 			close(info->tree[i].fd[0]);
 			close(info->tree[i].fd[1]);
@@ -425,13 +424,13 @@ void	fork_cmd(t_mshell_info *info, int i, int in, int out)
 	}
 }
 
-int	check_exit_status(t_mshell_info *info)
+int	check_exit_status(t_info *info)
 {
 	int	status;
 	int	i;
 
 	i = 0;
-	while (i < info->cmd_count + 1)
+	while (i < info->cmd_count)
 	{
 		if (waitpid(info->tree[i].pid, &status, 0) == -1)
 			exit(1);
@@ -440,7 +439,7 @@ int	check_exit_status(t_mshell_info *info)
 	return (1);
 }
 
-void	preorder_general(t_mshell_info *info, t_tree_list *tree)
+void	preorder_general(t_info *info, t_tree_list *tree)
 {
 	int	in;
 	int	out;
@@ -449,7 +448,7 @@ void	preorder_general(t_mshell_info *info, t_tree_list *tree)
 	in = dup(STDIN_FILENO);
 	out = dup(STDOUT_FILENO);
 	i = -1;
-	while (++i < info->cmd_count + 1)
+	while (++i < info->cmd_count)
 	{
 		if (i < info->cmd_count)
 		{
@@ -462,12 +461,10 @@ void	preorder_general(t_mshell_info *info, t_tree_list *tree)
 	g_exit_status = check_exit_status(info);
 }
 
-void	execute(t_mshell_info *info)
+void	execute(t_info *info)
 {
-	//printf("checkexecute\n");
 	if (info->error == TRUE)
 		return ;
-	//printf("checkexecute\n");
 	heredoc_process(info);
 	if (no_fork_cmd(info->tree[0].root) && info->cmd_count == 0)
 		preorder_once(info, info->tree[0].root);

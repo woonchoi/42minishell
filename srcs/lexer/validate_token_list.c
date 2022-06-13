@@ -6,17 +6,18 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:59:15 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/11 19:32:02 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:05:32 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int	check_pipe_is_next(t_token *token)
 {
 	if (token->tokentype == PIPE)
 	{
-		ft_putstr_fd("bash: unexpected token '|' detected\n", 2);
+		ft_putstr_fd(SYNTAX_ERROR_PRE, STDERR_FILENO);
+		ft_putstr_fd("|'\n", STDERR_FILENO);
 		return (TRUE);
 	}
 	return (FALSE);
@@ -26,7 +27,8 @@ int	check_null_is_next(t_token *token)
 {
 	if (!ft_strncmp(token->token, "", 1))
 	{
-		ft_putstr_fd("bash: unexpected token 'newline' detected\n", 2);
+		ft_putstr_fd(SYNTAX_ERROR_PRE, STDERR_FILENO);
+		ft_putstr_fd("newline'\n", STDERR_FILENO);
 		return (TRUE);
 	}
 	return (FALSE);
@@ -47,7 +49,7 @@ int	check_redirection_is_next(t_token *token)
 		temp = "<<";
 	if (temp)
 	{
-		ft_putstr_fd("bash: syntax error near unexpected token `", 2);
+		ft_putstr_fd(SYNTAX_ERROR_PRE, 2);
 		ft_putstr_fd(temp, 2);
 		ft_putstr_fd("'\n", 2);
 		return (TRUE);
@@ -55,12 +57,12 @@ int	check_redirection_is_next(t_token *token)
 	return (FALSE);
 }
 
-void	validate_syntax(t_mshell_info *info)
+void	validate_syntax(t_info *info)
 {
 	t_token	*tokenlist;
 
 	tokenlist = info->tinfo.tokenlist;
-	while (tokenlist && tokenlist->next)
+	while (!info->error && tokenlist && tokenlist->next)
 	{
 		if (is_redirection(tokenlist->tokentype))
 		{
@@ -80,6 +82,6 @@ void	validate_syntax(t_mshell_info *info)
 		}
 		tokenlist = tokenlist->next;
 		if (info->error == TRUE)
-			return ;
+			g_exit_status = 2;
 	}
 }
