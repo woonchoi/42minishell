@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:27:08 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:03:08 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:33:28 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	expand_envvars(char *token, t_expand_token *exp_v, t_env_list *env)
 
 	if (check_dollar_next_question(token, exp_v))
 		expand_question(exp_v);
-	else if (check_dollar_critical_case(token, exp_v->i, exp_v->qstatus))
+	else if (check_dollar_critical_case(token, exp_v->qstatus))
 		expand_critical_case(exp_v);
 	else
 	{

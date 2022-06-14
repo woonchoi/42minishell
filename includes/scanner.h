@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:29:26 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/12 19:11:29 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:33:45 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	expand_envvars(char *token, t_expand_token *exp_v, t_env_list *env);
 int		find_ds_need_expand(char *token);
 void	preprocess_expand_ds(char *token, t_expand_token *exp_v);
 int		check_dollar_next_question(char *token, t_expand_token *exp_v);
-int		check_dollar_critical_case(char *token, int i, int qstatus);
+int		check_dollar_critical_case(char *token, int qstatus);
 int		check_quote_need_delete(char c, t_expand_token *exp_v);
 
 char	*get_key_in_token(char *token, t_expand_token *exp_v);

@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:26:18 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 20:35:00 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:36:05 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*strjoin_free(char *a, char *b)
 	return (temp);
 }
 
-char	*match_cmd_path(t_info *info, char *token, char **path)
+char	*match_cmd_path(char *token, char **path)
 {
 	struct stat	buf;
 	char		*temp;
@@ -60,7 +60,6 @@ char	*get_cmd_path(t_info *info, char *token)
 {
 	char	*temp;
 	char	**path_list;
-	int		i;
 
 	temp = NULL;
 	path_list = get_path_env_list(info);
@@ -70,6 +69,6 @@ char	*get_cmd_path(t_info *info, char *token)
 		return (temp);
 	}
 	else
-		temp = match_cmd_path(info, token, path_list);
+		temp = match_cmd_path(token, path_list);
 	return (temp);
 }

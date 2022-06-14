@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:01:11 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 21:56:18 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:46:59 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	build_tree_with_token(t_token **cur, t_tree *root, t_info *info)
 			build_cmd_arg((*cur), &par_v, info);
 		(*cur) = (*cur)->next;
 	}
-	info->heredoc_count = par_v.heredoc_count;
+	info->heredoc_count += par_v.heredoc_count;
 }
 
 void	build_tree(t_info *info)

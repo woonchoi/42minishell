@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:23:41 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:01:35 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:33:10 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	check_dollar_next_question(char *token, t_expand_token *exp_v)
 	return (FALSE);
 }
 
-int	check_dollar_critical_case(char *token, int i, int qstatus)
+int	check_dollar_critical_case(char *token, int qstatus)
 {
 	if (ft_strlen(token) == 1
 		|| (!ft_strncmp(token, "$\"", 2) && qstatus == DOUBLE_Q)

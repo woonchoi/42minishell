@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:47:36 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 20:58:10 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:35:54 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		print_red_error(char *path);
 
 char	**get_path_env_list(t_info *info);
 char	*strjoin_free(char *a, char *b);
-char	*match_cmd_path(t_info *info, char *token, char **path);
+char	*match_cmd_path(char *token, char **path);
 char	*get_cmd_path(t_info *info, char *token);
 char	*join_cmd_optarg(t_tree *node);
 

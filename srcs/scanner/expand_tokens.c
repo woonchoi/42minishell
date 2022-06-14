@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:22:44 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 19:43:31 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:32:32 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,8 @@ char	*create_expand_result(char *token, t_env_list *env)
 char	*delete_quote(char *token)
 {
 	t_expand_token	exp_v;
-	char			*new_token;
 
 	init_expand_token_value(&exp_v);
-	new_token = NULL;
 	while (token[exp_v.i])
 	{
 		exp_v.qstatus = get_qstatus(token[exp_v.i], exp_v.qstatus);

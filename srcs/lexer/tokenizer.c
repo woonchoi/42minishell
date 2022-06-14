@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 14:37:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 10:11:01 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:31:47 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	tokenizer(t_info *info)
 {
-	char			*token;
 	t_token_info	*tinfo;
 
-	token = NULL;
 	tinfo = &info->tinfo;
 	tinfo->qstatus = get_qstatus(info->input[info->index], tinfo->qstatus);
 	if (tinfo->qstatus == NO_Q
