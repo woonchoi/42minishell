@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:11:48 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 21:55:55 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/14 13:19:51 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	fork_cmd(t_info *info, int i, int in, int out)
 	else if (info->tree[i].pid == 0)
 	{
 		set_pipe(info, i);
-		preorder(info, info->tree[i].root->r_child);
+		preorder(info, info->tree[i].root);
 		exit(g_exit_status);
 	}
 	else
