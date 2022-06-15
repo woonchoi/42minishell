@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:27:30 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 21:52:54 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ void	init_heredoc(t_info *info, char *str, int *i)
 			safety_free((void **)&temp);
 			ft_putendl_fd(line, info->heredoc[*i].fd[1]);
 			safety_free((void **)&line);
+		}
+		else if (line == NULL)
+		{
+			ft_putstr_fd("\n", STDOUT_FILENO);
+			break ;
 		}
 		else
 			break ;
@@ -92,6 +97,11 @@ void	run_heredoc(t_info *info)
 	while (++i < info->cmd_count && !info->error)
 	{
 		cur = info->tree[i].root->l_child;
+		printf("check here\n");
 		preorder_heredoc(info, cur, &heredoc_i);
+		if (i == 0)
+			info->tree[i].heredoc_offset = 0;
+		else
+			info->tree[i].heredoc_offset = heredoc_i;
 	}
 }

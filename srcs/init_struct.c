@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:33:44 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 14:20:20 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 21:48:42 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ void	init_prompt_cycle(t_info *info)
 	info->tree = NULL;
 	info->cmd_count = 1;
 	info->input = NULL;
+	info->heredoc_offset = 0;
 }

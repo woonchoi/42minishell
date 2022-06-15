@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 10:35:55 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 21:46:29 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_tree_list
 {
 	int		fd[2];
 	int		prev_fd;
+	int		heredoc_offset;
 	pid_t	pid;
 	t_tree	*root;
 }	t_tree_list;
@@ -89,6 +90,7 @@ typedef struct s_info
 	int				error;
 	int				index;
 	int				heredoc_count;
+	int				heredoc_offset;
 }	t_info;
 
 #endif

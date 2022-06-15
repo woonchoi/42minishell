@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constant.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoulseoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:39:56 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 14:35:18 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 21:14:29 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define SPACELIST " \t\n\v\f\r"
 # define METACHARACTER "<>| \t\n\v\f\r"
 # define UNCLOSED_QUOTE "bash : Unclosed quote detected"
-# define SYNTAX_ERROR_PRE "bash: syntax error near unexpected token `"
+# define SYNTAX_ERROR_PRE "minishell: syntax error near unexpected token `"
 
 typedef enum e_cmd_type
 {

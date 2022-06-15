@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:57:20 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/14 13:13:15 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 21:49:13 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	heredoc(t_info *info)
 {
 	int	i;
 
-	i = 0;
+	i = info->heredoc_offset;
 	while (i < info->heredoc_count && info->heredoc[i].check)
 		i++;
 	if (dup2(info->heredoc[i].fd[0], STDIN_FILENO) == -1)

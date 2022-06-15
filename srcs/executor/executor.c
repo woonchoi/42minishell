@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:11:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/14 12:47:56 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 21:48:53 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	execute(t_info *info)
 	{
 		while (++i < info->cmd_count)
 		{
+			info->heredoc_offset = info->tree[i].heredoc_offset;
 			if (i + 1 < info->cmd_count)
 			{
 				pipe(info->tree[i].fd);
