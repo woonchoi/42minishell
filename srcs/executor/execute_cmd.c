@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:08:59 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 22:52:51 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 23:44:06 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ int	execute_builtin(t_info *info, int cmd, char **optarg)
 	return (0);
 }
 
+int	print_execute_error(char *cmd)
+{
+	ft_putstr_fd("minishell: ", STDERR_FILENO);
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd("command not found\n", STDERR_FILENO);
+	return (127);
+}
+
 int	execute_cmd(t_info *info, t_tree *node)
 {
 	char	*cmdopt;
@@ -49,8 +58,7 @@ int	execute_cmd(t_info *info, t_tree *node)
 	else
 	{
 		execve(optarg[0], optarg, info->envp);
-		g_exit_status = 0;
-		exit(0);
+		g_exit_status = print_execute_error(optarg[0]);
 	}
 	safety_free((void **)&cmdopt);
 	safety_free((void **)&cmdpath);
