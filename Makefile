@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/15 16:09:55 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/15 22:32:07 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ EXECUTOR_SRCS = check_cmd.c \
 				print_execute_error.c \
 				check_exit_status.c \
 				fork_cmd.c \
+				split_optarg.c \
 				executor.c \
 
 BUILTIN_SRCS =	builtin_cd.c \

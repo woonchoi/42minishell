@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 21:22:58 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:32:16 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	scanner(t_info *info);
 void	execute(t_info *info);
 
 void	print_tree_result(t_tree *root);
+char	**split_optarg(char *str);
 
 void	parser(t_info *info);
 

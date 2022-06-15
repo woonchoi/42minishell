@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:26:18 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:14:09 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,13 @@ char	*strjoin_free(char *a, char *b)
 {
 	char	*temp;
 
-	temp = ft_strjoin(a, b);
-	safety_free((void **)&a);
-	return (temp);
+	if (b)
+	{
+		temp = ft_strjoin(a, b);
+		safety_free((void **)&a);
+		return (temp);
+	}
+	return (a);
 }
 
 char	*match_cmd_path(char *token, char **path)

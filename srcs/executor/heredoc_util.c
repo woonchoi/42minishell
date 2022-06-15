@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:27:30 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 21:52:54 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:31:37 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void	run_heredoc(t_info *info)
 	while (++i < info->cmd_count && !info->error)
 	{
 		cur = info->tree[i].root->l_child;
-		printf("check here\n");
 		preorder_heredoc(info, cur, &heredoc_i);
 		if (i == 0)
 			info->tree[i].heredoc_offset = 0;

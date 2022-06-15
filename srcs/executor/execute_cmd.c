@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:08:59 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 17:03:12 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:44:17 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	execute_cmd(t_info *info, t_tree *node)
 	int		builtin_cmd;
 
 	cmdopt = join_cmd_optarg(node);
-	optarg = ft_split(cmdopt, '\n');
+	optarg = split_optarg(cmdopt);
 	cmdpath = get_cmd_path(info, optarg[0]);
 	builtin_cmd = check_builtin(node->l_child->token);
 	if (builtin_cmd)
