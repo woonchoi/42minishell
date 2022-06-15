@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:23:44 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/12 19:20:28 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 14:44:20 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,10 @@ int	check_quote(t_info *info)
 	if (info->tinfo.qstatus != NO_Q)
 	{
 		info->error = TRUE;
-		ft_putendl_fd("bash : Unclosed quote detected", STDERR_FILENO);
+		ft_putendl_fd(UNCLOSED_QUOTE, STDERR_FILENO);
+		g_exit_status = 1;
 	}
 	return (info->error);
-}
-
-int	is_in_charset(char c, const char *charset)
-{
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (c == charset[i])
-			return (TRUE);
-		i++;
-	}
-	return (FALSE);
 }
 
 int	is_only_space(char *str)
@@ -73,7 +60,7 @@ int	is_only_space(char *str)
 	i = 0;
 	while (str && str[i])
 	{
-		if (!is_in_charset(str[i], SPACELIST))
+		if (!ft_strchr(SPACELIST, str[i]))
 			return (FALSE);
 		i++;
 	}

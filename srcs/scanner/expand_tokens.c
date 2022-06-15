@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:22:44 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/14 12:32:32 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:52:26 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	save_current_string(char *token, t_expand_token *exp_v)
 	if (exp_v->str2)
 	{
 		exp_v->str1 = ft_strjoin(exp_v->str1, exp_v->str2);
-		safety_free(temp);
+		safety_free((void **)&temp);
 	}
-	safety_free(exp_v->str2);
+	safety_free((void **)&exp_v->str2);
 	exp_v->j = exp_v->i + 1;
 }
 
@@ -34,7 +34,6 @@ char	*create_expand_result(char *token, t_env_list *env)
 	init_expand_token_value(&exp_v);
 	while (token[exp_v.i])
 	{
-		printf("%s\n", &token[exp_v.i]);
 		exp_v.qstatus = get_qstatus(token[exp_v.i], exp_v.qstatus);
 		if (check_quote_need_delete(token[exp_v.i], &exp_v))
 			save_current_string(token, &exp_v);
@@ -78,15 +77,15 @@ void	expand_token(t_token *cur, t_env_list *env)
 	if (cur->tokentype == STR)
 	{
 		cur->token_origin = delete_quote(cur->token_origin);
-		safety_free(temp_origin);
+		safety_free((void **)&temp_origin);
 		if (!find_ds_need_expand(cur->token))
 		{
 			cur->token = delete_quote(cur->token);
-			safety_free(temp);
+			safety_free((void **)&temp);
 			return ;
 		}
 		cur->token = create_expand_result(cur->token, env);
-		safety_free(temp);
+		safety_free((void **)&temp);
 	}
 }
 

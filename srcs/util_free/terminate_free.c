@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 15:14:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 10:34:28 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	iterate_free_tree(t_tree *node)
 		return ;
 	l_child = node->l_child;
 	r_child = node->r_child;
-	safety_free(node->token);
-	safety_free(node);
+	safety_free((void **)&node->token);
+	safety_free((void **)&node);
 	iterate_free_tree(l_child);
 	iterate_free_tree(r_child);
 }
@@ -38,7 +38,7 @@ void	free_parse_tree(t_info *info)
 	i = -1;
 	while (++i < info->cmd_count)
 		iterate_free_tree(tree[i].root);
-	safety_free(tree);
+	safety_free((void **)&tree);
 }
 
 void	free_tokenlist(t_info *info)
@@ -51,9 +51,9 @@ void	free_tokenlist(t_info *info)
 	{
 		temp = cur;
 		cur = cur->next;
-		safety_free(temp->token);
-		safety_free(temp->token_origin);
-		safety_free(temp);
+		safety_free((void **)&temp->token);
+		safety_free((void **)&temp->token_origin);
+		safety_free((void **)&temp);
 	}
 }
 
@@ -61,6 +61,6 @@ void	terminate_free(t_info *info)
 {
 	free_tokenlist(info);
 	free_parse_tree(info);
-	safety_free(info->input);
+	safety_free((void **)&info->input);
 	return ;
 }

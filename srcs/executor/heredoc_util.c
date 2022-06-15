@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:27:30 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/14 12:48:03 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ void	init_heredoc(t_info *info, char *str, int *i)
 		{
 			temp = line;
 			line = expand_line(info, line);
-			safety_free(temp);
+			safety_free((void **)&temp);
 			ft_putendl_fd(line, info->heredoc[*i].fd[1]);
-			safety_free(line);
+			safety_free((void **)&line);
 		}
 		else
 			break ;
 	}
-	safety_free(line);
+	safety_free((void **)&line);
 }
 
 void	set_heredoc(t_info *info, char *str, int *i)

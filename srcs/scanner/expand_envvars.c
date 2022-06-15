@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:27:08 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/14 12:33:28 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	expand_question(t_expand_token *exp_v)
 	exp_v->str1 = ft_strjoin(exp_v->str1, ft_itoa(g_exit_status));
 	exp_v->i++;
 	exp_v->j = exp_v->i + 1;
-	safety_free(temp);
+	safety_free((void **)&temp);
 }
 
 void	expand_critical_case(t_expand_token *exp_v)
@@ -31,7 +31,7 @@ void	expand_critical_case(t_expand_token *exp_v)
 	exp_v->str1 = ft_strjoin(exp_v->str1, "$");
 	exp_v->j = exp_v->i + 1;
 	if (temp)
-		safety_free(temp);
+		safety_free((void **)&temp);
 }
 
 void	expand_remain_string(char *token, t_expand_token *exp_v)
@@ -40,7 +40,7 @@ void	expand_remain_string(char *token, t_expand_token *exp_v)
 
 	temp = exp_v->str1;
 	exp_v->str1 = ft_strjoin(exp_v->str1, &token[exp_v->j]);
-	safety_free(temp);
+	safety_free((void **)&temp);
 }
 
 void	expand_envvars(char *token, t_expand_token *exp_v, t_env_list *env)
@@ -61,13 +61,13 @@ void	expand_envvars(char *token, t_expand_token *exp_v, t_env_list *env)
 		if (value)
 		{
 			exp_v->str1 = ft_strjoin(exp_v->str1, value);
-			safety_free(temp);
+			safety_free((void **)&temp);
 		}
 		if (!ft_strlen(key))
 			exp_v->i += 1;
 		exp_v->i += ft_strlen(key);
 		exp_v->j = exp_v->i + 1;
-		safety_free(key);
-		safety_free(value);
+		safety_free((void **)&key);
+		safety_free((void **)&value);
 	}
 }

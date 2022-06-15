@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 14:37:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/14 12:31:47 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 14:44:09 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	tokenizer(t_info *info)
 	tinfo = &info->tinfo;
 	tinfo->qstatus = get_qstatus(info->input[info->index], tinfo->qstatus);
 	if (tinfo->qstatus == NO_Q
-		&& is_in_charset(info->input[info->index], SEPLIST))
+		&& ft_strchr(SEPLIST, info->input[info->index]))
 	{
 		if (info->input[info->index] == PIPE)
 		{

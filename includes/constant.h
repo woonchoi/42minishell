@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:39:56 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 10:36:32 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 14:35:18 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define SEPLIST "<>| "
 # define SPACELIST " \t\n\v\f\r"
 # define METACHARACTER "<>| \t\n\v\f\r"
+# define UNCLOSED_QUOTE "bash : Unclosed quote detected"
 # define SYNTAX_ERROR_PRE "bash: syntax error near unexpected token `"
 
 typedef enum e_cmd_type

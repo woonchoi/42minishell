@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:23:41 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/14 12:33:10 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	preprocess_expand_ds(char *token, t_expand_token *exp_v)
 	temp = exp_v->str1;
 	exp_v->str2 = ft_strndup(&token[exp_v->j], exp_v->i - exp_v->j);
 	exp_v->str1 = ft_strjoin(exp_v->str1, exp_v->str2);
-	safety_free(temp);
-	safety_free(exp_v->str2);
+	safety_free((void **)&temp);
+	safety_free((void **)&exp_v->str2);
 	exp_v->str2 = NULL;
 }
 

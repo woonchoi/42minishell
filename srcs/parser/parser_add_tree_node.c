@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 14:59:43 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:08:49 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	add_cmd_arg(t_tree **parent, char *s, t_info *info)
 	{
 		temp = (*parent)->token;
 		(*parent)->token = ft_strjoin((*parent)->token, "\n");
-		safety_free(temp);
+		safety_free((void **)&temp);
 		temp = (*parent)->token;
 		(*parent)->token = ft_strjoin((*parent)->token, s);
-		safety_free(temp);
+		safety_free((void **)&temp);
 	}
 }

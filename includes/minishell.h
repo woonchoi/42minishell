@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 10:36:15 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:10:38 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	terminate_free(t_info *info);
 
 void	print_lexer_result(t_info *info);
 void	lexer(t_info *info);
-void	safety_free(void *data);
-void	safety_free_doublearray(void **data);
+void	safety_free(void **data);
+void	safety_free_doublearray(void ***data);
 
 void	scanner(t_info *info);
 void	execute(t_info *info);
