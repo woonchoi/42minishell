@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 22:22:02 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 23:08:27 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 23:17:12 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,5 @@ char	**split_optarg(char *str)
 		}
 		j++;
 	}
-	ret[cur] = strdup_optarg(&str[i], j - i);
 	return (ret);
 }
