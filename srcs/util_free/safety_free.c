@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:48:43 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 15:10:29 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 16:25:40 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	safety_free_doublearray(void ***data)
 	int	i;
 
 	i = 0;
-	while (*data[i])
+	while (**data && *data[i])
 	{
 		safety_free(data[i]);
 		i++;

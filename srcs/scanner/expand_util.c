@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:23:41 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 16:32:56 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	preprocess_expand_ds(char *token, t_expand_token *exp_v)
 
 	temp = exp_v->str1;
 	exp_v->str2 = ft_strndup(&token[exp_v->j], exp_v->i - exp_v->j);
-	exp_v->str1 = ft_strjoin(exp_v->str1, exp_v->str2);
+	if (exp_v->str2)
+		exp_v->str1 = ft_strjoin(exp_v->str1, exp_v->str2);
 	safety_free((void **)&temp);
 	safety_free((void **)&exp_v->str2);
-	exp_v->str2 = NULL;
 }
 
 int	check_dollar_next_question(char *token, t_expand_token *exp_v)
@@ -50,8 +50,13 @@ int	check_dollar_critical_case(char *token, int qstatus)
 {
 	if (ft_strlen(token) == 1
 		|| (!ft_strncmp(token, "$\"", 2) && qstatus == DOUBLE_Q)
-		|| (!ft_strncmp(token, "$\'", 2) && qstatus == DOUBLE_Q))
-		return (TRUE);
+		|| (!ft_strncmp(token, "$\'", 2) && qstatus == DOUBLE_Q)
+		|| (!ft_strncmp(token, "$$", 2)
+		&& (qstatus == DOUBLE_Q || qstatus == NO_Q)))
+		{
+			printf("check here\n");
+			return (TRUE);
+		}
 	return (FALSE);
 }
 
