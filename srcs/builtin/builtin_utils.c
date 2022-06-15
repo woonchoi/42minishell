@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:08:45 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/13 18:54:34 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/15 16:44:20 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	update_env_val(t_env_list *key_loc, char *sep, int del)
 		return ;
 	if (del == '+')
 		new_value = ft_strdup(sep + 2);
-	else if (del == '=')
+	if (del == '=')
 		new_value = ft_strdup(sep + 1);
 	free(key_loc->value);
 	free_split_value(key_loc->split_value);

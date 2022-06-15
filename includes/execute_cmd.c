@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:08:59 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 16:44:40 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ int	execute_cmd(t_info *info, t_tree *node)
 	}
 	safety_free((void **)&cmdopt);
 	safety_free((void **)&cmdpath);
-	safety_free((void **)&(&optarg);
+	safety_free((void ***)&optarg);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:23:41 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 16:43:14 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 16:45:59 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ int	check_dollar_critical_case(char *token, int qstatus)
 		|| (!ft_strncmp(token, "$\'", 2) && qstatus == DOUBLE_Q)
 		|| (!ft_strncmp(token, "$$", 2)
 		&& (qstatus == DOUBLE_Q || qstatus == NO_Q)))
-		{
-			printf("check here\n");
 			return (TRUE);
-		}
 	return (FALSE);
 }
 
