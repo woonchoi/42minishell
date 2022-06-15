@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:39:56 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 19:24:46 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 10:36:32 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define METACHARACTER "<>| \t\n\v\f\r"
 # define SYNTAX_ERROR_PRE "bash: syntax error near unexpected token `"
 
-typedef enum	e_cmd_type
+typedef enum e_cmd_type
 {
 	ROOT = 0,
 	STR = 1,
@@ -33,7 +33,7 @@ typedef enum	e_cmd_type
 	BRANCH = 8,
 }	t_cmd_type;
 
-typedef enum	e_builtin_cmd
+typedef enum e_builtin_cmd
 {
 	CMD_CD = 1,
 	CMD_PWD = 2,
@@ -44,7 +44,7 @@ typedef enum	e_builtin_cmd
 	CMD_EXPORT = 7,
 }	t_builtin_cmd;
 
-typedef enum	e_token_type
+typedef enum e_token_type
 {
 	DOUBLE_Q = '"',
 	SINGLE_Q = '\'',

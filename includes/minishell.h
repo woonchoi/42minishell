@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 20:21:25 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 10:36:15 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 int		g_exit_status;
 
 void	signal_handler(int signum);
-void	set_signal();
+void	set_signal(void);
 
 char	*preadline(char *shellname);
 void	prompt(t_info *info);

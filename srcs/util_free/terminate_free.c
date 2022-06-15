@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 15:14:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:15:10 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 10:34:28 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	free_parse_tree(t_info *info)
 {
 	t_tree_list	*tree;
 	int			i;
-	
+
 	tree = info->tree;
 	if (!tree)
 		return ;

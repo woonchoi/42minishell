@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:08:33 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/13 15:37:46 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/15 10:36:54 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		ft_s_quote_error(char *cmd, char *cmd_arg, char *errmsg);
 
 /* UNSET FUNCTION */
 int			check_avaliable_key(char *key);
-void 		free_split_value(char **s_val);
+void		free_split_value(char **s_val);
 
 /* BUILTIN UTILS */
 t_env_list	*new_env_list(char *argv);
