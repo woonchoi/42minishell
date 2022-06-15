@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 22:22:02 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 22:42:10 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 23:05:13 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ int	count_optarg(char *str)
 	return (cnt + 1);
 }
 
+char	*strdup_optarg(char *str, int len)
+{
+	if (len == 0)
+		return (ft_strdup(""));
+	else
+		return (ft_strndup(str, len));
+}
+
 char	**split_optarg(char *str)
 {
 	char	**ret;
@@ -43,12 +51,12 @@ char	**split_optarg(char *str)
 	{
 		if (str[j] == '\n')
 		{
-			ret[cur] = ft_strndup(&str[i], j - i);
+			ret[cur] = strdup_optarg(&str[i], j - i);
 			cur++;
 			i = j + 1;
 		}
 		j++;
 	}
-	ret[cur] = ft_strndup(&str[i], j - i);
+	ret[cur] = strdup_optarg(&str[i], j - i);
 	return (ret);
 }
