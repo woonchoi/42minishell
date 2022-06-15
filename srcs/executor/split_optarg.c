@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 22:22:02 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 23:05:13 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 23:08:27 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**split_optarg(char *str)
 	i = 0;
 	j = 0;
 	cur = 0;
-	ret = (char **)ft_calloc(count_optarg(str), sizeof(char *) + 1);
+	ret = (char **)ft_calloc(count_optarg(str) + 1, sizeof(char *));
 	while (str && str[j])
 	{
 		if (str[j] == '\n')
