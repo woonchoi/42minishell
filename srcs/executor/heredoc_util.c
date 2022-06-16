@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:27:30 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/16 10:27:27 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 16:09:04 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@ void	init_heredoc(t_info *info, char *str, int *i)
 			safety_free((void **)&line);
 		}
 		else if (line == NULL)
-		{
-			ft_putstr_fd("\n", STDOUT_FILENO);
-			break ;
-		}
-		else
 			break ;
 	}
 	safety_free((void **)&line);
