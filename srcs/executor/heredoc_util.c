@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:27:30 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 22:31:37 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:27:27 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_status;
 
 char	*expand_line(t_info *info, char *line)
 {

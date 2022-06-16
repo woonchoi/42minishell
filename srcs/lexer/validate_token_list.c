@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:59:15 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 15:30:53 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:27:57 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_status;
 
 int	check_pipe_is_next(t_token *token)
 {

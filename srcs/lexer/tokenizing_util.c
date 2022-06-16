@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:23:44 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 14:44:20 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:27:52 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_status;
 
 int	get_qstatus(char c, int qstatus)
 {

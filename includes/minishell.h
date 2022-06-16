@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 22:32:16 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:10:54 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@
 # include "scanner.h"
 # include "builtin.h"
 # include "executor.h"
-
-int		g_exit_status;
 
 void	signal_handler(int signum);
 void	set_signal(void);

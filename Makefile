@@ -6,11 +6,20 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/15 22:32:07 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/16 09:58:27 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
+
+COLOR_RED = "\x1b[31m" 
+COLOR_GREEN = "\x1b[32m"
+COLOR_YELLOW = "\x1b[33m"
+COLOR_BLUE = "\x1b[34m"
+COLOR_WHITE = "\x1b[37m"
+COLOR_CYAN = "\x1b[36m"
+COLOR_RESET = "\x1b[0m"
+LINE_CLEAR = "\x1b[1A\x1b[M"
 
 CC = gcc
 CFLAG = -Wall -Werror -Wextra
@@ -102,22 +111,28 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
+	@echo $(COLOR_GREEN) "Compile object files completed!" $(COLOR_RESET)
 	$(CC) $(CFLAG) $(LIBRARIES) $(INCLUDES) $(OBJS) -o $(NAME) $(SANITIZER) -lft -lreadline 
+	@echo $(COLOR_GREEN) "Compile $(NAME) completed!" $(COLOR_RESET)
 
 %.o: %.c
+	@echo $(COLOR_GREEN) "Compiling...\t" $(COLOR_RESET) $(COLOR_YELLOW) $< $(COLOR_BLUE) $(LINE_CLEAR)
 	@$(CC) $(CFLAG) -c $(INCLUDES) $< -o $@
 
 $(LIBFT):
 	@$(MAKE) -s -C $(LIBFT_DIR) all
+	@echo $(COLOR_GREEN) "Compile 'libft.a' completed!" $(COLOR_RESET)
 
 clean:
 	@$(MAKE) -s -C $(LIBFT_DIR) clean
 	@rm -rf $(OBJS)
+	@echo $(COLOR_RED) "'$(NAME)'s objective files are removed!" $(COLOR_RESET)
 
 fclean:
 	@$(MAKE) -s -C $(LIBFT_DIR) fclean
 	@rm -rf $(OBJS)
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
+	@echo $(COLOR_RED) "Program '$(NAME)' has removed!" $(COLOR_RESET)
 
 re : fclean all
 
@@ -125,15 +140,15 @@ jasong: $(LIBFT)
 	$(CC) $(SANITIZER) $(CFLAG) $(JASONG_LIB_FLAG) $(JASONG_INC_FLAG) $(SRCS) -o $@ -lft -lreadline
 
 jclean : fclean
-	rm -rf jasong.dSYM
-	rm -rf jasong
+	@rm -rf jasong.dSYM
+	@rm -rf jasong
 
 debug: $(LIBFT)
 	$(CC) $(CFLAG) $(LIBRARIES) $(SANITIZER) $(INCLUDES) $(SRCS) -o $@ -lft -lreadline
 
 dclean:
 	@$(MAKE) -s -C $(LIBFT_DIR) fclean
-	rm -rf debug
-	rm -rf debug.dSYM
+	@rm -rf debug
+	@rm -rf debug.dSYM
 
 .PHONY: all clean fclean re debug jasong

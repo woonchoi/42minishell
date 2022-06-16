@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 22:22:02 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 23:18:07 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:41:20 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ char	*strdup_optarg(char *str, int len)
 char	**split_optarg(char *str)
 {
 	char	**ret;
-	int i;
-	int j;
-	int	cur;
+	int		i;
+	int		j;
+	int		cur;
 
 	i = 0;
 	j = 0;

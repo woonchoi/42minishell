@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:11:48 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/14 13:19:51 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:33:31 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	g_exit_status;
 
 void	set_pipe(t_info *info, int i)
 {

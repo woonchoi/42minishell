@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:11:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 23:29:54 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:40:09 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_status;
 
 void	execute(t_info *info)
 {
@@ -36,7 +38,7 @@ void	execute(t_info *info)
 			}
 			fork_cmd(info, i, in, out);
 		}
-		check_exit_status(info);
+		g_exit_status = check_exit_status(info);
 	}
 }
 

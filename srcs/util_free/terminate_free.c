@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 15:14:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:29:42 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void	terminate_free(t_info *info)
 	free_tokenlist(info);
 	free_parse_tree(info);
 	safety_free((void **)&info->input);
+	safety_free((void **)&(info->heredoc));
 	return ;
 }

@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:08:59 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 23:44:06 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:16:15 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_status;
 
 int	execute_builtin(t_info *info, int cmd, char **optarg)
 {
@@ -40,6 +42,13 @@ int	print_execute_error(char *cmd)
 	return (127);
 }
 
+void	execute_terminate_free(char *cmdopt, char *cmdpath, char **optarg)
+{
+	safety_free((void **)&cmdopt);
+	safety_free((void **)&cmdpath);
+	safety_free_doublearray((void ***)&optarg);
+}
+
 int	execute_cmd(t_info *info, t_tree *node)
 {
 	char	*cmdopt;
@@ -59,9 +68,9 @@ int	execute_cmd(t_info *info, t_tree *node)
 	{
 		execve(optarg[0], optarg, info->envp);
 		g_exit_status = print_execute_error(optarg[0]);
+		execute_terminate_free(cmdopt, cmdpath, optarg);
+		return (TRUE);
 	}
-	safety_free((void **)&cmdopt);
-	safety_free((void **)&cmdpath);
-	safety_free_doublearray((void ***)&optarg);
-	return (0);
+	execute_terminate_free(cmdopt, cmdpath, optarg);
+	return (FALSE);
 }
