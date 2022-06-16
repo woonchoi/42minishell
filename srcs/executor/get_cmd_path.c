@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:26:18 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 20:35:00 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 23:45:10 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@ char	*strjoin_free(char *a, char *b)
 {
 	char	*temp;
 
-	temp = ft_strjoin(a, b);
-	safety_free(a);
-	return (temp);
+	if (b)
+	{
+		temp = ft_strjoin(a, b);
+		safety_free((void **)&a);
+		return (temp);
+	}
+	return (a);
 }
 
-char	*match_cmd_path(t_info *info, char *token, char **path)
+char	*match_cmd_path(char *token, char **path)
 {
 	struct stat	buf;
 	char		*temp;
@@ -50,7 +54,7 @@ char	*match_cmd_path(t_info *info, char *token, char **path)
 		temp = strjoin_free(temp, token);
 		if (!lstat(temp, &buf))
 			return (temp);
-		safety_free(temp);
+		safety_free((void **)&temp);
 		i++;
 	}
 	return (NULL);
@@ -60,8 +64,9 @@ char	*get_cmd_path(t_info *info, char *token)
 {
 	char	*temp;
 	char	**path_list;
-	int		i;
 
+	if (*token == 0)
+		return (NULL);
 	temp = NULL;
 	path_list = get_path_env_list(info);
 	if (!path_list)
@@ -70,6 +75,6 @@ char	*get_cmd_path(t_info *info, char *token)
 		return (temp);
 	}
 	else
-		temp = match_cmd_path(info, token, path_list);
+		temp = match_cmd_path(token, path_list);
 	return (temp);
 }

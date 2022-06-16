@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:27:30 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 20:49:15 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:27:27 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_status;
 
 char	*expand_line(t_info *info, char *line)
 {
@@ -45,14 +47,19 @@ void	init_heredoc(t_info *info, char *str, int *i)
 		{
 			temp = line;
 			line = expand_line(info, line);
-			safety_free(temp);
+			safety_free((void **)&temp);
 			ft_putendl_fd(line, info->heredoc[*i].fd[1]);
-			safety_free(line);
+			safety_free((void **)&line);
+		}
+		else if (line == NULL)
+		{
+			ft_putstr_fd("\n", STDOUT_FILENO);
+			break ;
 		}
 		else
 			break ;
 	}
-	safety_free(line);
+	safety_free((void **)&line);
 }
 
 void	set_heredoc(t_info *info, char *str, int *i)
@@ -93,5 +100,9 @@ void	run_heredoc(t_info *info)
 	{
 		cur = info->tree[i].root->l_child;
 		preorder_heredoc(info, cur, &heredoc_i);
+		if (i == 0)
+			info->tree[i].heredoc_offset = 0;
+		else
+			info->tree[i].heredoc_offset = heredoc_i;
 	}
 }

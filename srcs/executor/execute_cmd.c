@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 17:08:59 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 20:35:10 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:16:15 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_status;
 
 int	execute_builtin(t_info *info, int cmd, char **optarg)
 {
@@ -31,6 +33,22 @@ int	execute_builtin(t_info *info, int cmd, char **optarg)
 	return (0);
 }
 
+int	print_execute_error(char *cmd)
+{
+	ft_putstr_fd("minishell: ", STDERR_FILENO);
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd("command not found\n", STDERR_FILENO);
+	return (127);
+}
+
+void	execute_terminate_free(char *cmdopt, char *cmdpath, char **optarg)
+{
+	safety_free((void **)&cmdopt);
+	safety_free((void **)&cmdpath);
+	safety_free_doublearray((void ***)&optarg);
+}
+
 int	execute_cmd(t_info *info, t_tree *node)
 {
 	char	*cmdopt;
@@ -39,7 +57,7 @@ int	execute_cmd(t_info *info, t_tree *node)
 	int		builtin_cmd;
 
 	cmdopt = join_cmd_optarg(node);
-	optarg = ft_split(cmdopt, '\n');
+	optarg = split_optarg(cmdopt);
 	cmdpath = get_cmd_path(info, optarg[0]);
 	builtin_cmd = check_builtin(node->l_child->token);
 	if (builtin_cmd)
@@ -49,10 +67,10 @@ int	execute_cmd(t_info *info, t_tree *node)
 	else
 	{
 		execve(optarg[0], optarg, info->envp);
-		g_exit_status = 0;
-		exit(0);
+		g_exit_status = print_execute_error(optarg[0]);
+		execute_terminate_free(cmdopt, cmdpath, optarg);
+		return (TRUE);
 	}
-	safety_free(cmdopt);
-	safety_free(cmdpath);
-	safety_free_doublearray(optarg);
+	execute_terminate_free(cmdopt, cmdpath, optarg);
+	return (FALSE);
 }

@@ -6,14 +6,14 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 13:11:20 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 21:46:29 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef struct	s_env_list
+typedef struct s_env_list
 {
 	char				*key;
 	char				*value;
@@ -21,7 +21,7 @@ typedef struct	s_env_list
 	struct s_env_list	*next;
 }	t_env_list;
 
-typedef struct	s_tree
+typedef struct s_tree
 {
 	int				type;
 	char			*token;
@@ -29,15 +29,16 @@ typedef struct	s_tree
 	struct s_tree	*r_child;
 }	t_tree;
 
-typedef struct	s_tree_list
+typedef struct s_tree_list
 {
 	int		fd[2];
 	int		prev_fd;
+	int		heredoc_offset;
 	pid_t	pid;
 	t_tree	*root;
 }	t_tree_list;
 
-typedef struct	s_token
+typedef struct s_token
 {
 	int				tokentype;
 	char			*token;
@@ -45,13 +46,13 @@ typedef struct	s_token
 	struct s_token	*next;
 }	t_token;
 
-typedef struct	s_token_info
+typedef struct s_token_info
 {
 	int		qstatus;
 	t_token	*tokenlist;
 }	t_token_info;
 
-typedef struct	s_expand_token
+typedef struct s_expand_token
 {
 	char	*str1;
 	char	*str2;
@@ -60,7 +61,7 @@ typedef struct	s_expand_token
 	int		qstatus;
 }	t_expand_token;
 
-typedef struct	s_parse_util
+typedef struct s_parse_util
 {
 	t_tree	*red_cur;
 	t_tree	*cmd_cur;
@@ -71,13 +72,13 @@ typedef struct	s_parse_util
 	int		heredoc_count;
 }	t_parse_util;
 
-typedef struct	s_heredoc
+typedef struct s_heredoc
 {
 	int	fd[2];
-	int check;
+	int	check;
 }	t_heredoc;
 
-typedef struct	s_info
+typedef struct s_info
 {
 	t_token_info	tinfo;
 	t_tree_list		*tree;
@@ -89,6 +90,7 @@ typedef struct	s_info
 	int				error;
 	int				index;
 	int				heredoc_count;
+	int				heredoc_offset;
 }	t_info;
 
 #endif

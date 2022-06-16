@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:11:48 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 21:55:55 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:33:31 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	g_exit_status;
 
 void	set_pipe(t_info *info, int i)
 {
@@ -35,7 +37,7 @@ void	fork_cmd(t_info *info, int i, int in, int out)
 	else if (info->tree[i].pid == 0)
 	{
 		set_pipe(info, i);
-		preorder(info, info->tree[i].root->r_child);
+		preorder(info, info->tree[i].root);
 		exit(g_exit_status);
 	}
 	else

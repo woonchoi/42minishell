@@ -6,13 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:45:42 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/12 19:04:04 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:12:20 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern int	g_exit_status;
+int	g_exit_status;
 
 static void	sigint_handler(pid_t pid)
 {

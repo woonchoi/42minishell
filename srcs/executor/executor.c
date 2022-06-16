@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:11:58 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 21:17:26 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:40:09 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_status;
 
 void	execute(t_info *info)
 {
@@ -27,6 +29,7 @@ void	execute(t_info *info)
 	{
 		while (++i < info->cmd_count)
 		{
+			info->heredoc_offset = info->tree[i].heredoc_offset;
 			if (i + 1 < info->cmd_count)
 			{
 				pipe(info->tree[i].fd);
@@ -35,7 +38,7 @@ void	execute(t_info *info)
 			}
 			fork_cmd(info, i, in, out);
 		}
-		check_exit_status(info);
+		g_exit_status = check_exit_status(info);
 	}
 }
 

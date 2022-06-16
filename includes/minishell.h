@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 20:21:25 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:10:54 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@
 # include "builtin.h"
 # include "executor.h"
 
-int		g_exit_status;
-
 void	signal_handler(int signum);
-void	set_signal();
+void	set_signal(void);
 
 char	*preadline(char *shellname);
 void	prompt(t_info *info);
@@ -52,13 +50,14 @@ void	terminate_free(t_info *info);
 
 void	print_lexer_result(t_info *info);
 void	lexer(t_info *info);
-void	safety_free(void *data);
-void	safety_free_doublearray(void **data);
+void	safety_free(void **data);
+void	safety_free_doublearray(void ***data);
 
 void	scanner(t_info *info);
 void	execute(t_info *info);
 
 void	print_tree_result(t_tree *root);
+char	**split_optarg(char *str);
 
 void	parser(t_info *info);
 

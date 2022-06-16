@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:49:48 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 21:00:10 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:11:49 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_status;
 
 void	preorder(t_info *info, t_tree *node)
 {

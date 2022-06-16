@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:00:36 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 21:44:43 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_tree_with_pipecount(t_info *info)
 	if (!info->tree)
 	{
 		info->error = TRUE;
-		safety_free(info->tree);
+		safety_free((void **)&info->tree);
 	}
 	while (++i < pipecount)
 		info->tree[i].prev_fd = -1;

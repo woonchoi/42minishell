@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:58:01 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 19:24:46 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:13:04 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_token	*create_token(int type, char *str)
 {
 	t_token	*ret;
 
-	ret = ft_calloc(1, sizeof(t_token));
+	ret = (t_token *)ft_calloc(1, sizeof(t_token));
 	if (!ret)
 		return (NULL);
 	ret->tokentype = type;
@@ -50,27 +50,24 @@ void	string_add_back(t_info *info)
 {
 	int				i;
 	char			*temp;
-	char			*str;
 	t_token_info	*tinfo;
 
 	i = info->index;
 	tinfo = &info->tinfo;
 	while (info->input[i])
 	{
-		if (is_in_charset(info->input[i], METACHARACTER)
+		if (ft_strchr(METACHARACTER, info->input[i])
 			&& tinfo->qstatus == NO_Q)
 			break ;
 		i++;
 		tinfo->qstatus = get_qstatus(info->input[i], tinfo->qstatus);
 	}
+	if (i == info->index)
+		return ;
 	temp = ft_strndup(&info->input[info->index], i - info->index);
-	str = ft_strtrim(temp, SPACELIST);
-	safety_free(temp);
-	if (i != info->index)
-		info->index = i - 1;
-	if (!is_only_space(str))
-		tinfo->tokenlist = token_add_back(tinfo->tokenlist, STR, str);
-	safety_free(str);
+	info->index = i - 1;
+	tinfo->tokenlist = token_add_back(tinfo->tokenlist, STR, temp);
+	safety_free((void **)&temp);
 }
 
 void	redirection_add_back(t_info *info)

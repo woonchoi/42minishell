@@ -6,11 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:59:15 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/13 16:23:16 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:27:57 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_status;
 
 int	check_pipe_is_next(t_token *token)
 {
@@ -18,17 +20,6 @@ int	check_pipe_is_next(t_token *token)
 	{
 		ft_putstr_fd(SYNTAX_ERROR_PRE, STDERR_FILENO);
 		ft_putstr_fd("|'\n", STDERR_FILENO);
-		return (TRUE);
-	}
-	return (FALSE);
-}
-
-int	check_null_is_next(t_token *token)
-{
-	if (!ft_strncmp(token->token, "", 1))
-	{
-		ft_putstr_fd(SYNTAX_ERROR_PRE, STDERR_FILENO);
-		ft_putstr_fd("newline'\n", STDERR_FILENO);
 		return (TRUE);
 	}
 	return (FALSE);
@@ -55,6 +46,24 @@ int	check_redirection_is_next(t_token *token)
 		return (TRUE);
 	}
 	return (FALSE);
+}	
+
+void	check_metachar_next_null(t_info *info, t_token *token)
+{
+	if (is_redirection(token->tokentype))
+	{
+		ft_putstr_fd(SYNTAX_ERROR_PRE, STDERR_FILENO);
+		ft_putstr_fd("newline'\n", STDERR_FILENO);
+		info->error = TRUE;
+		g_exit_status = 2;
+	}
+	else if (token->tokentype == PIPE)
+	{
+		ft_putstr_fd(SYNTAX_ERROR_PRE, STDERR_FILENO);
+		ft_putstr_fd("|'\n", STDERR_FILENO);
+		info->error = TRUE;
+		g_exit_status = 2;
+	}
 }
 
 void	validate_syntax(t_info *info)
@@ -68,8 +77,6 @@ void	validate_syntax(t_info *info)
 		{
 			if (check_pipe_is_next(tokenlist->next))
 				info->error = TRUE;
-			if (check_null_is_next(tokenlist->next))
-				info->error = TRUE;
 			if (check_redirection_is_next(tokenlist->next))
 				info->error = TRUE;
 		}
@@ -77,11 +84,10 @@ void	validate_syntax(t_info *info)
 		{
 			if (check_pipe_is_next(tokenlist->next))
 				info->error = TRUE;
-			if (check_null_is_next(tokenlist->next))
-				info->error = TRUE;
 		}
 		tokenlist = tokenlist->next;
 		if (info->error == TRUE)
 			g_exit_status = 2;
 	}
+	check_metachar_next_null(info, tokenlist);
 }
