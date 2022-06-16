@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:02:11 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/12 19:11:29 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:09:09 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	add_cmd_arg(t_tree **parent, char *s, t_info *info);
 void	add_cmd_node(t_tree **parent, char *s, int t, t_info *info);
 void	add_arg_node(t_tree **parent, char *s, int t, t_info *info);
 void	add_red_node(t_tree **parent, char *s, int t, t_info *info);
-
-void	print_tree_result(t_tree *root);
 
 void	build_tree(t_info *info);
 

@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:59:15 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/16 10:27:57 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 16:56:14 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ void	validate_syntax(t_info *info)
 		if (info->error == TRUE)
 			g_exit_status = 2;
 	}
-	check_metachar_next_null(info, tokenlist);
+	if (!info->error)
+		check_metachar_next_null(info, tokenlist);
 }

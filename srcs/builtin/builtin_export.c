@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:10:41 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/13 18:38:36 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/16 18:55:31 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,27 @@ void	print_export_env(t_env_list *env_head)
 
 int	add_env(char *argv, int del, t_env_list **env_head)
 {
-	char		*sep;
-	char		*key;
-	t_env_list	*key_loc;
-	t_env_list	*new_env;
+	t_add_env_util	util;
 
-	sep = ft_strchr(argv, del);
-	if (!sep)
+	util.sep = ft_strchr(argv, del);
+	if (!util.sep)
 		return (1);
-	key = ft_strndup(argv, sep - argv);
-	if (!key)
+	util.key = ft_strndup(argv, util.sep - argv);
+	if (!util.key || !util.key[0])
+	{
+		safety_free((void **)&util.key);
 		return (1);
-	key_loc = env_key_location(*env_head, key);
-	free(key);
-	if (key_loc)
-		update_env_val(key_loc, sep, del);
+	}
+	util.key_loc = env_key_location(*env_head, util.key);
+	safety_free((void **)&util.key);
+	if (util.key_loc)
+		update_env_val(util.key_loc, util.sep, del);
 	else
 	{
-		new_env = new_env_list(argv);
-		if (!new_env)
+		util.new_env = new_env_list(argv, del);
+		if (!util.new_env)
 			return (1);
-		env_add_back(env_head, new_env);
+		env_add_back(env_head, util.new_env);
 	}
 	return (0);
 }
@@ -66,7 +66,7 @@ int	check_delimeter(char *argv)
 	sep = ft_strchr(argv, '=');
 	if (!sep)
 		return (NO_DEL);
-	if (sep - argv > 1 && *(sep - 1) == '+')
+	if (*(sep - 1) == '+')
 		return (ADD_VAL);
 	return (ADD_ENV);
 }
@@ -87,7 +87,10 @@ int	add_value(char *argv, t_env_list *env_head)
 	add_loc = env_key_location(env_head, key);
 	free(key);
 	if (!add_loc)
+	{
 		add_env(argv, '+', &env_head);
+		return (0);
+	}
 	join_value = ft_strjoin(add_loc->value, sep + 2);
 	free(add_loc->value);
 	add_loc->value = join_value;
