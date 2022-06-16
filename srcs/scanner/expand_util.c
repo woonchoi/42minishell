@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:23:41 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 17:26:22 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 21:27:39 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int	check_dollar_next_question(char *token, t_expand_token *exp_v)
 int	check_dollar_critical_case(char *token, int qstatus, t_expand_token *exp_v)
 {
 	if (ft_strlen(token) == 1
-		|| (!(*(token + 1) == '"') && qstatus == DOUBLE_Q)
-		|| (!ft_strncmp(token, "$\'", 2) && qstatus == DOUBLE_Q))
+		|| ((*(token + 1 + exp_v->i) == '"') && qstatus == DOUBLE_Q)
+		|| (!ft_strncmp(token + exp_v->i, "$\'", 2) && qstatus == DOUBLE_Q))
 		return (TRUE);
-	else if (!ft_strncmp(token, "$$", 2) && qstatus != SINGLE_Q)
+	else if (!ft_strncmp(token + exp_v->i, "$$", 2) && qstatus != SINGLE_Q)
 	{
 		exp_v->i++;
 		return (TRUE);
