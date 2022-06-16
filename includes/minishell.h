@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:46:28 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/16 10:10:54 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:08:21 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <signal.h>
-# include <errno.h>
 # include <dirent.h>
 # include <string.h>
 # include <readline/readline.h>
@@ -25,6 +24,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <sys/wait.h>
+
 # include "libft.h"
 # include "struct.h"
 # include "constant.h"
@@ -48,7 +48,6 @@ void	terminate_error(char *str);
 void	init_prompt_cycle(t_info *info);
 void	terminate_free(t_info *info);
 
-void	print_lexer_result(t_info *info);
 void	lexer(t_info *info);
 void	safety_free(void **data);
 void	safety_free_doublearray(void ***data);
@@ -56,7 +55,6 @@ void	safety_free_doublearray(void ***data);
 void	scanner(t_info *info);
 void	execute(t_info *info);
 
-void	print_tree_result(t_tree *root);
 char	**split_optarg(char *str);
 
 void	parser(t_info *info);

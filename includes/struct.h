@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 23:40:14 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/15 21:46:29 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 18:53:38 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,14 @@ typedef struct s_parse_util
 	int		heredoc_status;
 	int		heredoc_count;
 }	t_parse_util;
+
+typedef struct s_add_env_util
+{
+	char		*sep;
+	char		*key;
+	t_env_list	*key_loc;
+	t_env_list	*new_env;
+}	t_add_env_util;
 
 typedef struct s_heredoc
 {

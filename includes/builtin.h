@@ -6,14 +6,13 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:08:33 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/15 10:36:54 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:01:07 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTIN_H
 # define BUILTIN_H
 # include "minishell.h"
-# include <string.h>
 
 int			builtin_cd(char **path, t_info *info);
 int			builtin_echo(char **argv);
@@ -32,7 +31,7 @@ int			check_avaliable_key(char *key);
 void		free_split_value(char **s_val);
 
 /* BUILTIN UTILS */
-t_env_list	*new_env_list(char *argv);
+t_env_list	*new_env_list(char *argv, int del);
 void		env_add_back(t_env_list **env_list, t_env_list *new);
 void		update_env_val(t_env_list *key_loc, char *sep, int del);
 t_env_list	*env_key_location(t_env_list *env_head, char *key);

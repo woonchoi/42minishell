@@ -3,45 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:08:45 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/15 16:44:20 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 18:48:09 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	free_two_arg(void *arg1, void *arg2)
+static void	*free_two_arg(void *arg1, void *arg2)
 {
-	free(arg1);
-	free(arg2);
+	safety_free((void **)&arg1);
+	safety_free((void **)&arg2);
+	return (NULL);
 }
 
-t_env_list	*new_env_list(char *argv)
+t_env_list	*new_env_list(char *argv, int key_del)
 {
 	t_env_list	*new;
-	char		*sep;
+	char		*key_sep;
+	char		*val_sep;
 
 	new = (t_env_list *)malloc(sizeof(t_env_list));
 	if (!new)
 		return (NULL);
-	sep = ft_strchr(argv, '=');
-	new->key = ft_strndup(argv, sep - argv);
+	key_sep = ft_strchr(argv, key_del);
+	val_sep = ft_strchr(argv, '=');
+	new->key = ft_strndup(argv, key_sep - argv);
 	if (!new->key[0])
-	{
-		free_two_arg(new->key, new);
-		return (NULL);
-	}
-	new->value = ft_strdup(sep + 1);
+		return (free_two_arg(new->key, new));
+	new->value = ft_strdup(val_sep + 1);
 	if (!new->value || !check_avaliable_key(new->key))
 	{
-		if (new->value)
-			free(new->value);
-		free_two_arg(new->key, new);
-		return (NULL);
+		safety_free((void **)&new->value);
+		return (free_two_arg(new->key, new));
 	}
-	new->split_value = ft_split(sep + 1, ':');
+	new->split_value = ft_split(val_sep + 1, ':');
 	new->next = NULL;
 	return (new);
 }

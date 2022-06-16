@@ -6,7 +6,7 @@
 /*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:27:30 by woonchoi          #+#    #+#             */
-/*   Updated: 2022/06/16 10:27:27 by woonchoi         ###   ########.fr       */
+/*   Updated: 2022/06/16 16:55:05 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,6 @@ void	init_heredoc(t_info *info, char *str, int *i)
 			ft_putendl_fd(line, info->heredoc[*i].fd[1]);
 			safety_free((void **)&line);
 		}
-		else if (line == NULL)
-		{
-			ft_putstr_fd("\n", STDOUT_FILENO);
-			break ;
-		}
 		else
 			break ;
 	}
@@ -76,8 +71,6 @@ void	preorder_heredoc(t_info *info, t_tree *node, int *i)
 		return ;
 	if (node->l_child->type == HEREDOC && !node->r_child)
 	{
-		ft_putstr_fd(SYNTAX_ERROR_PRE, STDOUT_FILENO);
-		ft_putstr_fd("newline'\n", STDOUT_FILENO);
 		info->error = TRUE;
 		g_exit_status = 258;
 		return ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:57:06 by jasong            #+#    #+#             */
-/*   Updated: 2022/06/13 18:39:35 by jasong           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:07:37 by woonchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	delete_env(t_env_list **env_head, char *del_key)
 	t_env_list	*temp;
 
 	del_loc = env_key_location(*env_head, del_key);
-	if (!env_head || !*env_head)
-		printf("env_head is null. check something");
 	temp = *env_head;
 	if (!del_loc)
 		return ;
