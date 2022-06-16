@@ -6,7 +6,7 @@
 #    By: woonchoi <woonchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 23:20:32 by woonchoi          #+#    #+#              #
-#    Updated: 2022/06/16 09:58:27 by woonchoi         ###   ########.fr        #
+#    Updated: 2022/06/16 14:42:57 by woonchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,6 @@ MAIN_SRCS =	init_prompt.c \
 			prompt.c \
 			signal_handler.c \
 			terminate_error.c \
-			test_code.c \
 			minishell.c \
 
 LEXER_SRCS =	create_token_list.c \
